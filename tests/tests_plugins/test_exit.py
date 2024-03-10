@@ -3,7 +3,7 @@
 '''Exit Test'''
 import sys
 import pytest
-from app.plugins import ExitCommand
+from app.plugins.exit import ExitCommand
 
 class TestExitCommand:
     '''Tests ExitCommand'''
