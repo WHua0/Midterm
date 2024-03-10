@@ -1,6 +1,6 @@
 # pylint: disable = unused-import
 
-'''Introduction Test'''
+'''Test Introduction'''
 import pytest
 from app.introduction import introduction
 
