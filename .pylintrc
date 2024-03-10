@@ -1,7 +1,7 @@
 [MASTER]
 
 [MESSAGES CONTROL]
-disable = line-too-long
+disable = line-too-long, too-few-public-methods
 
 [REPORTS]
 output-format = colorized
