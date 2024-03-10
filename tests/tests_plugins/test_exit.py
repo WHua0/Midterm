@@ -1,6 +1,6 @@
 # pylint: disable = unused-variable
 
-'''Exit Test'''
+'''Test Exit'''
 import sys
 import pytest
 from app.plugins.exit import ExitCommand
