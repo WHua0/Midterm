@@ -20,7 +20,7 @@ class App:
         self.command_handler.register_command("menu", MenuCommand(self.command_handler))
 
     def configure_logging(self):
-        '''Configures Logging Settings'''
+        '''Configures logging settings'''
 
         logging_conf_path = "logging.conf"
         if os.path.exists(logging_conf_path):
@@ -30,7 +30,7 @@ class App:
         logging.info("Configured logging.")
 
     def load_plugins(self):
-        ''' Dynamically load all plugins from the plugins directory'''
+        ''' Dynamically loads plugins from the plugins directory'''
 
         plugins_package = "app.plugins"
 
@@ -47,7 +47,7 @@ class App:
                     logging.error("Failed to import Command '%s' from Plugin '%s': '%s'.", plugin_name, plugins_package, str(e))
 
     def register_plugins(self, plugin_name, plugin_module):
-        '''Imports and registers commands from the plugin module.'''
+        '''Imports and registers commands from plugins.'''
 
         for item_name in dir(plugin_module):
             item = getattr(plugin_module, item_name)
@@ -62,7 +62,7 @@ class App:
 
     def start(self):
         '''Starts the App'''
-        logging.info("App initiated.")
+        logging.info("Initiated App.")
 
         introduction()
         self.load_plugins()
