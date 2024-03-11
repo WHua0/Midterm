@@ -1,6 +1,6 @@
 # pylint: disable = unused-argument
 
-'''Test Dividey'''
+'''Test Divide'''
 import unittest
 from unittest.mock import patch
 from app.plugins.divide import DivideCommand
