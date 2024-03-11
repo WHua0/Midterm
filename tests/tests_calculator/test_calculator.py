@@ -7,7 +7,7 @@ from app.calculator import Calculator
 class TestCalculator():
     '''Tests Calculator.Operations'''
 
-    def test__execute_operations(self, a, b, operation, expected):
+    def test__execute_faker(self, a, b, operation, expected):
         '''Tests Calculator.execute with Faker'''
         assert Calculator.execute(a, b, operation) == expected, f"{operation.__name__} operation failed!"
 
