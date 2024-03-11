@@ -39,11 +39,6 @@ class App:
         logging.info("Loaded environment variables.")
         return settings
 
-    def get_environment_variable(self, env_var: str = 'ENVIRONMENT'):
-        '''Retrieves environment variables from settings, but returns None if it doesn't exist'''
-        logging.info("Retrieved environment variables.")
-        return self.settings.get(env_var, None)
-
     def load_plugins(self):
         ''' Dynamically loads plugins from plugins directory'''
 
