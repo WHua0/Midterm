@@ -8,6 +8,11 @@ from app.calculator.operations import Operation
 class TestCalculation():
     '''Tests Calculations.Compute with Operations'''
 
+    def test_calculation_faker(self, a, b, operation, expected):
+        '''Tests Calculation.Compute with Faker'''
+        calc = Calculation(a, b, operation)
+        assert calc.compute() == expected, "Calculation Compute with Faker failed!"
+
     def test_calculation_add(self):
         '''Tests with add'''
         calc = Calculation(2, 2, Operation.add)
