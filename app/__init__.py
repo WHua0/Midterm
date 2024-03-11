@@ -57,7 +57,7 @@ class App:
                     logging.error("Failed to import Command '%s' from Plugin '%s': '%s'.", plugin_name, plugins_package, str(e))
 
     def register_plugins(self, plugin_name, plugin_module):
-        '''Imports and registers commands from plugins.'''
+        '''Imports and registers command from plugins'''
 
         for item_name in dir(plugin_module):
             item = getattr(plugin_module, item_name)
