@@ -5,6 +5,7 @@ import importlib
 import sys
 import logging
 import logging.config
+from dotenv import load_dotenv
 from app.introduction import introduction
 from app.commandhandler import Command, CommandHandler
 from app.plugins.menu import MenuCommand
@@ -16,6 +17,9 @@ class App:
         '''Constructor'''
         os.makedirs("logs", exist_ok = True)
         self.configure_logging()
+        load_dotenv()
+        self.settings = self.load_environment_variables()
+        self.settings.setdefault('ENVIRONMENT', 'TESTING')
         self.command_handler = CommandHandler()
         self.command_handler.register_command("menu", MenuCommand(self.command_handler))
 
@@ -29,8 +33,19 @@ class App:
             logging.basicConfig(level = logging.INFO, format = '%(asctime)s - %(levelname)s - %(message)s')
         logging.info("Configured logging.")
 
+    def load_environment_variables(self):
+        '''Loads environment variables into settings dictionary'''
+        settings = dict(os.environ.items())
+        logging.info("Loaded environment variables.")
+        return settings
+
+    def get_environment_variable(self, env_var: str = 'ENVIRONMENT'):
+        '''Retrieves environment variables from settings, but returns None if it doesn't exist'''
+        logging.info("Retrieved environment variables.")
+        return self.settings.get(env_var, None)
+
     def load_plugins(self):
-        ''' Dynamically loads plugins from the plugins directory'''
+        ''' Dynamically loads plugins from plugins directory'''
 
         plugins_package = "app.plugins"
 
