@@ -15,21 +15,21 @@ class TestApp(unittest.TestCase):
         self.app_instance = App()
 
     def test_configure_logging_with_logging_conf(self):
-        '''Tests Configure_Logging'''
+        '''Tests configure_logging'''
         with patch("os.path.exists", return_value = True), \
             patch("logging.config.fileConfig") as mock_file_config:
             self.app_instance.configure_logging()
             mock_file_config.assert_called_once_with("logging.conf", disable_existing_loggers = False)
 
     def test_configure_logging_without_logging_conf(self):
-        '''Tests Configure_Logging without Logging.Conf'''
+        '''Tests configure_logging without logging.conf'''
         with patch("os.path.exists", return_value = False), \
             patch("logging.basicConfig") as mock_basic_config:
             self.app_instance.configure_logging()
             mock_basic_config.assert_called_once_with(level = logging.INFO, format = "%(asctime)s - %(levelname)s - %(message)s")
 
     def test_load_environment_variables(self):
-        '''Tests Load_Environment_Variables'''
+        '''Tests load_environment_variables'''
         with patch("os.environ.items", return_value={"ENV_VAR1": "value1", "ENV_VAR2": "value2"}):
             settings = self.app_instance.load_environment_variables()
             self.assertEqual(settings, {"ENV_VAR1": "value1", "ENV_VAR2": "value2"})
