@@ -8,7 +8,7 @@ class Calculator:
 
     @staticmethod
     def execute(a: Decimal, b: Decimal, operation) -> Decimal:
-        '''Calculator.execute(a, b, operation) '''
+        '''Encaspulation with Calculator.execute '''
         calculation = Calculation(a, b, operation)
         return calculation.compute()
 
