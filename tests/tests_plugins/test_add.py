@@ -1,4 +1,5 @@
 # pylint: disable = unused-argument
+# pylint: disable = duplicate-code
 
 '''Test Add'''
 import unittest
