@@ -63,7 +63,7 @@ class TestCalculator():
         '''Tests Calculator.show_history'''
         Calculator.show_history()
         captured = capsys.readouterr()
-        assert captured.out.strip() == "[(2, 2, 'add'), (2, 2, 'subtract')]", "Calculator Show History failed!"
+        assert captured.out.strip() == "[('add', 2, 2), ('subtract', 2, 2)]", "Calculator Show History failed!"
 
     def test_clear_history(self, setup_history):
         '''Tests Calculator.clear_history'''
@@ -74,4 +74,4 @@ class TestCalculator():
         '''Tests Calculator.show_previous'''
         Calculator.show_previous()
         captured = capsys.readouterr()
-        assert captured.out.strip() == "(2, 2, 'subtract')", "Calculator Show Previous failed!"
+        assert captured.out.strip() == "('subtract', 2, 2)", "Calculator Show Previous failed!"

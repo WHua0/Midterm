@@ -12,7 +12,7 @@ class History:
         cls.a = a
         cls.b = b
         cls.operation = operation.__name__
-        return (cls.a, cls.b, cls.operation)
+        return (cls.operation, cls.a, cls.b)
 
     @classmethod
     def add_log(cls, log):

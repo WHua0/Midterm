@@ -13,15 +13,15 @@ class TestHistory():
     def setup_history(self):
         '''Clears history and adds sample history for tests'''
         History.history.clear()
-        log1 = (2, 2, "add")
-        log2 = (2, 2, "subtract")
+        log1 = ("add", 2, 2)
+        log2 = ("subtract", 2, 2)
         History.history.append(log1)
         History.history.append(log2)
 
     def test_create_log(self):
         '''Tests create_log'''
         log = History.create_log(2, 2, Operation.add)
-        assert log == (2, 2, "add"), "Failed to create log!"
+        assert log == ("add", 2, 2), "Failed to create log!"
 
     def test_add_log(self, setup_history):
         '''Tests add_log to history'''
@@ -46,7 +46,7 @@ class TestHistory():
 
     def test_retrieve_previous_log(self, setup_history):
         '''Tests retrieve_previous_log from history'''
-        assert History.retrieve_previous_log() == (2, 2, "subtract"), "Failed to retrieve previous log!"
+        assert History.retrieve_previous_log() == ("subtract", 2, 2), "Failed to retrieve previous log!"
 
     def test_retrieve_no_previous_log(self, setup_history):
         '''Tests retrieve_no_previous_log'''
