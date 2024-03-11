@@ -25,5 +25,5 @@ class TestCalculator():
 
     def test_calculator_division_by_zero(self):
         '''Calculator.add by 0 exception'''
-        with pytest.raises(ZeroDivisionError, match = 'Cannot divide by zero'):
-            Calculator.divide(2, 0), 'Divide by Zero exception failed'
+        with pytest.raises(ZeroDivisionError, match = "Cannot divide by zero"):
+            Calculator.divide(2, 0), "Calculator Divide ZeroDivisionError failed!"
