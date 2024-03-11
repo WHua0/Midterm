@@ -1,4 +1,5 @@
 [run]
 source = .
 omit = 
-    conftest.py
+    conftest.py,
+    main.py
