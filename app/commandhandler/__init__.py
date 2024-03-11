@@ -17,9 +17,9 @@ class CommandHandler:
         self.commands = {}
 
     def register_command(self, command_name: str, command: Command):
-        '''Registers the Command'''
+        '''Registers the Plugin Command'''
         self.commands[command_name] = command
-        logging.info("Registered Command '%s' from Plugin '%s'.", command_name, command)
+        logging.info("Registered Command '%s'.", command_name)
 
     def execute_command(self, command_name: str):
         '''Executes the Command'''
