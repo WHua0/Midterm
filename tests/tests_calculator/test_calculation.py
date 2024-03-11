@@ -11,7 +11,7 @@ class TestCalculation():
     def test_calculation_faker(self, a, b, operation, expected):
         '''Tests Calculation.Compute with Faker'''
         calc = Calculation(a, b, operation)
-        assert calc.compute() == expected, "Calculation Compute with Faker failed!"
+        assert calc.compute() == expected, f"{operation.__name__} operation failed!"
 
     def test_calculation_add(self):
         '''Tests with add'''

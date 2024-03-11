@@ -9,7 +9,7 @@ class TestCalculator():
 
     def test__execute_operations(self, a, b, operation, expected):
         '''Tests Calculator.execute with Faker'''
-        assert Calculator.execute(a, b, operation) == expected, f"{operation.__name__} operation failed"
+        assert Calculator.execute(a, b, operation) == expected, f"{operation.__name__} operation failed!"
 
     def test_calculator_add(self):
         '''Tests Calculator.add'''
