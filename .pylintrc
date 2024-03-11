@@ -1,13 +1,13 @@
-[MASTER]
+[master]
 
-[MESSAGES CONTROL]
+[messages control]
 disable = line-too-long, too-few-public-methods
 
-[REPORTS]
+[reports]
 output-format = colorized
 reports = yes
 report-full = no
 
-[DESIGN]
+[design]
 
-[BASIC]
+[basic]
