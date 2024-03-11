@@ -9,7 +9,7 @@ class MockCommand(Command):
         pass # pragma: no cover
 
 class TestCommandManager(unittest.TestCase):
-    '''Class TestCommandManager'''
+    '''Tests CommandManager'''
 
     def setUp(self):
         '''SetUp'''
