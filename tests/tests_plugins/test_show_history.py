@@ -1,6 +1,4 @@
-# pylint: disable = unused-argument
-
-'''Test History'''
+'''Test Show_History'''
 import unittest
 from unittest.mock import patch
 from app.plugins.show_history import ShowHistoryCommand
@@ -25,7 +23,7 @@ class TestShowHistoryCommand():
         command = ShowHistoryCommand()
         with patch("builtins.print") as mock_print:
             command.execute()
-        mock_print.assert_called_once_with([('add', 2, 2)])
+        mock_print.assert_called_once_with([("add", 2, 2)])
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
