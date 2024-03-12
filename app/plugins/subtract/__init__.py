@@ -7,7 +7,7 @@ class SubtractCommand(Command):
     '''Subtract Command'''
 
     def execute(self):
-        values = input("Please provide the two numbers separated by a space: ").split()
+        values = input("Please provide two numbers separated by a space: ").split()
 
         if len(values) == 2:
             a, b = values[0], values[1]
