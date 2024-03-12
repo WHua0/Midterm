@@ -1,3 +1,5 @@
+# pylint: disable = duplicate-code
+
 '''Test Show_History'''
 import unittest
 from unittest.mock import patch
