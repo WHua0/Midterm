@@ -37,7 +37,7 @@ class TestHistory():
     def test_retrieve_no_history(self, setup_history):
         '''Tests retrieve_no_history'''
         History.history.clear()
-        assert History.retrieve_history() == "No History!","Failed to show no history!"
+        assert History.retrieve_history() == "No History!", "Failed to show no history!"
 
     def test_clear_history(self, setup_history):
         '''Tests clear history'''
