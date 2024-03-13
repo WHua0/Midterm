@@ -22,13 +22,15 @@ class TestCSVHandler(unittest.TestCase):
                 os.remove(file_path)
         os.rmdir(self.test_dir)
 
-    @patch("os.makedirs")
-    def test_check_data_directory_if_directory_does_not_exist(self, mock_info):
-        '''Tests CSVHandler.check_data_directory if data directory does not exist'''
+    @patch("os.access", return_value = False)
+    @patch("sys.stdout", autospec = True)
+    @patch("logging.error", autospec = True)
+    def test_check_data_directory_when_not_writable(self, mock_logging_error, mock_stdout, mock_access):
+        '''Tests CSVHandler.check_data_directory when directory is not writable'''
         csv_handler = CSVHandler()
-        csv_handler.data_directory = self.test_dir
+        csv_handler.data_directory = "./data"
         csv_handler.check_data_directory()
-        self.assertTrue(os.path.exists(self.test_dir))
+        mock_logging_error.assert_called_once_with(f"Directory '{csv_handler.data_directory}' is not writable.")
 
     def test_create_csv_file(self):
         '''Tests CSVHandler.create_csv_file'''
