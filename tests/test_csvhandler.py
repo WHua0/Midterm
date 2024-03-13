@@ -22,6 +22,16 @@ class TestCSVHandler(unittest.TestCase):
                 os.remove(file_path)
         os.rmdir(self.test_dir)
 
+    @patch("os.path.exists", return_value = False)
+    @patch("os.makedirs")
+    @patch("logging.info")
+    def test_check_data_directory_when_directory_not_exists(self, mock_logging_info, mock_makedirs, mock_exists):
+        '''Tests CSVHandler.check_data_directory if data directory does not exist'''
+        csv_handler = CSVHandler()
+        csv_handler.data_directory = "./data"
+        csv_handler.check_data_directory()
+        mock_logging_info.assert_called_once_with(f"Created '{csv_handler.data_directory}' directory.")
+
     @patch("os.access", return_value = False)
     @patch("sys.stdout", autospec = True)
     @patch("logging.error", autospec = True)
