@@ -76,11 +76,26 @@ class TestCSVHandler(unittest.TestCase):
         CSVHandler.delete_csv_file(filename)
         mock_logging_warning.assert_called_once_with(f"Dataframe: '{filename}' does not exists.")
 
+    def test_csv_factory_create(self):
+        '''Tests CSV Factory create CSV File'''
+        CSVHandler.data_directory = self.test_dir
+        filename = "test.csv"
+        CSV_Factory("create", filename)
+        self.assertTrue(os.path.exists(os.path.join(self.test_dir, filename)))
+
+    def test_csv_delete(self):
+        '''Tests CSV Factory delete CSV File'''
+        CSVHandler.data_directory = self.test_dir
+        filename = "test.csv"
+        CSV_Factory("create", filename)
+        CSV_Factory("delete", filename)
+
     def test_csv_factory_valueerror(self):
-        '''Tests CSV Fantory else ValueError'''
+        '''Tests CSV Factory else ValueError'''
         operation = "invalid_operation"
+        filename = "test.csv"
         with self.assertRaises(ValueError):
-            CSV_Factory(operation)
+            CSV_Factory(operation, filename )
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
