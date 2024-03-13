@@ -1,7 +1,9 @@
-'''Test CSVHandler'''
+# pylint: disable = unused-argument
 
+'''Test CSVHandler'''
 import unittest
 import os
+from unittest.mock import patch
 from app.csvhandler import CSVHandler
 
 class TestCSVHandler(unittest.TestCase):
@@ -20,7 +22,8 @@ class TestCSVHandler(unittest.TestCase):
                 os.remove(file_path)
         os.rmdir(self.test_dir)
 
-    def test_check_data_directory_if_directory_does_not_exist(self):
+    @patch('os.makedirs')
+    def test_check_data_directory_if_directory_does_not_exist(self, mock_info):
         '''Tests CSVHandler.check_data_directory if data directory does not exist'''
         csv_handler = CSVHandler()
         csv_handler.data_directory = self.test_dir
