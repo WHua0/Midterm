@@ -22,7 +22,7 @@ class TestCSVHandler(unittest.TestCase):
                 os.remove(file_path)
         os.rmdir(self.test_dir)
 
-    @patch('os.makedirs')
+    @patch("os.makedirs")
     def test_check_data_directory_if_directory_does_not_exist(self, mock_info):
         '''Tests CSVHandler.check_data_directory if data directory does not exist'''
         csv_handler = CSVHandler()
