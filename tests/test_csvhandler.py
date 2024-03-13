@@ -4,7 +4,7 @@
 import unittest
 import os
 from unittest.mock import patch
-from app.csvhandler import CSVHandler
+from app.csvhandler import CSVHandler, CSV_Factory
 
 class TestCSVHandler(unittest.TestCase):
     '''Tests CSVHandler'''
@@ -75,6 +75,12 @@ class TestCSVHandler(unittest.TestCase):
         filename = "nofiletest.csv"
         CSVHandler.delete_csv_file(filename)
         mock_logging_warning.assert_called_once_with(f"Dataframe: '{filename}' does not exists.")
+
+    def test_csv_factory_valueerror(self):
+        '''Tests CSV Fantory else ValueError'''
+        operation = "invalid_operation"
+        with self.assertRaises(ValueError):
+            CSV_Factory(operation)
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
