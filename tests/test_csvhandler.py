@@ -32,10 +32,11 @@ class TestCSVHandler(unittest.TestCase):
         csv_handler.check_data_directory()
         mock_logging_info.assert_called_once_with(f"Created '{csv_handler.data_directory}' directory.")
 
+    @patch("os.path.exists", return_value = True)
     @patch("os.access", return_value = False)
     @patch("sys.stdout", autospec = True)
     @patch("logging.error", autospec = True)
-    def test_check_data_directory_if_directory_not_writable(self, mock_logging_error, mock_stdout, mock_access):
+    def test_check_data_directory_if_directory_not_writable(self, mock_logging_error, mock_stdout, mock_access, mock_exists):
         '''Tests CSVHandler.check_data_directory when directory is not writable'''
         csv_handler = CSVHandler()
         csv_handler.data_directory = "./data"
