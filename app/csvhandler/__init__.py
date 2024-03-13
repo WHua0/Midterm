@@ -48,15 +48,13 @@ class CSVHandler:
             print(f"File '{filename}' was not found.")
             logging.warning(f"Dataframe: '{filename}' does not exists.")
 
-def CSV_Factory(operation):
+def CSV_Factory(operation, filename):
     '''CSV Factory Method'''
 
-    if operation == "check_directory":
-        return CSVHandler.check_data_directory
-    elif operation == "create":
-        return CSVHandler.create_csv_file
+    if operation == "create":
+        return CSVHandler.create_csv_file(filename)
     elif operation == "delete":
-        return CSVHandler.delete_csv_file
+        return CSVHandler.delete_csv_file(filename)
     else:
         logging.error(f"Failed to execute CSV Operation: {operation}.")
         raise ValueError
