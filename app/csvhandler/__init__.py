@@ -2,7 +2,6 @@
 import os
 import pandas as pd
 import logging
-from app.calculator.history import History
 
 class CSVHandler:
     '''Class CSVHandler'''
