@@ -24,16 +24,25 @@ class CSVHandler:
     @staticmethod
     def create_csv_file(filename):
         '''Creates CSV File in data directory'''
+
         if not filename.endswith(".csv"):
             filename += ".csv"
 
         filepath = os.path.join(CSVHandler.data_directory, filename)
 
         if not os.path.exists(filepath):
-            df = pd.DataFrame(columns = CSVHandler.headers)
-            df.to_csv(filepath, index = True, index_label = "Index")
-            print(f"File '{filename}' has been created.")
-            logging.info(f"Created File '{filename}'.")
+
+            try:
+                df = pd.DataFrame(columns = CSVHandler.headers)
+                df.to_csv(filepath, index = True, index_label = "Index")
+                print(f"File '{filename}' has been created.")
+                logging.info(f"Created File '{filename}'.")
+
+            except Exception as e:
+                print(f"An error occurred: {e}.")
+                logging.warning(f"An error occurred: {e}.")
+                return      
+
         else:
             print(f"File '{filename}' already exists.")
             logging.warning(f"File '{filename}' already exists.")
@@ -41,15 +50,24 @@ class CSVHandler:
     @staticmethod
     def delete_csv_file(filename):
         '''Deletes CSV File in data directory'''
+
         if not filename.endswith(".csv"):
             filename += ".csv"
 
         filepath = os.path.join(CSVHandler.data_directory, filename)
 
         if os.path.exists(filepath):
-            os.remove(filepath)
-            print(f"File '{filename}' has been deleted.")
-            logging.info(f"Deleted File '{filename}'.")
+
+            try:
+                os.remove(filepath)
+                print(f"File '{filename}' has been deleted.")
+                logging.info(f"Deleted File '{filename}'.")
+
+            except Exception as e:
+                print(f"An error occurred: {e}.")
+                logging.warning(f"An error occurred: {e}.")
+                return   
+
         else:
             print(f"File '{filename}' was not found.")
             logging.warning(f"File '{filename}' does not exists.")
