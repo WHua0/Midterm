@@ -2,7 +2,7 @@
 import os
 import pandas as pd
 import logging
-from app.csvhandler.csvfilechecker import CSVFileChecker
+from app.historyhandler.csvfilechecker import CSVFileChecker
 
 class CSVHandler:
     '''Class CSVHandler'''
