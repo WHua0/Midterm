@@ -2,7 +2,6 @@
 from decimal import Decimal, InvalidOperation
 from app.calculator.calculation import Calculation
 from app.calculator.operations import Operation
-from app.calculator.history import History
 
 class Calculator:
     '''Class Calculator'''
@@ -11,8 +10,6 @@ class Calculator:
     def execute(a: Decimal, b: Decimal, operation) -> Decimal:
         '''Encapsulation with Calculator.execute(a, b, operation) '''
         calculation = Calculation(a, b, operation)
-        log = History.create_log(a, b, operation)
-        History.add_log(log)
         return calculation.compute()
 
     @staticmethod
@@ -61,20 +58,3 @@ class Calculator:
 
         except Exception as e:
             print(f"An error occurred: {e}.")
-
-    @staticmethod
-    def show_history():
-        '''Shows History'''
-        history = History.retrieve_history()
-        print(history)
-
-    @staticmethod
-    def clear_history():
-        '''Clears History'''
-        return History.clear_history()
-
-    @staticmethod
-    def show_previous():
-        '''Shows Previous Log'''
-        previous_log = History.retrieve_previous_log()
-        print(previous_log)

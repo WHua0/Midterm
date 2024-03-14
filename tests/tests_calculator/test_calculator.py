@@ -5,7 +5,6 @@
 '''Test Calculator'''
 import pytest
 from app.calculator import Calculator
-from app.calculator.history import History
 
 class TestCalculator():
     '''Tests Calculator.Operations'''
@@ -51,27 +50,3 @@ class TestCalculator():
         Calculator.calculate_and_print(a_string, b_string, operation_string)
         captured = capsys.readouterr()
         assert captured.out.strip() == expected_string, "Calculator Calculate and Print failed!"
-
-    @pytest.fixture
-    def setup_history(self):
-        '''Clears history and adds sample logs for tests'''
-        History.history.clear()
-        Calculator.add(2, 2)
-        Calculator.subtract(2, 2)
-
-    def test_show_history(self, setup_history, capsys):
-        '''Tests Calculator.show_history'''
-        Calculator.show_history()
-        captured = capsys.readouterr()
-        assert captured.out.strip() == "[('add', 2, 2), ('subtract', 2, 2)]", "Calculator Show History failed!"
-
-    def test_clear_history(self, setup_history):
-        '''Tests Calculator.clear_history'''
-        Calculator.clear_history()
-        assert len(History.history) == 0, "Calculator Clear History failed!"
-
-    def test_show_previous(self, setup_history, capsys):
-        '''Tests Calculator.show_previous'''
-        Calculator.show_previous()
-        captured = capsys.readouterr()
-        assert captured.out.strip() == "('subtract', 2, 2)", "Calculator Show Previous failed!"
