@@ -35,6 +35,20 @@ class CSVHandler:
         os.remove(filepath)
         print(f"File '{filename}' has been deleted.")
         logging.info(f"Deleted File '{filename}'.")
+    
+    @staticmethod
+    def clear_csv_file(filename, filepath):
+        '''Clears CSV File in data directory'''
+    
+        if not os.path.exists(filepath):
+            print(f"File '{filename}' was not found.")
+            logging.warning(f"File '{filename}' does not exist.")
+            return
+
+        df = pd.DataFrame(columns = CSVHandler.headers)
+        df.to_csv(filepath, index = True, index_label = "Index")
+        print(f"File '{filename}' has been cleared.")
+        logging.info(f"Cleared File '{filename}'.")
 
 def CSVFactory(operation, filename):
     '''CSV Factory Method'''
@@ -53,6 +67,8 @@ def CSVFactory(operation, filename):
         return CSVHandler.create_csv_file(filename, filepath)
     elif operation == "delete":
         return CSVHandler.delete_csv_file(filename, filepath)
+    elif operation == "clear":
+        return CSVHandler.clear_csv_file(filename, filepath)
     else:
         print(f"Invalid CSV Operation: {operation}.")
         logging.warning(f"Invalid CSV Operation: {operation}.")
