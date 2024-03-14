@@ -63,7 +63,7 @@ class TestCSVHandler(unittest.TestCase):
     def test_delete_csv_file(self):
         '''Tests CSVHandler.delete_csv_file'''
         CSVHandler.data_directory = self.testdir
-        filename = "test"
+        filename = "test.csv"
         filepath = os.path.join(self.testdir, filename)
         CSVHandler.create_csv_file(filename)
         CSVHandler.delete_csv_file(filename)
@@ -77,29 +77,29 @@ class TestCSVHandler(unittest.TestCase):
         CSVHandler.delete_csv_file(filename)
         mock_logging_warning.assert_called_once_with(f"File '{filename}' does not exist.")
 
-    def test_csv_factory_create(self):
+    def test_csvfactory_create(self):
         '''Tests CSV Factory create CSV File'''
         CSVHandler.data_directory = self.testdir
-        filename = "test.csv"
-        filepath = os.path.join(self.testdir, filename)
+        filename = "test"
+        filepath = os.path.join(self.testdir, "test.csv")
         CSVFactory("create", filename)
         self.assertTrue(os.path.exists(filepath))
 
-    def test_csv_delete(self):
+    def test_csvfactory_delete(self):
         '''Tests CSV Factory delete CSV File'''
         CSVHandler.data_directory = self.testdir
         filename = "test"
-        filepath = os.path.join(self.testdir, filename)
+        filepath = os.path.join(self.testdir, "test.csv")
         CSVFactory("create", filename)
         CSVFactory("delete", filename)
         self.assertFalse(os.path.exists(filepath))
 
-    def test_csv_factory_valueerror(self):
+    def test_csvfactory_valueerror(self):
         '''Tests CSV Factory else ValueError'''
         operation = "invalid_operation"
         filename = "test"
         with self.assertRaises(ValueError):
-            CSVFactory(operation, filename )
+            CSVFactory(operation, filename)
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
