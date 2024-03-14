@@ -6,30 +6,18 @@ from app.csvhandler.csvfilechecker import CSVFileChecker
 
 class CSVHandler:
     '''Class CSVHandler'''
-    data_directory = "./data"
     headers = ["Operator", "Operand_A", "Operand_B"]
-
-    @staticmethod
-    def check_data_directory():
-        '''Creates and checks if data directory is writable'''
-
-        if not os.path.exists(CSVHandler.data_directory):
-            os.makedirs(CSVHandler.data_directory)
-            logging.info(f"Created '{CSVHandler.data_directory}' directory.")
-
-        elif not os.access(CSVHandler.data_directory, os.W_OK):
-            print(f"An error occurred: Directory '{CSVHandler.data_directory}' is not writable.")
-            logging.error(f"Directory '{CSVHandler.data_directory}' is not writable.")
-            return
 
     @staticmethod
     def create_csv_file(filename):
         '''Creates CSV File in data directory'''
 
+        CSVFileChecker.check_data_directory()
+
         if not CSVFileChecker.validate_filename(filename):
             return
 
-        filepath = CSVFileChecker.get_filepath(CSVHandler.data_directory, filename)
+        filepath = CSVFileChecker.get_filepath(CSVFileChecker.data_directory, filename)
 
         if os.path.exists(filepath):
             print(f"File '{filename}' already exists.")
@@ -46,10 +34,12 @@ class CSVHandler:
     def delete_csv_file(filename):
         '''Deletes CSV File in data directory'''
 
+        CSVFileChecker.check_data_directory()
+
         if not CSVFileChecker.validate_filename(filename):
             return
 
-        filepath = CSVFileChecker.get_filepath(CSVHandler.data_directory, filename)
+        filepath = CSVFileChecker.get_filepath(CSVFileChecker.data_directory, filename)
 
         if not os.path.exists(filepath):
             print(f"File '{filename}' was not found.")

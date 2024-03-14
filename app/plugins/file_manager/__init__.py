@@ -1,13 +1,12 @@
 '''FileManager'''
 import logging
 from app.commandhandler import Command
-from app.csvhandler import CSVHandler, CSVFactory
+from app.csvhandler import CSVFactory
 
 class CSVCommand(Command):
     '''CSV Command'''
 
     def execute(self):
-        CSVHandler.check_data_directory()
         print("CSV Commands: create / delete.")
         values = input("Please provide a Command and File Name separated by a space: ").split()
 
