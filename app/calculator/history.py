@@ -17,3 +17,9 @@ class History:
         '''Adds log to history'''
         new_log = pd.DataFrame([log], columns=["Operation", "OperandA", "OperandB"])
         self.history = pd.concat([self.history, new_log], ignore_index = True)
+
+    def retrieve_history(self):
+        '''Retrieves history'''
+        if not self.history.empty:
+            return self.history
+        return "No History!"
