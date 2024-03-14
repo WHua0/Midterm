@@ -59,6 +59,25 @@ class TestCSVHandler(unittest.TestCase):
         CSVHandler.delete_csv_file(filename, filepath)
         mock_logging_warning.assert_called_once_with(f"File '{filename}' does not exist.")
 
+    @patch("logging.info")
+    def test_clear_csv_file(self,  mock_logging_info):
+        '''Tests CSVHandler.clear_csv_file'''
+        CSVFileChecker.data_directory = self.testdir
+        filename = "test.csv"
+        filepath = os.path.join(self.testdir, filename)
+        CSVHandler.create_csv_file(filename, filepath)
+        CSVHandler.clear_csv_file(filename, filepath)
+        mock_logging_info.assert_any_call(f"Cleared File '{filename}'.")
+
+    @patch("logging.warning")
+    def test_clear_csv_file_if_file_not_exists(self, mock_logging_warning):
+        '''Tests CSVHandler.clear_csv_file if file does not exist'''
+        CSVFileChecker.data_directory = self.testdir
+        filename = "nofiletest.csv"
+        filepath = os.path.join(self.testdir, filename)
+        CSVHandler.clear_csv_file(filename, filepath)
+        mock_logging_warning.assert_called_once_with(f"File '{filename}' does not exist.")
+
     def test_csvfactory_create(self):
         '''Tests CSV Factory create CSV File'''
         CSVFileChecker.data_directory = self.testdir
@@ -75,6 +94,15 @@ class TestCSVHandler(unittest.TestCase):
         CSVFactory("create", filename)
         CSVFactory("delete", filename)
         self.assertFalse(os.path.exists(filepath))
+
+    @patch("logging.info")
+    def test_csvfactory_clear(self,  mock_logging_info):
+        '''Tests CSVHandler.clear_csv_file'''
+        CSVFileChecker.data_directory = self.testdir
+        filename = "test.csv"
+        CSVFactory("create", filename)
+        CSVFactory("clear", filename)
+        mock_logging_info.assert_any_call(f"Cleared File '{filename}'.")
 
     @patch("logging.warning")
     def test_csvfactory_if_file_name_is_invalid(self, mock_logging_warning):

@@ -7,7 +7,7 @@ class CSVCommand(Command):
     '''CSV Command'''
 
     def execute(self):
-        print("CSV Commands: create / delete.")
+        print("CSV Commands: create / delete / clear.")
         values = input("Please provide a Command and File Name separated by a space: ").split()
 
         if len(values) == 2:
