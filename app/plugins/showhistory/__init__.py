@@ -1,7 +1,6 @@
 '''ShowHistory'''
 import logging
 import pandas as pd
-
 from app.commandhandler import Command
 from app.calculator.history import History
 
