@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 from app.introduction import introduction
 from app.commandhandler import Command, CommandHandler
 from app.plugins.menu import MenuCommand
+from app.calculator.history import History
+from app.plugins.history import ShowHistoryCommand
 
 class App:
     '''Class App'''
@@ -22,6 +24,8 @@ class App:
         self.settings.setdefault('ENVIRONMENT', 'TESTING')
         self.command_handler = CommandHandler()
         self.command_handler.register_command("menu", MenuCommand(self.command_handler))
+        self.history = History()
+        self.command_handler.register_command("history", ShowHistoryCommand(self.history))
 
     def configure_logging(self):
         '''Configures logging settings'''
