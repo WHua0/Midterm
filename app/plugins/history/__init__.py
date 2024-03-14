@@ -1,4 +1,4 @@
-'''history'''
+'''History'''
 import logging
 import pandas as pd
 

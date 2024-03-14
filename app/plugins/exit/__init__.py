@@ -1,10 +1,10 @@
-'''Exit Command'''
+'''Exit'''
 import sys
 import logging
 from app.commandhandler import Command
 
 class ExitCommand(Command):
-    '''Exits python interpreter and terminates program'''
+    '''Exit Command'''
 
     def execute(self):
         logging.info("Executed Command: 'exit'.")

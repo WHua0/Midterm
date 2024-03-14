@@ -1,8 +1,8 @@
-'''Menu Command'''
+'''Menu'''
 from app.commandhandler import Command
 
 class MenuCommand(Command):
-    '''Class MenuCommand'''
+    '''Menu Command'''
 
     def __init__(self, command_handler):
         '''Constructor'''
