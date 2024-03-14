@@ -25,7 +25,7 @@ class TestHistory(unittest.TestCase):
 
     def test_retrieve_history(self):
         '''Tests History.retrieve_history'''
-        self.assertEqual(self.history.retrieve_history(), "No History!")
+        self.assertEqual(self.history.retrieve_history(), None)
 
         log = {"Operation": "add", "OperandA": 10, "OperandB": 5}
         self.history.add_log(log)
