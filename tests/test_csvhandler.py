@@ -57,7 +57,7 @@ class TestCSVHandler(unittest.TestCase):
         filename = "test.csv"
         CSVHandler.create_csv_file(filename)
         CSVHandler.create_csv_file(filename)
-        mock_logging_warning.assert_called_once_with(f"Dataframe: '{filename}' already exists.")
+        mock_logging_warning.assert_called_once_with(f"File: '{filename}' already exists.")
 
     def test_delete_csv_file(self):
         '''Tests CSVHandler.delete_csv_file'''
@@ -74,7 +74,7 @@ class TestCSVHandler(unittest.TestCase):
         CSVHandler.data_directory = self.test_dir
         filename = "nofiletest.csv"
         CSVHandler.delete_csv_file(filename)
-        mock_logging_warning.assert_called_once_with(f"Dataframe: '{filename}' does not exists.")
+        mock_logging_warning.assert_called_once_with(f"File: '{filename}' does not exists.")
 
     def test_csv_factory_create(self):
         '''Tests CSV Factory create CSV File'''
