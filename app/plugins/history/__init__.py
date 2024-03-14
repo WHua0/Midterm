@@ -13,4 +13,6 @@ class ShowHistoryCommand(Command):
     def execute(self):
         history_data = self.history.retrieve_history()
         print("History:")
-        print(history_data)
+        df = pd.DataFrame(history_data)
+        print(df)
+        logging.info(f"Printed History:\n{df}")
