@@ -90,5 +90,17 @@ class TestCSVHandler(unittest.TestCase):
         filename = "test"
         self.assertIsNone(CSVFactory(operation, filename))
 
+    @patch("os.path.exists", return_value = True)
+    @patch("os.access", return_value = False)
+    @patch("sys.stdout", autospec = True)
+    @patch("logging.error", autospec = True)
+    def test_csvfactory_if_file_is_not_writable(self, mock_logging_error, mock_stdout, mock_access, mock_exists):
+        '''Tests CSV Factory if file is not writable'''
+        CSVFileChecker.data_directory = self.testdir
+        filename = "test.csv"
+        expected_filepath = os.path.join(self.testdir, filename)
+        CSVFactory("create", filename)
+        mock_logging_error.assert_any_call(f"File '{expected_filepath}' is not writable.")
+
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
