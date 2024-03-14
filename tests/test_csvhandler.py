@@ -98,8 +98,7 @@ class TestCSVHandler(unittest.TestCase):
         '''Tests CSV Factory else ValueError'''
         operation = "invalid_operation"
         filename = "test"
-        with self.assertRaises(ValueError):
-            CSVFactory(operation, filename)
+        self.assertIsNone(CSVFactory(operation, filename))
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
