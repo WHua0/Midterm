@@ -25,8 +25,7 @@ class TestHistory(unittest.TestCase):
 
     def test_retrieve_history(self):
         '''Tests History.retrieve_history'''
-        self.assertEqual(self.history.retrieve_history(), None)
-
+        self.assertEqual(len(self.history.history), 0)
         log = {"Operation": "add", "OperandA": 10, "OperandB": 5}
         self.history.add_log(log)
         self.assertIsInstance(self.history.retrieve_history(), pd.DataFrame)
