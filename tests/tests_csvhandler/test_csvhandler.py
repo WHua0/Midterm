@@ -28,7 +28,7 @@ class TestCSVHandler(unittest.TestCase):
         CSVFileChecker.data_directory = self.testdir
         filename = "test.csv"
         filepath = os.path.join(self.testdir, filename)
-        CSVHandler.create_csv_file(filename)
+        CSVHandler.create_csv_file(filename, filepath)
         self.assertTrue(os.path.exists(filepath))
 
     @patch("logging.warning")
@@ -36,8 +36,9 @@ class TestCSVHandler(unittest.TestCase):
         '''Tests CSVHandler.create_csv_file if file already exists'''
         CSVFileChecker.data_directory = self.testdir
         filename = "test.csv"
-        CSVHandler.create_csv_file(filename)
-        CSVHandler.create_csv_file(filename)
+        filepath = os.path.join(self.testdir, filename)
+        CSVHandler.create_csv_file(filename, filepath)
+        CSVHandler.create_csv_file(filename, filepath)
         mock_logging_warning.assert_called_once_with(f"File '{filename}' already exists.")
 
     def test_delete_csv_file(self):
@@ -45,8 +46,8 @@ class TestCSVHandler(unittest.TestCase):
         CSVFileChecker.data_directory = self.testdir
         filename = "test.csv"
         filepath = os.path.join(self.testdir, filename)
-        CSVHandler.create_csv_file(filename)
-        CSVHandler.delete_csv_file(filename)
+        CSVHandler.create_csv_file(filename, filepath)
+        CSVHandler.delete_csv_file(filename, filepath)
         self.assertFalse(os.path.exists(filepath))
 
     @patch("logging.warning")
@@ -54,7 +55,8 @@ class TestCSVHandler(unittest.TestCase):
         '''Tests CSVHandler.delete_csv_file if file does not exist'''
         CSVFileChecker.data_directory = self.testdir
         filename = "nofiletest.csv"
-        CSVHandler.delete_csv_file(filename)
+        filepath = os.path.join(self.testdir, filename)
+        CSVHandler.delete_csv_file(filename, filepath)
         mock_logging_warning.assert_called_once_with(f"File '{filename}' does not exist.")
 
     def test_csvfactory_create(self):
@@ -87,6 +89,18 @@ class TestCSVHandler(unittest.TestCase):
         operation = "invalid_operation"
         filename = "test"
         self.assertIsNone(CSVFactory(operation, filename))
+
+    @patch("os.path.exists", return_value = True)
+    @patch("os.access", return_value = False)
+    @patch("sys.stdout", autospec = True)
+    @patch("logging.error", autospec = True)
+    def test_csvfactory_if_file_is_not_writable(self, mock_logging_error, mock_stdout, mock_access, mock_exists):
+        '''Tests CSV Factory if file is not writable'''
+        CSVFileChecker.data_directory = self.testdir
+        filename = "test.csv"
+        expected_filepath = os.path.join(self.testdir, filename)
+        CSVFactory("create", filename)
+        mock_logging_error.assert_any_call(f"File '{expected_filepath}' is not writable.")
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover

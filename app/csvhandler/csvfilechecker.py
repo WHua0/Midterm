@@ -21,18 +21,40 @@ class CSVFileChecker:
             logging.error(f"Directory '{CSVFileChecker.data_directory}' is not writable.")
             return
 
+    @staticmethod
+    def check_file_writable(filepath):
+        '''Checks if file is writable'''
+
+        if os.path.exists(filepath):
+
+            if not os.access(filepath, os.W_OK):
+                print(f"An error occurred: File '{filepath}' is not writable.")
+                logging.error(f"File '{filepath}' is not writable.")
+                return False
+
+        return True
+
     @ staticmethod
     def validate_filename(filename):
+    
         '''Validates File Name'''
         if not re.match(r"^[a-zA-Z0-9_\-.]+$", filename):
             print(f"Invalid File Name: {filename}.")
             logging.warning(f"Invalid File Name: {filename}.")
             return False
+
         return True
     
     @staticmethod
     def get_filepath(directory, filename):
         '''Adds csv file extension'''
-        if not filename.endswith(".csv"):
-            filename += ".csv"
-        return os.path.join(directory, filename)
+
+        filepath = os.path.join(directory, filename)
+
+        if not filepath.endswith(".csv"):
+            filepath += ".csv"
+
+        if not CSVFileChecker.check_file_writable(filepath):
+            return None
+
+        return filepath
