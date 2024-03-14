@@ -32,14 +32,6 @@ class TestCSVHandler(unittest.TestCase):
         self.assertTrue(os.path.exists(filepath))
 
     @patch("logging.warning")
-    def test_create_csv_file_if_file_name_is_invalid(self, mock_logging_warning):
-        '''Tests CSVHandler.create_csv_file if file name in invalid'''
-        CSVFileChecker.data_directory = self.testdir
-        filename = "$test.csv"
-        CSVHandler.create_csv_file(filename)
-        mock_logging_warning.assert_called_once_with(f"Invalid File Name: {filename}.")
-
-    @patch("logging.warning")
     def test_create_csv_file_if_file_already_exists(self, mock_logging_warning):
         '''Tests CSVHandler.create_csv_file if file already exists'''
         CSVFileChecker.data_directory = self.testdir
@@ -58,14 +50,6 @@ class TestCSVHandler(unittest.TestCase):
         self.assertFalse(os.path.exists(filepath))
 
     @patch("logging.warning")
-    def test_delete_csv_file_if_file_name_is_invalid(self, mock_logging_warning):
-        '''Tests CSVHandler.delete_csv_file if file name is invalid'''
-        CSVFileChecker.data_directory = self.testdir
-        filename = "$test.csv"
-        CSVHandler.delete_csv_file(filename)
-        mock_logging_warning.assert_called_once_with(f"Invalid File Name: {filename}.")
-
-    @patch("logging.warning")
     def test_delete_csv_file_if_file_not_exists(self, mock_logging_warning):
         '''Tests CSVHandler.delete_csv_file if file does not exist'''
         CSVFileChecker.data_directory = self.testdir
@@ -81,6 +65,14 @@ class TestCSVHandler(unittest.TestCase):
         CSVFactory("create", filename)
         self.assertTrue(os.path.exists(filepath))
 
+    @patch("logging.warning")
+    def test_csvfactory_create_csv_file_if_file_name_is_invalid(self, mock_logging_warning):
+        '''Tests CSV Factory create if file name in invalid'''
+        CSVFileChecker.data_directory = self.testdir
+        filename = "$test.csv"
+        CSVFactory("create", filename)
+        mock_logging_warning.assert_called_once_with(f"Invalid File Name: {filename}.")
+
     def test_csvfactory_delete(self):
         '''Tests CSV Factory delete CSV File'''
         CSVFileChecker.data_directory = self.testdir
@@ -89,6 +81,14 @@ class TestCSVHandler(unittest.TestCase):
         CSVFactory("create", filename)
         CSVFactory("delete", filename)
         self.assertFalse(os.path.exists(filepath))
+
+    @patch("logging.warning")
+    def test_csvfactory_delete_csv_file_if_file_name_is_invalid(self, mock_logging_warning):
+        '''Tests CSV Factory delete if file name is invalid'''
+        CSVFileChecker.data_directory = self.testdir
+        filename = "$test.csv"
+        CSVFactory("delete", filename)
+        mock_logging_warning.assert_called_once_with(f"Invalid File Name: {filename}.")
 
     def test_csvfactory_invalid_operation(self):
         '''Tests CSV Factory invalid operation'''

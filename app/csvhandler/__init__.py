@@ -12,11 +12,6 @@ class CSVHandler:
     def create_csv_file(filename):
         '''Creates CSV File in data directory'''
 
-        CSVFileChecker.check_data_directory()
-
-        if not CSVFileChecker.validate_filename(filename):
-            return
-
         filepath = CSVFileChecker.get_filepath(CSVFileChecker.data_directory, filename)
 
         if os.path.exists(filepath):
@@ -34,11 +29,6 @@ class CSVHandler:
     def delete_csv_file(filename):
         '''Deletes CSV File in data directory'''
 
-        CSVFileChecker.check_data_directory()
-
-        if not CSVFileChecker.validate_filename(filename):
-            return
-
         filepath = CSVFileChecker.get_filepath(CSVFileChecker.data_directory, filename)
 
         if not os.path.exists(filepath):
@@ -52,6 +42,11 @@ class CSVHandler:
 
 def CSVFactory(operation, filename):
     '''CSV Factory Method'''
+
+    CSVFileChecker.check_data_directory()
+
+    if not CSVFileChecker.validate_filename(filename):
+        return
 
     if operation == "create":
         return CSVHandler.create_csv_file(filename)
