@@ -24,6 +24,9 @@ class CSVHandler:
     @staticmethod
     def create_csv_file(filename):
         '''Creates CSV File in data directory'''
+        if not filename.endswith(".csv"):
+            filename += ".csv"
+
         filepath = os.path.join(CSVHandler.data_directory, filename)
 
         if not os.path.exists(filepath):
@@ -38,6 +41,9 @@ class CSVHandler:
     @staticmethod
     def delete_csv_file(filename):
         '''Deletes CSV File in data directory'''
+        if not filename.endswith(".csv"):
+            filename += ".csv"
+
         filepath = os.path.join(CSVHandler.data_directory, filename)
 
         if os.path.exists(filepath):
