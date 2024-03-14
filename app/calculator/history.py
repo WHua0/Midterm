@@ -25,9 +25,7 @@ class History:
 
     def retrieve_history(self):
         '''Retrieves history'''
-        if not self.history.empty:
-            return self.history
-        return None
+        return self.history
 
     def clear_history(self):
         '''Clears history'''
