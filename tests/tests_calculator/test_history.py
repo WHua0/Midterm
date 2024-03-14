@@ -16,6 +16,7 @@ class TestHistory(unittest.TestCase):
 
     def test_add_log(self):
         '''Tests History.add_log'''
+        self.assertEqual(len(self.history.history), 0)
         log = self.history.create_log(10, 5, Operation.add)
         self.history.add_log(log)
         self.assertEqual(len(self.history.history), 1)
