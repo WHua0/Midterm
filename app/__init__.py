@@ -10,7 +10,7 @@ from app.introduction import introduction
 from app.commandhandler import Command, CommandHandler
 from app.plugins.menu import MenuCommand
 from app.calculator.history import History
-from app.plugins.history import ShowHistoryCommand
+from app.plugins.showhistory import ShowHistoryCommand
 
 class App:
     '''Class App'''
@@ -25,7 +25,7 @@ class App:
         self.command_handler = CommandHandler()
         self.command_handler.register_command("menu", MenuCommand(self.command_handler))
         self.history = History()
-        self.command_handler.register_command("history", ShowHistoryCommand(self.history))
+        self.command_handler.register_command("showhistory", ShowHistoryCommand(self.history))
 
     def configure_logging(self):
         '''Configures logging settings'''

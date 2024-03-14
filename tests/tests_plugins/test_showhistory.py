@@ -1,10 +1,10 @@
-'''Test History Plugin'''
+'''Test Show History Plugin'''
 import unittest
 import sys
 from io import StringIO
 from unittest.mock import MagicMock
 from app.calculator.history import History
-from app.plugins.history import ShowHistoryCommand
+from app.plugins.showhistory import ShowHistoryCommand
 
 class TestShowHistoryCommand(unittest.TestCase):
     '''Tests ShowHistoryCommand'''
@@ -14,7 +14,7 @@ class TestShowHistoryCommand(unittest.TestCase):
         self.show_history_command = ShowHistoryCommand(self.mock_history)
 
     def test_execute(self):
-        '''Tests Execute_History'''
+        '''Tests Execute_ShowHistory'''
         history_data = [
             {"Operation": "add", "OperandA": 1, "OperandB": 1},
         ]
