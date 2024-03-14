@@ -12,11 +12,5 @@ class ShowHistoryCommand(Command):
 
     def execute(self):
         history_data = self.history.retrieve_history()
-
-        if history_data == None:
-            print("No History!")
-            logging.info("No history available.")
-
-        else:
-            print("History:")
-            print(history_data)
+        print("History:")
+        print(history_data)
