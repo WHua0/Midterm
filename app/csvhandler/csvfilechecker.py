@@ -1,10 +1,10 @@
-'''File Checker'''
+'''CSV File Checker'''
 import os
 import re
 import logging
 
-class FileChecker:
-    '''Class FileChecker'''
+class CSVFileChecker:
+    '''Class CSVFileChecker'''
 
     @ staticmethod
     def validate_filename(filename):

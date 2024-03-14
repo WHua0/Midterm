@@ -2,7 +2,7 @@
 import os
 import pandas as pd
 import logging
-from app.csvhandler.filechecker import FileChecker
+from app.csvhandler.csvfilechecker import CSVFileChecker
 
 class CSVHandler:
     '''Class CSVHandler'''
@@ -26,10 +26,10 @@ class CSVHandler:
     def create_csv_file(filename):
         '''Creates CSV File in data directory'''
 
-        if not FileChecker.validate_filename(filename):
+        if not CSVFileChecker.validate_filename(filename):
             return
 
-        filepath = FileChecker.get_filepath(CSVHandler.data_directory, filename)
+        filepath = CSVFileChecker.get_filepath(CSVHandler.data_directory, filename)
 
         if os.path.exists(filepath):
             print(f"File '{filename}' already exists.")
@@ -46,10 +46,10 @@ class CSVHandler:
     def delete_csv_file(filename):
         '''Deletes CSV File in data directory'''
 
-        if not FileChecker.validate_filename(filename):
+        if not CSVFileChecker.validate_filename(filename):
             return
 
-        filepath = FileChecker.get_filepath(CSVHandler.data_directory, filename)
+        filepath = CSVFileChecker.get_filepath(CSVHandler.data_directory, filename)
 
         if not os.path.exists(filepath):
             print(f"File '{filename}' was not found.")
