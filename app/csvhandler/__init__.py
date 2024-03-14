@@ -78,5 +78,6 @@ def CSVFactory(operation, filename):
     elif operation == "delete":
         return CSVHandler.delete_csv_file(filename)
     else:
-        logging.error(f"Failed to execute CSV Operation: {operation}.")
+        print(f"Invalid CSV Operation: {operation}.")
+        logging.error(f"Invalid CSV Operation: {operation}.")
         return None
