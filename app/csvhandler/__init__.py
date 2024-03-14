@@ -72,7 +72,7 @@ class CSVHandler:
             print(f"File '{filename}' was not found.")
             logging.warning(f"File '{filename}' does not exists.")
 
-def CSV_Factory(operation, filename):
+def CSVFactory(operation, filename):
     '''CSV Factory Method'''
 
     if operation == "create":

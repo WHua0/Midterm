@@ -4,7 +4,7 @@
 import unittest
 import os
 from unittest.mock import patch
-from app.csvhandler import CSVHandler, CSV_Factory
+from app.csvhandler import CSVHandler, CSVFactory
 
 class TestCSVHandler(unittest.TestCase):
     '''Tests CSVHandler'''
@@ -80,22 +80,22 @@ class TestCSVHandler(unittest.TestCase):
         '''Tests CSV Factory create CSV File'''
         CSVHandler.data_directory = self.test_dir
         filename = "test.csv"
-        CSV_Factory("create", filename)
+        CSVFactory("create", filename)
         self.assertTrue(os.path.exists(os.path.join(self.test_dir, filename)))
 
     def test_csv_delete(self):
         '''Tests CSV Factory delete CSV File'''
         CSVHandler.data_directory = self.test_dir
         filename = "test.csv"
-        CSV_Factory("create", filename)
-        CSV_Factory("delete", filename)
+        CSVFactory("create", filename)
+        CSVFactory("delete", filename)
 
     def test_csv_factory_valueerror(self):
         '''Tests CSV Factory else ValueError'''
         operation = "invalid_operation"
         filename = "test.csv"
         with self.assertRaises(ValueError):
-            CSV_Factory(operation, filename )
+            CSVFactory(operation, filename )
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
