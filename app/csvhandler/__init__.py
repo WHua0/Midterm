@@ -9,10 +9,8 @@ class CSVHandler:
     headers = ["Operator", "Operand_A", "Operand_B"]
 
     @staticmethod
-    def create_csv_file(filename):
+    def create_csv_file(filename, filepath):
         '''Creates CSV File in data directory'''
-
-        filepath = CSVFileChecker.get_filepath(CSVFileChecker.data_directory, filename)
 
         if os.path.exists(filepath):
             print(f"File '{filename}' already exists.")
@@ -26,10 +24,8 @@ class CSVHandler:
   
 
     @staticmethod
-    def delete_csv_file(filename):
+    def delete_csv_file(filename, filepath):
         '''Deletes CSV File in data directory'''
-
-        filepath = CSVFileChecker.get_filepath(CSVFileChecker.data_directory, filename)
 
         if not os.path.exists(filepath):
             print(f"File '{filename}' was not found.")
@@ -48,10 +44,15 @@ def CSVFactory(operation, filename):
     if not CSVFileChecker.validate_filename(filename):
         return
 
+    filepath = CSVFileChecker.get_filepath(CSVFileChecker.data_directory, filename)
+
+    if filepath is None:
+        return
+
     if operation == "create":
-        return CSVHandler.create_csv_file(filename)
+        return CSVHandler.create_csv_file(filename, filepath)
     elif operation == "delete":
-        return CSVHandler.delete_csv_file(filename)
+        return CSVHandler.delete_csv_file(filename, filepath)
     else:
         print(f"Invalid CSV Operation: {operation}.")
         logging.warning(f"Invalid CSV Operation: {operation}.")
