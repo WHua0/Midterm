@@ -22,13 +22,21 @@ class TestHistory(unittest.TestCase):
         self.history.add_log(log)
         self.assertEqual(len(self.history.history), 1)
 
-    def test_retrieve_no(self):
+    def test_retrieve_history(self):
         '''Tests History.retrieve_history'''
         self.assertEqual(self.history.retrieve_history(), "No History!")
 
         log = {"Operation": "add", "OperandA": 10, "OperandB": 5}
         self.history.add_log(log)
         self.assertIsInstance(self.history.retrieve_history(), pd.DataFrame)
+
+    def test_clear_history(self):
+        '''Tests History.clear_history'''
+        log = {"Operation": "add", "OperandA": 10, "OperandB": 5}
+        self.history.add_log(log)
+        self.assertEqual(len(self.history.history), 1)
+        self.history.clear_history()
+        self.assertEqual(len(self.history.history), 0) 
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover

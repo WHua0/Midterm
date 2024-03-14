@@ -23,3 +23,7 @@ class History:
         if not self.history.empty:
             return self.history
         return "No History!"
+
+    def clear_history(self):
+        '''Clears history'''
+        self.history = pd.DataFrame(columns=['Operation', 'OperandA', 'OperandB'])
