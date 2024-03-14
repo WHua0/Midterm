@@ -94,8 +94,8 @@ class TestCSVHandler(unittest.TestCase):
         CSVFactory("delete", filename)
         self.assertFalse(os.path.exists(filepath))
 
-    def test_csvfactory_valueerror(self):
-        '''Tests CSV Factory else ValueError'''
+    def test_csvfactory_invalid_operation(self):
+        '''Tests CSV Factory invalid operation'''
         operation = "invalid_operation"
         filename = "test"
         self.assertIsNone(CSVFactory(operation, filename))
