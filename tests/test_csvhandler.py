@@ -11,16 +11,16 @@ class TestCSVHandler(unittest.TestCase):
 
     def setUp(self):
         '''Creates temporary test_data directory before each test case'''
-        self.test_dir = "./test_data"
-        os.makedirs(self.test_dir, exist_ok = True)
+        self.testdir = "./test_data"
+        os.makedirs(self.testdir, exist_ok = True)
 
     def tearDown(self):
         '''Deletes temporary test_data directory after each test case'''
-        for filename in os.listdir(self.test_dir):
-            file_path = os.path.join(self.test_dir, filename)
-            if os.path.isfile(file_path):
-                os.remove(file_path)
-        os.rmdir(self.test_dir)
+        for filename in os.listdir(self.testdir):
+            filepath = os.path.join(self.testdir, filename)
+            if os.path.isfile(filepath):
+                os.remove(filepath)
+        os.rmdir(self.testdir)
 
     @patch("os.path.exists", return_value = False)
     @patch("os.makedirs")
@@ -45,15 +45,16 @@ class TestCSVHandler(unittest.TestCase):
 
     def test_create_csv_file(self):
         '''Tests CSVHandler.create_csv_file'''
-        CSVHandler.data_directory = self.test_dir
+        CSVHandler.data_directory = self.testdir
         filename = "test.csv"
+        filepath = os.path.join(self.testdir, filename)
         CSVHandler.create_csv_file(filename)
-        self.assertTrue(os.path.exists(os.path.join(self.test_dir, filename)))
+        self.assertTrue(os.path.exists(filepath))
 
     @patch("logging.warning")
     def test_create_csv_file_if_file_already_exists(self, mock_logging_warning):
         '''Tests CSVHandler.create_csv_file if file already exists'''
-        CSVHandler.data_directory = self.test_dir
+        CSVHandler.data_directory = self.testdir
         filename = "test.csv"
         CSVHandler.create_csv_file(filename)
         CSVHandler.create_csv_file(filename)
@@ -61,39 +62,42 @@ class TestCSVHandler(unittest.TestCase):
 
     def test_delete_csv_file(self):
         '''Tests CSVHandler.delete_csv_file'''
-        CSVHandler.data_directory = self.test_dir
-        filename = "test.csv"
-        file_path = os.path.join(self.test_dir, filename)
+        CSVHandler.data_directory = self.testdir
+        filename = "test"
+        filepath = os.path.join(self.testdir, filename)
         CSVHandler.create_csv_file(filename)
         CSVHandler.delete_csv_file(filename)
-        self.assertFalse(os.path.exists(file_path))
+        self.assertFalse(os.path.exists(filepath))
 
     @patch("logging.warning")
     def test_delete_csv_file_if_file_not_exists(self, mock_logging_warning):
         '''Tests CSVHandler.delete_csv_file if file does not exist'''
-        CSVHandler.data_directory = self.test_dir
+        CSVHandler.data_directory = self.testdir
         filename = "nofiletest.csv"
         CSVHandler.delete_csv_file(filename)
         mock_logging_warning.assert_called_once_with(f"File '{filename}' does not exist.")
 
     def test_csv_factory_create(self):
         '''Tests CSV Factory create CSV File'''
-        CSVHandler.data_directory = self.test_dir
+        CSVHandler.data_directory = self.testdir
         filename = "test.csv"
+        filepath = os.path.join(self.testdir, filename)
         CSVFactory("create", filename)
-        self.assertTrue(os.path.exists(os.path.join(self.test_dir, filename)))
+        self.assertTrue(os.path.exists(filepath))
 
     def test_csv_delete(self):
         '''Tests CSV Factory delete CSV File'''
-        CSVHandler.data_directory = self.test_dir
-        filename = "test.csv"
+        CSVHandler.data_directory = self.testdir
+        filename = "test"
+        filepath = os.path.join(self.testdir, filename)
         CSVFactory("create", filename)
         CSVFactory("delete", filename)
+        self.assertFalse(os.path.exists(filepath))
 
     def test_csv_factory_valueerror(self):
         '''Tests CSV Factory else ValueError'''
         operation = "invalid_operation"
-        filename = "test.csv"
+        filename = "test"
         with self.assertRaises(ValueError):
             CSVFactory(operation, filename )
 
