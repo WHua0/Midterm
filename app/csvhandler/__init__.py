@@ -30,22 +30,21 @@ class CSVHandler:
 
         filepath = os.path.join(CSVHandler.data_directory, filename)
 
-        if not os.path.exists(filepath):
-
-            try:
-                df = pd.DataFrame(columns = CSVHandler.headers)
-                df.to_csv(filepath, index = True, index_label = "Index")
-                print(f"File '{filename}' has been created.")
-                logging.info(f"Created File '{filename}'.")
-
-            except Exception as e:
-                print(f"An error occurred: {e}.")
-                logging.warning(f"An error occurred: {e}.")
-                return      
-
-        else:
+        if os.path.exists(filepath):
             print(f"File '{filename}' already exists.")
             logging.warning(f"File '{filename}' already exists.")
+            return
+
+        try:
+            df = pd.DataFrame(columns = CSVHandler.headers)
+            df.to_csv(filepath, index = True, index_label = "Index")
+            print(f"File '{filename}' has been created.")
+            logging.info(f"Created File '{filename}'.")
+
+        except Exception as e:
+            print(f"An error occurred: {e}.")
+            logging.warning(f"An error occurred: {e}.")
+            return      
 
     @staticmethod
     def delete_csv_file(filename):
@@ -56,21 +55,19 @@ class CSVHandler:
 
         filepath = os.path.join(CSVHandler.data_directory, filename)
 
-        if os.path.exists(filepath):
-
-            try:
-                os.remove(filepath)
-                print(f"File '{filename}' has been deleted.")
-                logging.info(f"Deleted File '{filename}'.")
-
-            except Exception as e:
-                print(f"An error occurred: {e}.")
-                logging.warning(f"An error occurred: {e}.")
-                return   
-
-        else:
+        if not os.path.exists(filepath):
             print(f"File '{filename}' was not found.")
-            logging.warning(f"File '{filename}' does not exists.")
+            logging.warning(f"File '{filename}' does not exist.")
+            return
+
+        try:
+            os.remove(filepath)
+            print(f"File '{filename}' has been deleted.")
+            logging.info(f"Deleted File '{filename}'.")
+
+        except Exception as e:
+            print(f"An error occurred: {e}.")
+            logging.warning(f"An error occurred: {e}.")
 
 def CSVFactory(operation, filename):
     '''CSV Factory Method'''
