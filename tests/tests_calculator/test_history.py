@@ -8,6 +8,7 @@ class TestHistory(unittest.TestCase):
     '''Tests History'''
     def setUp(self):
         self.history = History()
+        self.history.history = pd.DataFrame()
 
     def test_create_log(self):
         '''Tests History.create_log'''
@@ -18,7 +19,7 @@ class TestHistory(unittest.TestCase):
     def test_add_log(self):
         '''Tests History.add_log'''
         self.assertEqual(len(self.history.history), 0)
-        log = self.history.create_log(10, 5, Operation.add)
+        log = {"add", 10, 5}
         self.history.add_log(log)
         self.assertEqual(len(self.history.history), 1)
 
