@@ -2,7 +2,7 @@
 import os
 import pandas as pd
 import logging
-import re
+from app.csvhandler.filechecker import FileChecker
 
 class CSVHandler:
     '''Class CSVHandler'''
@@ -26,15 +26,10 @@ class CSVHandler:
     def create_csv_file(filename):
         '''Creates CSV File in data directory'''
 
-        if not re.match(r"^[a-zA-Z0-9_\-.]+$", filename):
-            print(f"Invalid File Name: {filename}.")
-            logging.warning(f"Invalid File Name: {filename}.")
+        if not FileChecker.validate_filename(filename):
             return
 
-        if not filename.endswith(".csv"):
-            filename += ".csv"
-
-        filepath = os.path.join(CSVHandler.data_directory, filename)
+        filepath = FileChecker.get_filepath(CSVHandler.data_directory, filename)
 
         if os.path.exists(filepath):
             print(f"File '{filename}' already exists.")
@@ -51,15 +46,10 @@ class CSVHandler:
     def delete_csv_file(filename):
         '''Deletes CSV File in data directory'''
 
-        if not re.match(r"^[a-zA-Z0-9_\-.]+$", filename):
-            print(f"Invalid File Name: {filename}.")
-            logging.warning(f"Invalid File Name: {filename}.")
+        if not FileChecker.validate_filename(filename):
             return
 
-        if not filename.endswith(".csv"):
-            filename += ".csv"
-
-        filepath = os.path.join(CSVHandler.data_directory, filename)
+        filepath = FileChecker.get_filepath(CSVHandler.data_directory, filename)
 
         if not os.path.exists(filepath):
             print(f"File '{filename}' was not found.")
