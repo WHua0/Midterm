@@ -25,7 +25,7 @@ class TestCSVCommand(unittest.TestCase):
         command = CSVCommand()
         with patch("builtins.print") as mock_print:
             command.execute()
-            mock_logging_warning.assert_called_once_with("Incorrect number of inputs: '%s'.", '3')
+            mock_logging_warning.assert_called_once_with("Incorrect number of inputs: '%s'.", "3")
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
