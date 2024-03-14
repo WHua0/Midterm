@@ -2,6 +2,7 @@
 import os
 import pandas as pd
 import logging
+import re
 
 class CSVHandler:
     '''Class CSVHandler'''
@@ -25,6 +26,11 @@ class CSVHandler:
     def create_csv_file(filename):
         '''Creates CSV File in data directory'''
 
+        if not re.match(r"^[a-zA-Z0-9_\-.]+$", filename):
+            print(f"Invalid File Name: {filename}.")
+            logging.warning(f"Invalid File Name: {filename}.")
+            return
+
         if not filename.endswith(".csv"):
             filename += ".csv"
 
@@ -35,20 +41,20 @@ class CSVHandler:
             logging.warning(f"File '{filename}' already exists.")
             return
 
-        try:
-            df = pd.DataFrame(columns = CSVHandler.headers)
-            df.to_csv(filepath, index = True, index_label = "Index")
-            print(f"File '{filename}' has been created.")
-            logging.info(f"Created File '{filename}'.")
-
-        except Exception as e:
-            print(f"An error occurred: {e}.")
-            logging.warning(f"An error occurred: {e}.")
-            return      
+        df = pd.DataFrame(columns = CSVHandler.headers)
+        df.to_csv(filepath, index = True, index_label = "Index")
+        print(f"File '{filename}' has been created.")
+        logging.info(f"Created File '{filename}'.")
+  
 
     @staticmethod
     def delete_csv_file(filename):
         '''Deletes CSV File in data directory'''
+
+        if not re.match(r"^[a-zA-Z0-9_\-.]+$", filename):
+            print(f"Invalid File Name: {filename}.")
+            logging.warning(f"Invalid File Name: {filename}.")
+            return
 
         if not filename.endswith(".csv"):
             filename += ".csv"
@@ -60,14 +66,9 @@ class CSVHandler:
             logging.warning(f"File '{filename}' does not exist.")
             return
 
-        try:
-            os.remove(filepath)
-            print(f"File '{filename}' has been deleted.")
-            logging.info(f"Deleted File '{filename}'.")
-
-        except Exception as e:
-            print(f"An error occurred: {e}.")
-            logging.warning(f"An error occurred: {e}.")
+        os.remove(filepath)
+        print(f"File '{filename}' has been deleted.")
+        logging.info(f"Deleted File '{filename}'.")
 
 def CSVFactory(operation, filename):
     '''CSV Factory Method'''
