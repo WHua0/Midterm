@@ -11,8 +11,8 @@ class TestCSVCommand(unittest.TestCase):
 
     @patch("builtins.input", side_effect=["3 5"])
     @patch("logging.warning")
-    def test_execute_with_invalid_inputs(self, mock_logging_warning, mock_input):
-        '''Tests Execute_AddCommand with Invalid Inputs'''
+    def test_execute_with_correct_number_of_inputs(self, mock_logging_warning, mock_input):
+        '''Tests Execute_CSVCommand with Correct Number of Inputs'''
         command = CSVCommand()
         with patch("builtins.print") as mock_print:
             command.execute()
