@@ -33,10 +33,10 @@ class CSVHandler:
             df = pd.DataFrame(columns = CSVHandler.headers)
             df.to_csv(filepath, index = True, index_label = "Index")
             print(f"File '{filename}' has been created.")
-            logging.info(f"Created File: '{filename}'.")
+            logging.info(f"Created File '{filename}'.")
         else:
             print(f"File '{filename}' already exists.")
-            logging.warning(f"File: '{filename}' already exists.")
+            logging.warning(f"File '{filename}' already exists.")
 
     @staticmethod
     def delete_csv_file(filename):
@@ -49,10 +49,10 @@ class CSVHandler:
         if os.path.exists(filepath):
             os.remove(filepath)
             print(f"File '{filename}' has been deleted.")
-            logging.info(f"Deleted File: '{filename}'.")
+            logging.info(f"Deleted File '{filename}'.")
         else:
             print(f"File '{filename}' was not found.")
-            logging.warning(f"File: '{filename}' does not exists.")
+            logging.warning(f"File '{filename}' does not exists.")
 
 def CSV_Factory(operation, filename):
     '''CSV Factory Method'''
