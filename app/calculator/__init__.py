@@ -2,6 +2,7 @@
 from decimal import Decimal, InvalidOperation
 from app.calculator.calculation import Calculation
 from app.calculator.operations import Operation
+from app.calculator.history import History
 
 class Calculator:
     '''Class Calculator'''
@@ -46,6 +47,9 @@ class Calculator:
         try:
             a_decimal, b_decimal = map(Decimal, [a, b])
             operation_function = operation_mappings.get(operation_name)
+            history = History()
+            log = {operation_name, a_decimal, b_decimal}
+            history.add_log(log)            
 
             if operation_function:
                 print(f"The result of {a} {operation_name} {b} is equal to {operation_function(a_decimal, b_decimal)}.")

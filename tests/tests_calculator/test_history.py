@@ -36,7 +36,7 @@ class TestHistory(unittest.TestCase):
         self.history.add_log(log)
         self.assertEqual(len(self.history.history), 1)
         self.history.clear_history()
-        self.assertEqual(len(self.history.history), 0) 
+        self.assertEqual(len(self.history.history), 0)
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
