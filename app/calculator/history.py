@@ -10,5 +10,5 @@ class History:
 
     def create_log(self, a: Decimal, b: Decimal, operation):
         '''Converts inputs to a log'''
-        log = {"Operation": operation, "OperandA": a, "OperandB": b}
+        log = {"Operation": operation.__name__, "OperandA": a, "OperandB": b}
         return log
