@@ -74,7 +74,7 @@ class TestCSVHandler(unittest.TestCase):
         CSVHandler.data_directory = self.test_dir
         filename = "nofiletest.csv"
         CSVHandler.delete_csv_file(filename)
-        mock_logging_warning.assert_called_once_with(f"File '{filename}' does not exists.")
+        mock_logging_warning.assert_called_once_with(f"File '{filename}' does not exist.")
 
     def test_csv_factory_create(self):
         '''Tests CSV Factory create CSV File'''
