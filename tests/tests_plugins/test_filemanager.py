@@ -1,13 +1,13 @@
 # pylint: disable = unused-argument
 # pylint: disable = unused-variable
 
-'''Test Add'''
+'''Test FileManager'''
 import unittest
 from unittest.mock import patch
 from app.plugins.filemanager import FileManagerCommand
 
-class TestCSVCommand(unittest.TestCase):
-    '''Tests File Manager: CSVCommand'''
+class TestFileCommand(unittest.TestCase):
+    '''Tests FileManager Command'''
 
     @patch("builtins.input", side_effect=["3 5"])
     @patch("logging.warning")
@@ -16,7 +16,7 @@ class TestCSVCommand(unittest.TestCase):
         command = FileManagerCommand()
         with patch("builtins.print") as mock_print:
             command.execute()
-            mock_logging_warning.assert_called_once_with("Invalid CSV Operation: 3.")
+            mock_logging_warning.assert_called_once_with("Invalid File Operation: 3.")
 
     @patch("builtins.input", side_effect=["3"])
     @patch("logging.warning")
