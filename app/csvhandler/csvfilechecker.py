@@ -54,8 +54,8 @@ class CSVFileChecker:
             return True
 
         else:
-            print(f"File '{filepath}' was not found.")
-            logging.warning(f"File '{filepath}' was not found.")
+            print(f"File '{filepath}' already exists.")
+            logging.warning(f"File '{filepath}' already exists.")
             return False
 
     @ staticmethod
