@@ -9,6 +9,15 @@ from app.filehandler.csvfilechecker import CSVFileChecker
 class TestCSVFileChecker(unittest.TestCase):
     '''Tests CSV File Checker'''
 
+    @patch("os.path.exists", return_value = True)
+    @patch("os.makedirs")
+    @patch("logging.info")
+    def test_check_data_directory_if_directory_exists(self, mock_logging_info, mock_makedirs, mock_exists):
+        '''Tests CSVFileChecker.check_data_directory if data directory does not exist'''
+        CSVFileChecker.data_directory = "./data"
+        result = CSVFileChecker.check_data_directory()
+        self.assertTrue(result)
+
     @patch("os.path.exists", return_value = False)
     @patch("os.makedirs")
     @patch("logging.info")
