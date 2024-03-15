@@ -15,6 +15,7 @@ class TestCSVFileChecker(unittest.TestCase):
     def test_check_data_directory_if_directory_exists(self, mock_logging_info, mock_makedirs, mock_exists):
         '''Tests CSVFileChecker.check_data_directory if data directory exists'''
         CSVFileChecker.data_directory = "./data"
+        CSVFileChecker.check_data_directory()
         result = CSVFileChecker.check_data_directory()
         self.assertTrue(result)
 
