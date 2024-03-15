@@ -1,7 +1,7 @@
 '''FileManager'''
 import logging
 from app.commandhandler import Command
-from app.filehandler import CSVFactory
+from app.filehandler import FileHandler
 
 class FileManagerCommand(Command):
     '''FileManager Command'''
@@ -13,7 +13,7 @@ class FileManagerCommand(Command):
         if len(values) == 2:
             csvcommand, filename = values[0], values[1]
             logging.info("Inputs: '%s', '%s'.", csvcommand, filename)
-            CSVFactory(csvcommand, filename)
+            FileHandler(csvcommand, filename)
 
         else:
             print(f"An error occurred: incorrect number of inputs.")
