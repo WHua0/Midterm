@@ -21,12 +21,12 @@ class History:
     def add_log(self, log):
         '''Adds log to history'''
         new_log = pd.DataFrame([log], columns=["Operation", "OperandA", "OperandB"])
-        self.history = pd.concat([self.history, new_log], ignore_index=True)
+        self.history = pd.concat([self.history, new_log], ignore_index = True)
 
-    def retrieve_history(self):
-        '''Retrieves history'''
+    def get_history(self):
+        '''Returns history'''
         return self.history
 
     def clear_history(self):
         '''Clears history'''
-        self.history = pd.DataFrame(columns=["Operation", "OperandA", "OperandB"])
+        self.history = pd.DataFrame(columns = ["Operation", "OperandA", "OperandB"])
