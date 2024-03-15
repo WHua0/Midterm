@@ -5,7 +5,7 @@ import unittest
 import os
 from unittest.mock import patch
 from app.csvhandler import CSVHandler, CSVFactory
-from app.historyhandler.csvfilechecker import CSVFileChecker
+from app.csvhandler.csvfilechecker import CSVFileChecker
 
 class TestCSVHandler(unittest.TestCase):
     '''Tests CSVHandler'''
@@ -14,14 +14,6 @@ class TestCSVHandler(unittest.TestCase):
         '''Creates temporary test_data directory before each test case'''
         self.testdir = "./test_data"
         os.makedirs(self.testdir, exist_ok = True)
-
-    def tearDown(self):
-        '''Deletes temporary test_data directory after each test case'''
-        for filename in os.listdir(self.testdir):
-            filepath = os.path.join(self.testdir, filename)
-            if os.path.isfile(filepath):
-                os.remove(filepath)
-        os.rmdir(self.testdir)
 
     def test_create_csv_file(self):
         '''Tests CSVHandler.create_csv_file'''
@@ -129,6 +121,14 @@ class TestCSVHandler(unittest.TestCase):
         expected_filepath = os.path.join(self.testdir, filename)
         CSVFactory("create", filename)
         mock_logging_error.assert_any_call(f"File '{expected_filepath}' is not writable.")
+
+    def tearDown(self):
+        '''Deletes temporary test_data directory after each test case'''
+        for filename in os.listdir(self.testdir):
+            filepath = os.path.join(self.testdir, filename)
+            if os.path.isfile(filepath):
+                os.remove(filepath)
+        os.rmdir(self.testdir)
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover

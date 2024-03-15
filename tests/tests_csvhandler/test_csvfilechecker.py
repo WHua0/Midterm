@@ -4,7 +4,7 @@
 import unittest
 import os
 from unittest.mock import patch
-from app.historyhandler.csvfilechecker import CSVFileChecker
+from app.csvhandler.csvfilechecker import CSVFileChecker
 
 class TestCSVFileChecker(unittest.TestCase):
     '''Tests CSV File Checker'''
