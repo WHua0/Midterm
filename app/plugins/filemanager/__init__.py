@@ -1,7 +1,7 @@
 '''FileManager'''
 import logging
 from app.commandhandler import Command
-from app.csvhandler import CSVFactory
+from app.filehandler import CSVFactory
 
 class FileManagerCommand(Command):
     '''FileManager Command'''
