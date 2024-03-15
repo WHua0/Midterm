@@ -45,11 +45,8 @@ class TestShowFilesCommand(unittest.TestCase):
 
     def tearDown(self):
         '''Deletes temporary test_data directory'''
-        for filename in os.listdir(self.testdir):
-            filepath = os.path.join(self.testdir, filename)
-            if os.path.isfile(filepath):
-                os.remove(filepath)
-        os.rmdir(self.testdir)
+        if os.path.exists(self.testdir):
+            os.rmdir(self.testdir)
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
