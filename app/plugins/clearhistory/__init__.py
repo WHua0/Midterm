@@ -10,5 +10,6 @@ class ClearHistoryCommand(Command):
         history_handler = HistoryHandler()
         history_instance = history_handler.create_history()
         history_handler.clear_history(history_instance)
+
         print("History cleared.")
         logging.info(f"Cleared History.")

@@ -10,8 +10,6 @@ from app.introduction import introduction
 from app.commandhandler import Command, CommandHandler
 from app.plugins.menu import MenuCommand
 from app.calculator.history import History
-from app.plugins.showhistory import ShowHistoryCommand
-from app.plugins.clearhistory import ClearHistoryCommand
 
 class App:
     '''Class App'''
@@ -22,12 +20,10 @@ class App:
         self.configure_logging()
         load_dotenv()
         self.settings = self.load_environment_variables()
-        self.settings.setdefault('ENVIRONMENT', 'TESTING')
+        self.settings.setdefault("ENVIRONMENT", "TESTING")
         self.command_handler = CommandHandler()
         self.command_handler.register_command("menu", MenuCommand(self.command_handler))
         self.history = History()
-        self.command_handler.register_command("showhistory", ShowHistoryCommand(self.history))
-        self.command_handler.register_command("clearhistory", ClearHistoryCommand(self.history))
 
     def configure_logging(self):
         '''Configures logging settings'''
