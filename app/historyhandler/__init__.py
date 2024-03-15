@@ -1,5 +1,6 @@
 '''HistoryHandler'''
 from app.calculator.history import History
+import pandas as pd
 
 class HistoryHandler:
     '''Factory Class HistoryHandler'''
@@ -18,3 +19,10 @@ class HistoryHandler:
     def clear_history(history_instance):
         '''Clears history'''
         history_instance.clear_history()
+
+    @staticmethod
+    def import_history(history_df):
+        '''Imports a history instance from a Dataframe'''
+        history_instance = History()
+        history_instance.history = history_df.copy()
+        return history_instance
