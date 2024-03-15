@@ -50,10 +50,9 @@ class TestCSVFileChecker(unittest.TestCase):
         CSVFileChecker.check_file_writable(expected_filepath)
         mock_logging_error.assert_called_once_with(f"File '{expected_filepath}' is not writable.")
 
-    @patch("app.csvhandler.csvfilechecker.CSVFileChecker.check_file_exists")
-    def test_check_file_exists(self, mock_check_file_exists):
+    @patch("os.path.exists", return_value = True)
+    def test_check_file_exists(self, mock_exist):
         '''Tests CSVFileChecker._check_file_exists if file exists'''
-        mock_check_file_exists.return_value = True
         filepath = "existing/file.txt"
         self.assertTrue(CSVFileChecker.check_file_exists(filepath))
 
