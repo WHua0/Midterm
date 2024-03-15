@@ -46,6 +46,18 @@ class CSVFileChecker:
             logging.warning(f"File '{filepath}' does not exist.")
             return False
 
+    @staticmethod
+    def check_file_not_exists(filepath):
+        '''Checks if file does not exists '''
+
+        if not os.path.exists(filepath):
+            return True
+
+        else:
+            print(f"File '{filepath}' was not found.")
+            logging.warning(f"File '{filepath}' does not exist.")
+            return False
+
     @ staticmethod
     def validate_filename(filename):
         '''Validates Filename'''
