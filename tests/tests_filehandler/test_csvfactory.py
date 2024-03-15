@@ -1,3 +1,5 @@
+# pylint: disable = duplicate-code
+
 '''Test CSVFactory'''
 import unittest
 import os
