@@ -1,10 +1,10 @@
 '''Test CSVFactory'''
 import unittest
 import os
-import pandas as pd
 from unittest.mock import patch
-from app.csvhandler.csvfactory import CSVHandler
-from app.csvhandler.csvfilechecker import CSVFileChecker
+import pandas as pd
+from app.filehandler.csvfactory import CSVHandler
+from app.filehandler.csvfilechecker import CSVFileChecker
 
 class TestCSVHandler(unittest.TestCase):
     '''Tests CSVFactory'''
