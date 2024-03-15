@@ -44,7 +44,7 @@ class TestCSVHandler(unittest.TestCase):
 
     @patch("logging.warning")
     def test_delete_csv_file_if_file_not_exists(self, mock_logging_warning):
-        '''Tests CSVFactory.delete_csv_file if files does not exist'''
+        '''Tests CSVFactory.delete_csv_file if file does not exist'''
         CSVFileChecker.data_directory = self.testdir
         filename = "test.csv"
         filepath = os.path.join(self.testdir, filename)
@@ -63,7 +63,7 @@ class TestCSVHandler(unittest.TestCase):
 
     @patch("logging.warning")
     def test_load_csv_file_to_history_if_file_not_exists(self, mock_logging_warning):
-        '''Tests CSVFactory.load_csv_file_to_history'''
+        '''Tests CSVFactory.load_csv_file_to_history if file does not exist'''
         CSVFileChecker.data_directory = self.testdir
         filename = "test.csv"
         filepath = os.path.join(self.testdir, filename)
