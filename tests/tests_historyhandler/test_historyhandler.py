@@ -12,5 +12,14 @@ class TestHistoryHandler(unittest.TestCase):
         actual_history_instance = HistoryHandler.create_history()
         self.assertIs(expected_history_instance, actual_history_instance)
 
+    def test_retrieve_history(self):
+        '''Tests HistoryHandler.retrieve_history'''
+        history_instance = History()
+        log = {"Operation": "add", "OperandA": 1, "OperandB": 1}
+        history_instance.add_log(log)
+        expected_history = str(history_instance.get_history())
+        actual_history = str(HistoryHandler.retrieve_history(history_instance))
+        self.assertEqual(expected_history, actual_history)
+
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
