@@ -43,7 +43,7 @@ class CSVFileChecker:
 
         else:
             print(f"File '{filepath}' was not found.")
-            logging.warning(f"File '{filepath}' does not exist.")
+            logging.warning(f"File '{filepath}' was not found.")
             return False
 
     @staticmethod
@@ -55,7 +55,7 @@ class CSVFileChecker:
 
         else:
             print(f"File '{filepath}' was not found.")
-            logging.warning(f"File '{filepath}' does not exist.")
+            logging.warning(f"File '{filepath}' was not found.")
             return False
 
     @ staticmethod
