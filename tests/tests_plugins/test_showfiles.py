@@ -2,11 +2,17 @@
 
 '''Test ShowFiles'''
 import unittest
+import os
 from unittest.mock import patch
 from app.plugins.showfiles import ShowFilesCommand
 
 class TestShowFilesCommand(unittest.TestCase):
     '''Tests ShowFilesCommand'''
+
+    def setUp(self):
+        '''Creates temporary test_data directory'''
+        self.testdir = "./test_data"
+        os.makedirs(self.testdir, exist_ok = True)
 
     @patch("os.path.exists", return_value = True)
     @patch("os.makedirs")
@@ -36,6 +42,14 @@ class TestShowFilesCommand(unittest.TestCase):
         show_files_command = ShowFilesCommand()
         show_files_command.execute()
         mock_logging_error.assert_called_once_with("Failed to list directory ./test_data: Mocked exception.")
+
+    def tearDown(self):
+        '''Deletes temporary test_data directory'''
+        for filename in os.listdir(self.testdir):
+            filepath = os.path.join(self.testdir, filename)
+            if os.path.isfile(filepath):
+                os.remove(filepath)
+        os.rmdir(self.testdir)
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
