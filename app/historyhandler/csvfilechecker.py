@@ -36,8 +36,8 @@ class CSVFileChecker:
 
     @ staticmethod
     def validate_filename(filename):
-    
         '''Validates File Name'''
+
         if not re.match(r"^[a-zA-Z0-9_\-.]+$", filename):
             print(f"Invalid File Name: {filename}.")
             logging.warning(f"Invalid File Name: {filename}.")
