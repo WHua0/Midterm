@@ -17,5 +17,15 @@ class TestShowFilesCommand(unittest.TestCase):
         show_files_command.execute()
         mock_logging_info.assert_called_once_with("Printed Data Directory.")
 
+    @patch("os.path.exists", return_value = True)
+    @patch("os.access", return_value = False)
+    @patch("sys.stdout", autospec = True)
+    @patch("logging.error")
+    def test_execute_with_invalid_directory(self, mock_logging_error, mock_stdout, mock_access, mock_exists):
+        '''Tests ShowFilesCommand if invalid data directory'''
+        show_files_command = ShowFilesCommand()
+        show_files_command.execute()
+        mock_logging_error.assert_called_once_with("Directory './data' is not writable.")
+
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
