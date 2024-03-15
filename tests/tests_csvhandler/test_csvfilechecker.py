@@ -23,45 +23,72 @@ class TestCSVFileChecker(unittest.TestCase):
     @patch("sys.stdout", autospec = True)
     @patch("logging.error", autospec = True)
     def test_check_data_directory_if_directory_not_writable(self, mock_logging_error, mock_stdout, mock_access, mock_exists):
-        '''Tests CSVFileChecker.check_data_directory when directory is not writable'''
+        '''Tests CSVFileChecker.check_data_directory if data directory is not writable'''
         CSVFileChecker.data_directory = "./data"
         CSVFileChecker.check_data_directory()
         mock_logging_error.assert_called_once_with(f"Directory '{CSVFileChecker.data_directory}' is not writable.")
+
+    @patch("os.path.exists", return_value = True)
+    @patch("os.access", return_value = True)
+    def test_check_file_writable_if_writable(self, mock_access, mock_exists):
+        '''Tests CSVFileChecker.check_file_writable if file is writable'''
+        directory = "data"
+        filename = "test_file.csv"
+        expected_filepath = os.path.join(directory, filename)
+        result = CSVFileChecker.check_file_writable(expected_filepath)
+        self.assertTrue(result)
 
     @patch("os.path.exists", return_value = True)
     @patch("os.access", return_value = False)
     @patch("sys.stdout", autospec = True)
     @patch("logging.error", autospec = True)
     def test_check_file_writable_if_not_writable(self, mock_logging_error, mock_stdout, mock_access, mock_exists):
-        '''Tests CSVFileChecker.check_file_writable when file is not writable'''
+        '''Tests CSVFileChecker.check_file_writable if file is not writable'''
         directory = "data"
         filename = "test_file.csv"
         expected_filepath = os.path.join(directory, filename)
         CSVFileChecker.check_file_writable(expected_filepath)
         mock_logging_error.assert_called_once_with(f"File '{expected_filepath}' is not writable.")
 
-    def test_validate_valid_filename(self):
-        '''Tests Valid File Name'''
+    @patch("app.csvhandler.csvfilechecker.CSVFileChecker.check_file_exists")
+    def test_check_file_exists(self, mock_check_file_exists):
+        '''Tests CSVFileChecker._check_file_exists if file exists'''
+        mock_check_file_exists.return_value = True
+        filepath = "existing/file.txt"
+        self.assertTrue(CSVFileChecker.check_file_exists(filepath))
+
+    def test_check_file_exist_if_not_exists(self):
+        '''Tests CSVFileChecker._check_file_exists if file does not'''
+        filepath = "non_existing/file.txt"
+        self.assertFalse(CSVFileChecker.check_file_exists(filepath))
+
+    def test_validate_filename(self):
+        '''Tests CSVFileChecker.validate_filename if valid filename'''
         valid_filename = "valid_file.csv"
         self.assertTrue(CSVFileChecker.validate_filename(valid_filename))
 
-    def test_validate_invalid_filename(self):
-        '''Tests Invalid File Name'''
-        invalid_filename = "invalid/file.csv"
+    def test_validate_filename_if_invalid_filename(self):
+        '''Tests CSVFileChecker.validate_filename if invalid filename'''
+        invalid_filename = "$invalidfile.csv"
+        self.assertFalse(CSVFileChecker.validate_filename(invalid_filename))
+
+    def test_validate_filename_if_filepath(self):
+        '''Tests CSVFileChecker.validate_filename if filepath'''
+        invalid_filename = "file/path.csv"
         self.assertFalse(CSVFileChecker.validate_filename(invalid_filename))
 
     def test_get_filepath(self):
-        '''Tests Get File Path'''
-        directory = "data"
-        filename = "test_file"
-        expected_filepath = os.path.join(directory, filename + ".csv")
-        self.assertEqual(CSVFileChecker.get_filepath(directory, filename), expected_filepath)
-
-    def test_get_filepath_if_file_has_csv_extension(self):
-        '''Tests Get File Path if File already has .csv'''
+        '''Tests CSVFileChecker.get_filepath'''
         directory = "data"
         filename = "test_file.csv"
         expected_filepath = os.path.join(directory, filename)
+        self.assertEqual(CSVFileChecker.get_filepath(directory, filename), expected_filepath)
+
+    def test_get_filepath_if_file_missing_csv(self):
+        '''Tests CSVFileChecker.get_filepath if missing .csv'''
+        directory = "data"
+        filename = "test_file"
+        expected_filepath = os.path.join(directory, filename + ".csv")
         self.assertEqual(CSVFileChecker.get_filepath(directory, filename), expected_filepath)
 
     @patch("os.path.exists", return_value = True)
@@ -69,7 +96,7 @@ class TestCSVFileChecker(unittest.TestCase):
     @patch("sys.stdout", autospec = True)
     @patch("logging.error", autospec = True)
     def test_get_filepath_if_file_not_writable(self, mock_logging_error, mock_stdout, mock_access, mock_exists):
-        '''Tests CSVFileChecker.get_filepath when file is not writable'''
+        '''Tests CSVFileChecker.get_filepath if file is not writable'''
         directory = "data"
         filename = "test_file.csv"
         expected_filepath = os.path.join(directory, filename)

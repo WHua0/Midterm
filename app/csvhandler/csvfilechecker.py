@@ -10,7 +10,7 @@ class CSVFileChecker:
 
     @staticmethod
     def check_data_directory():
-        '''Creates and checks if data directory is writable'''
+        '''Creates or checks if Data Directory is writable'''
 
         if not os.path.exists(CSVFileChecker.data_directory):
             os.makedirs(CSVFileChecker.data_directory)
@@ -34,9 +34,21 @@ class CSVFileChecker:
 
         return True
 
+    @staticmethod
+    def check_file_exists(filepath):
+        '''Checks if file exists '''
+
+        if os.path.exists(filepath):
+            return True
+
+        else:
+            print(f"File '{filepath}' was not found.")
+            logging.warning(f"File '{filepath}' does not exist.")
+            return False
+
     @ staticmethod
     def validate_filename(filename):
-        '''Validates File Name'''
+        '''Validates Filename'''
 
         if not re.match(r"^[a-zA-Z0-9_\-.]+$", filename):
             print(f"Invalid File Name: {filename}.")
@@ -44,10 +56,10 @@ class CSVFileChecker:
             return False
 
         return True
-    
+
     @staticmethod
     def get_filepath(directory, filename):
-        '''Adds csv file extension'''
+        '''Adds CSV file extension and gets Filepath'''
 
         filepath = os.path.join(directory, filename)
 
