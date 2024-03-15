@@ -56,12 +56,12 @@ class TestCSVFileChecker(unittest.TestCase):
         filepath = "existing/file.txt"
         self.assertTrue(CSVFileChecker.check_file_exists(filepath))
 
-    def test_check_file_exist_if_not_exists(self):
+    def test_check_file_exists_if_not_exists(self):
         '''Tests CSVFileChecker.check_file_exists if file does not exist'''
         filepath = "non_existing/file.txt"
         self.assertFalse(CSVFileChecker.check_file_exists(filepath))
 
-    def test_check_file_not_exist_if_not_exists(self):
+    def test_check_file_not_exists_if_not_exists(self):
         '''Tests CSVFileChecker.check_file_not_exists if file does not exist'''
         filepath = "non_existing/file.txt"
         self.assertTrue(CSVFileChecker.check_file_not_exists(filepath))
