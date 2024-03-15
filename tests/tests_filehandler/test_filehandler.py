@@ -1,3 +1,5 @@
+# pylint: disable = unused-argument
+
 "Test FileHandler"
 import unittest
 import os
@@ -28,7 +30,7 @@ class TestFileHandler(unittest.TestCase):
         '''Tests FileHandler.CVSCommands with unwritable file'''
         filename = "test.csv"
         FileHandler.CSVCommands("save", filename)
-        mock_logging_error.assert_called_with(f"File './data/test.csv' is not writable.")
+        mock_logging_error.assert_called_with("File './data/test.csv' is not writable.")
 
     @patch("logging.info")
     def test_save_csv_file(self, mock_logging_info):
@@ -36,7 +38,7 @@ class TestFileHandler(unittest.TestCase):
         filename = "test.csv"
         FileHandler.CSVCommands("save", filename)
         mock_logging_info.assert_called_once_with(f"Saved History to File '{filename}'.")
-        
+
     @patch("logging.info")
     def test_delete_csv_file(self, mock_logging_info):
         '''Tests FileHandler.CVSCommands Delete'''
@@ -58,7 +60,7 @@ class TestFileHandler(unittest.TestCase):
         '''Tests FileHandler.CVSCommands with invalid command'''
         filename = "test.csv"
         FileHandler.CSVCommands("invalid", filename)
-        mock_logging_warning.assert_called_with(f"Invalid File Operation: invalid.")
+        mock_logging_warning.assert_called_with("Invalid File Operation: invalid.")
 
 if __name__ == "__main__":
     unittest.main() # pragma: no cover
