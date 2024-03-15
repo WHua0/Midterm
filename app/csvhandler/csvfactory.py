@@ -31,3 +31,21 @@ class CSVHandler:
         os.remove(filepath)
         print(f"File '{filename}' has been deleted.")
         logging.info(f"Deleted File '{filename}'.")
+
+    @staticmethod
+    def load_csv_file_to_history(filename, filepath):
+        '''Loads CSV File in directory to history'''
+        if not CSVFileChecker.check_file_exists(filepath):
+            return
+
+        try:
+            history_df = pd.read_csv(filepath)
+            history_instance = HistoryHandler.import_history(history_df)
+            print("History loaded successfully.")
+            logging.info(f"Loaded history from CSV file '{filepath}'.")
+            return history_instance
+
+        except Exception as e:
+            print(f"Error loading history from CSV file: {e}")
+            logging.error(f"Error loading history from CSV file '{filepath}': {e}")
+            return None
