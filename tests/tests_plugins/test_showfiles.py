@@ -27,5 +27,15 @@ class TestShowFilesCommand(unittest.TestCase):
         show_files_command.execute()
         mock_logging_error.assert_called_once_with("Directory './data' is not writable.")
 
+    @patch("os.path.exists", return_value = True)
+    @patch("os.access", return_value = True)
+    @patch("os.listdir", side_effect = Exception("Mocked exception"))
+    @patch("logging.error")
+    def test_execute_handles_exception(self, mock_logging_error, mock_listdir, mock_access, mock_exists):
+        '''Tests ShowFilesCommand exception handling'''
+        show_files_command = ShowFilesCommand()
+        show_files_command.execute()
+        mock_logging_error.assert_called_once_with("Failed to list directory ./data: Mocked exception.")
+
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
