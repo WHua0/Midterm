@@ -12,7 +12,7 @@ class CSVHandler:
     def save_history_to_csv_file(filename, filepath):
         '''Saves history to CSV File in directory'''
 
-        if CSVFileChecker.check_file_exists(filepath):
+        if not CSVFileChecker.check_file_not_exists(filepath):
             return
 
         history_instance = HistoryHandler.create_history()
@@ -25,7 +25,7 @@ class CSVHandler:
     def delete_csv_file(filename, filepath):
         '''Deletes CSV File in directory'''
 
-        if CSVFileChecker.check_file_not_exists(filepath):
+        if not CSVFileChecker.check_file_exists(filepath):
             return
 
         os.remove(filepath)
