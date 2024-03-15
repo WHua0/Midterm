@@ -15,6 +15,7 @@ class CSVFileChecker:
         if not os.path.exists(CSVFileChecker.data_directory):
             os.makedirs(CSVFileChecker.data_directory)
             logging.info(f"Created '{CSVFileChecker.data_directory}' directory.")
+            return True
 
         elif not os.access(CSVFileChecker.data_directory, os.W_OK):
             print(f"An error occurred: Directory '{CSVFileChecker.data_directory}' is not writable.")
