@@ -1,5 +1,6 @@
 '''Test HistoryHandler'''
 import unittest
+import pandas as pd
 from app.calculator.history import History
 from app.historyhandler import HistoryHandler
 
@@ -29,6 +30,12 @@ class TestHistoryHandler(unittest.TestCase):
         self.history_instance.add_log(log)
         HistoryHandler.clear_history(self.history_instance)
         self.assertTrue(self.history_instance.get_history().empty)
+
+    def test_import_history(self):
+        '''Tests HistoryHandler.import_history'''
+        history_df = pd.DataFrame({"Operation": ["add"], "OperandA": [1], "OperandB": [1]})
+        history_instance = HistoryHandler.import_history(history_df)
+        self.assertEqual(history_df.to_dict(), history_instance.get_history().to_dict())
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
