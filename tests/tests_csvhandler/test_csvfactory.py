@@ -51,6 +51,25 @@ class TestCSVHandler(unittest.TestCase):
         CSVHandler.delete_csv_file(filename, filepath)
         mock_logging_warning.assert_called_with(f"File '{filepath}' was not found.")
 
+    @patch("logging.info")
+    def test_load_csv_file_to_history(self, mock_logging_info):
+        '''Tests CSVFactory.load_csv_file_to_history'''
+        CSVFileChecker.data_directory = self.testdir
+        filename = "test.csv"
+        filepath = os.path.join(self.testdir, filename)
+        CSVHandler.save_history_to_csv_file(filename, filepath)
+        CSVHandler.load_csv_file_to_history(filename, filepath)
+        mock_logging_info.assert_called_with(f"Loaded history from File '{filename}'.")
+
+    @patch("logging.warning")
+    def test_load_csv_file_to_history_if_file_not_exists(self, mock_logging_warning):
+        '''Tests CSVFactory.load_csv_file_to_history'''
+        CSVFileChecker.data_directory = self.testdir
+        filename = "test.csv"
+        filepath = os.path.join(self.testdir, filename)
+        CSVHandler.load_csv_file_to_history(filename, filepath)
+        mock_logging_warning.assert_called_with(f"File '{filepath}' was not found.")
+
     def tearDown(self):
         '''Deletes temporary test_data directory'''
         for filename in os.listdir(self.testdir):
