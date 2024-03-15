@@ -41,8 +41,8 @@ class CSVHandler:
         try:
             history_df = pd.read_csv(filepath)
             history_instance = HistoryHandler.import_history(history_df)
-            print("History loaded successfully.")
-            logging.info(f"Loaded history from File '{filepath}'.")
+            print(f"Loaded history from File '{filename}'.")
+            logging.info(f"Loaded history from File '{filename}'.")
             return history_instance
 
         except Exception as e:
