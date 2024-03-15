@@ -24,7 +24,7 @@ class FileHandler:
             return CSVHandler.save_history_to_csv_file(filename, filepath)
         elif operation == "delete":
             return CSVHandler.delete_csv_file(filename, filepath)
-        elif operation == "clear":
+        elif operation == "load":
             return CSVHandler.load_csv_file_to_history(filename, filepath)
         else:
             print(f"Invalid File Operation: {operation}.")
