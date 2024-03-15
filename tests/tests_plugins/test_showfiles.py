@@ -13,6 +13,10 @@ class TestShowFilesCommand(unittest.TestCase):
         '''Creates temporary test_data directory'''
         self.testdir = "./test_data"
         os.makedirs(self.testdir, exist_ok = True)
+        fake_files = ["file1.txt", "file2.txt", "file3.txt"]
+        for filename in fake_files:
+            with open(os.path.join(self.testdir, filename), 'w', encoding='utf-8'):
+                pass
 
     @patch("os.path.exists", return_value = True)
     @patch("os.makedirs")
@@ -45,8 +49,11 @@ class TestShowFilesCommand(unittest.TestCase):
 
     def tearDown(self):
         '''Deletes temporary test_data directory'''
-        if os.path.exists(self.testdir):
-            os.rmdir(self.testdir)
+        for filename in os.listdir(self.testdir):
+            filepath = os.path.join(self.testdir, filename)
+            if os.path.isfile(filepath):
+                os.remove(filepath)
+        os.rmdir(self.testdir)
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
