@@ -40,7 +40,7 @@ class TestCSVHandler(unittest.TestCase):
         filepath = os.path.join(self.testdir, filename)
         CSVHandler.save_history_to_csv_file(filename, filepath)
         CSVHandler.delete_csv_file(filename, filepath)
-        mock_logging_info.assert_called_with(f"Deleted File '{filename}'.") 
+        mock_logging_info.assert_called_with(f"Deleted File '{filename}'.")
 
     @patch("logging.warning")
     def test_delete_csv_file_if_file_not_exists(self, mock_logging_warning):
