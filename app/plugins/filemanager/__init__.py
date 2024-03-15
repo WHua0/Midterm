@@ -3,8 +3,8 @@ import logging
 from app.commandhandler import Command
 from app.csvhandler import CSVFactory
 
-class CSVCommand(Command):
-    '''CSV Command'''
+class FileManagerCommand(Command):
+    '''FileManager Command'''
 
     def execute(self):
         print("CSV Commands: create / delete / clear.")

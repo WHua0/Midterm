@@ -4,7 +4,7 @@
 '''Test Add'''
 import unittest
 from unittest.mock import patch
-from app.plugins.file_manager import CSVCommand
+from app.plugins.filemanager import FileManagerCommand
 
 class TestCSVCommand(unittest.TestCase):
     '''Tests File Manager: CSVCommand'''
@@ -13,7 +13,7 @@ class TestCSVCommand(unittest.TestCase):
     @patch("logging.warning")
     def test_execute_with_correct_number_of_inputs(self, mock_logging_warning, mock_input):
         '''Tests Execute_CSVCommand with Correct Number of Inputs'''
-        command = CSVCommand()
+        command = FileManagerCommand()
         with patch("builtins.print") as mock_print:
             command.execute()
             mock_logging_warning.assert_called_once_with("Invalid CSV Operation: 3.")
@@ -22,7 +22,7 @@ class TestCSVCommand(unittest.TestCase):
     @patch("logging.warning")
     def test_execute_with_incorrect_number_of_inputs(self, mock_logging_warning, mock_input):
         '''Tests Execute_CSVCommand with Incorrect Number of Inputs'''
-        command = CSVCommand()
+        command = FileManagerCommand()
         with patch("builtins.print") as mock_print:
             command.execute()
             mock_logging_warning.assert_called_once_with("Incorrect number of inputs: '%s'.", "3")
