@@ -21,6 +21,9 @@ class CSVFileChecker:
             print(f"An error occurred: Directory '{CSVFileChecker.data_directory}' is not writable.")
             logging.error(f"Directory '{CSVFileChecker.data_directory}' is not writable.")
             return False
+        
+        else:
+            return True
 
     @staticmethod
     def check_file_writable(filepath):
