@@ -30,3 +30,8 @@ class History:
     def clear_history(self):
         '''Clears history'''
         self.history = pd.DataFrame(columns = ["Operation", "OperandA", "OperandB"])
+
+    def delete_log(self, index):
+        '''Delete log at given index'''
+        self.history = self.history.drop(index)
+        self.history = self.history.reset_index(drop = True)
