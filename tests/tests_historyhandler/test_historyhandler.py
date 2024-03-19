@@ -37,5 +37,17 @@ class TestHistoryHandler(unittest.TestCase):
         history_instance = HistoryHandler.import_history(history_df)
         self.assertEqual(history_df.to_dict(), history_instance.get_history().to_dict())
 
+    def test_delete_calculation(self):
+        '''Tests HistoryHandler.delete_calculation'''
+        log1 = {"Operation": "add", "OperandA": 1, "OperandB": 1}
+        log2 = {"Operation": "add", "OperandA": 2, "OperandB": 2}
+        self.history_instance.add_log(log1)
+        expected_history = str(self.history_instance.get_history())
+        self.history_instance.add_log(log2)
+        HistoryHandler.delete_calculation(self.history_instance, 1)
+        actual_history = str(HistoryHandler.retrieve_history(self.history_instance))
+        self.assertEqual(expected_history, actual_history)
+
+
 if __name__ == '__main__':
     unittest.main() # pragma: no cover

@@ -26,3 +26,8 @@ class HistoryHandler:
         history_instance = History()
         history_instance.history = history_df.copy()
         return history_instance
+    
+    @staticmethod
+    def delete_calculation(history_instance, index):
+        '''Deletes calculation log at given index'''
+        history_instance.delete_log(index)
