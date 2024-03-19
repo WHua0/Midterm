@@ -25,9 +25,9 @@ class DeleteCalculationCommand(Command):
                 logging.info("Deleted Calculation:\n%s.", deleted_data.to_frame().T)
 
             else:
-                print("Index out of range: '%s'.", value)
-                logging.info("Index out of range: '%s'.", value)
+                print(f"Index out of range: '{value}'.")
+                logging.info(f"Index out of range: '{value}'.")
 
         except ValueError:
-            print("Invalid Input: '%s'.", value)
-            logging.warning("Invalid Input: '%s'.", value)
+            print(f"Invalid Input: '{value}'.")
+            logging.warning(f"Invalid Input: '{value}'.")
