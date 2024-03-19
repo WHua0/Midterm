@@ -22,7 +22,7 @@ class App:
         self.settings = self.load_environment_variables()
         self.settings.setdefault("ENVIRONMENT", "TESTING")
         self.settings.setdefault("DATA_DIRECTORY", "data")
-        self.data_directory = self.settings.get("DATA_DIRECTORY")
+        self.data_directory = self.settings.get("DATA_DIRECTORY") or "data"
         self.command_handler = CommandHandler()
         self.command_handler.register_command("menu", MenuCommand(self.command_handler))
         self.history = HistoryHandler.create_history()
