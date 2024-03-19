@@ -2,11 +2,12 @@
 import os
 import re
 import logging
+from app import App
 
 class CSVFileChecker:
     '''Class CSVFileChecker'''
 
-    data_directory = "./data"
+    data_directory = App.get_data_directory()
 
     @staticmethod
     def check_data_directory():
