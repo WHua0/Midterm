@@ -1,4 +1,5 @@
 # pylint: disable = unused-import
+# pylint: disable = unused-argument
 
 '''Test App'''
 import unittest
@@ -29,9 +30,11 @@ class TestApp(unittest.TestCase):
             self.app_instance.configure_logging()
             mock_basic_config.assert_called_once_with(level = logging.INFO, format = "%(asctime)s - %(levelname)s - %(message)s")
 
-    def test_get_data_directory(self):
+    @patch("app.load_dotenv")
+    def test_get_data_directory(self, mock_load_dotenv):
         '''Tests get_data_directory'''
-        expected_data_directory = os.path.abspath("data")
+        os.environ["DATA_DIRECTORY"] = "test_data"
+        expected_data_directory = os.path.abspath("test_data")
         actual_data_directory = App.get_data_directory()
         self.assertEqual(actual_data_directory, expected_data_directory)
 
