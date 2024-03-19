@@ -37,6 +37,11 @@ class App:
             logging.basicConfig(level = logging.INFO, format = '%(asctime)s - %(levelname)s - %(message)s')
         logging.info("Configured logging.")
 
+    @classmethod
+    def get_data_directory(cls):
+        '''Returns Data Directory in ENV'''
+        return cls().data_directory
+
     def load_environment_variables(self):
         '''Loads environment variables into settings dictionary'''
         settings = dict(os.environ.items())

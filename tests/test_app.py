@@ -28,6 +28,12 @@ class TestApp(unittest.TestCase):
             self.app_instance.configure_logging()
             mock_basic_config.assert_called_once_with(level = logging.INFO, format = "%(asctime)s - %(levelname)s - %(message)s")
 
+    def test_get_data_directory(self):
+        '''Tests get_data_directory'''
+        expected_data_directory = "data"
+        actual_data_directory = App.get_data_directory()
+        self.assertEqual(actual_data_directory, expected_data_directory)
+
     def test_load_environment_variables(self):
         '''Tests load_environment_variables'''
         with patch("os.environ.items", return_value={"ENV_VAR1": "value1", "ENV_VAR2": "value2"}):
