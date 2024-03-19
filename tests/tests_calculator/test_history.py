@@ -38,5 +38,14 @@ class TestHistory(unittest.TestCase):
         self.history.clear_history()
         self.assertEqual(len(self.history.history), 0)
 
+    def test_delete_log(self):
+        '''Tests History.delete_log'''
+        log = {"Operation": "add", "OperandA": 10, "OperandB": 5}
+        self.history.add_log(log)
+        self.history.add_log(log)
+        self.assertEqual(len(self.history.history), 2)
+        self.history.delete_log(0)
+        self.assertEqual(len(self.history.history), 1)
+
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
