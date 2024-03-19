@@ -15,7 +15,6 @@ class DeleteCalculationCommand(Command):
 
         try:
             value = (input("Please provide an index number: "))
-            logging.info("Input: '%s'.", value)
             index = int(value)
 
             if 0 <= index < len(df):
@@ -26,9 +25,9 @@ class DeleteCalculationCommand(Command):
                 logging.info("Deleted Calculation:\n%s.", deleted_data.to_frame().T)
 
             else:
-                print("Index out of range.")
-                logging.info("Index out of range.")
+                print("Index out of range: '%s'.", value)
+                logging.info("Index out of range: '%s'.", value)
 
         except ValueError:
-            print("Invalid input.")
-            logging.warning("Invalid input.")
+            print("Invalid Input: '%s'.", value)
+            logging.warning("Invalid Input: '%s'.", value)
