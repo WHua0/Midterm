@@ -15,10 +15,11 @@ class TestDeleteCalculationCommand(unittest.TestCase):
     @patch("logging.info")
     def test_execute(self, mock_logging_info, mock_input):
         '''Tests Excute_DeleteCalculation'''
-        pd.DataFrame({"0": ["add", 10, 5]}, index = ["Operation", "OperandA", "OperandB"])
+        initial_data = {"0": ["add", 10, 5]}
+        df = pd.DataFrame(initial_data, index = ["Operation", "OperandA", "OperandB"])
         delete_calculation = DeleteCalculationCommand()
         delete_calculation.execute()
-        mock_logging_info.assert_called()
+        self.assertListEqual(list(df.columns), ["0"])
 
     @patch("builtins.input", return_value = "100")
     @patch("logging.info")
