@@ -48,6 +48,5 @@ class TestHistoryHandler(unittest.TestCase):
         actual_history = str(HistoryHandler.retrieve_history(self.history_instance))
         self.assertEqual(expected_history, actual_history)
 
-
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
