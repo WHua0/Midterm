@@ -40,7 +40,7 @@ class App:
     @classmethod
     def get_data_directory(cls):
         '''Returns Data Directory in ENV'''
-        return cls().data_directory
+        return os.path.abspath(cls().data_directory)
 
     def load_environment_variables(self):
         '''Loads environment variables into settings dictionary'''

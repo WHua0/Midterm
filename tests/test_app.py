@@ -6,6 +6,7 @@ from unittest.mock import patch
 from io import StringIO
 import sys
 import logging
+import os
 from app import App
 
 class TestApp(unittest.TestCase):
@@ -30,7 +31,7 @@ class TestApp(unittest.TestCase):
 
     def test_get_data_directory(self):
         '''Tests get_data_directory'''
-        expected_data_directory = "data"
+        expected_data_directory = os.path.abspath("data")
         actual_data_directory = App.get_data_directory()
         self.assertEqual(actual_data_directory, expected_data_directory)
 
