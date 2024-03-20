@@ -37,7 +37,8 @@
 ## Environment Variables
 
 1. $ touch .env
-2. In .env add:
+2. $ vi .env
+3. add:
    + ENVIRONMENT = <name_of_environment> ; default is TESTING
    + DATABASE_USERNAME = <name_of_database_username>
    + DATA_DIRECTORY = <name_of_data_directory> ; default is data
