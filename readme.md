@@ -17,18 +17,18 @@
 
 ## Usage & Video Demostration
 1. $ python main.py
-2. $ menu
-    + add / subtract / multiply / divide
-      + <Operand_A> <Operand_B>
-    + showhistory / clearhistory
-    + deletecalculation
-      + <index_number_of_the_calculation>
-    + showfiles
-    + filemanager
-      + save <file_name>
-      + delete <file_name>
-      + load <file_name>
-3. $ exit
+   + menu
+   + add / subtract / multiply / divide
+     + <Operand_A> <Operand_B>
+   + showhistory / clearhistory
+   + deletecalculation
+     + <index_number_of_the_calculation>
+   + showfiles
+   + filemanager
+     + save <file_name>
+     + delete <file_name>
+     + load <file_name>
+    +exit
 
 <Video_Demonstration_Link_to_be_Added>
 
