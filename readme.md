@@ -63,10 +63,9 @@
 
 ### App
    + Plugins
-     + Command Design Pattern
+     + Command Design Pattern for plugin classes that are subclasses (concrete command classes) of the abstract base class Command from CommandHandler, and serve as standalone objects with information to execute a specific action
    + CommandHandler
-     + Command Design Pattern
-     + Factory Method Design Pattern
+     + Command Design Pattern for abstract base class Command, and class CommandHandler as an invoker that registers and executes commands with KeyError exception handling
    + App
      + Singleton Design Pattern
      + Factory Method Design Pattern
