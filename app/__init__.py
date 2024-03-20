@@ -21,6 +21,7 @@ class App:
         load_dotenv()
         self.settings = self.load_environment_variables()
         self.settings.setdefault("ENVIRONMENT", "TESTING")
+        self.settings.setdefault("DATABASE_USERNAME", "root")
         self.data_directory = self.settings.get("DATA_DIRECTORY", "data")
         self.command_handler = CommandHandler()
         self.command_handler.register_command("menu", MenuCommand(self.command_handler))
