@@ -48,20 +48,18 @@
      + Staticmethod calculate_and_print provides a centralized way to perform calculations and handle exceptions
 
 ### HistoryHandler
-   + history.py from calculator (see above)
    + historyhandler
      + Mostly a Facade Design Pattern for class HistoryHandler with staticmethods that serve as an interface for history.py to manipulate an instance of history
      + Staticmethod create_history follows a Factory Method Design Pattern to create an instance of history
      + Staticmethod import_history follows an Adapter Design Pattern that allows for the intergration of external dataframes to class History
 
 ### FileHandler
-   + CSVFileChecker
-     + Single Responsibility Principle (SRP) and Separation of Concerns
-   + HistoryHandler from HistoryHandler
-   + CSVFactory
-     + Factory Method Design Pattern
-   + FileHandler
-     + Facade Design Pattern
+   + csvfilechecker.py
+     + While not following any particular design patterns, class CSVFileChecker utilizes staticmethods to adhere to the Single Responsiblity Principle (SRP) of checking and validating directories and files
+   + csvfactory.py
+     + Factory Method Design Pattern for class CSVHandler with staticmethods that manipulate CSV files and an instance of history with exception handling.
+   + filehandler
+     + Facade Design Pattern for class FileHandler with a staticmethod that acts as an interface for csvfactory.py
 
 ### App
    + Plugins
