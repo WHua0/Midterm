@@ -66,7 +66,7 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
 ### Summary for .env DATA_DIRECTORY:
 
 1. .env provides the name of the data_directory
-2. name_of_data_directory is loaded into App
+2. App loads the name of data_directory from .env
 3. App converts name_of_data_directory into an absolute path
 4. Other files may retrieve the data_directory's absolute path from App 
 
