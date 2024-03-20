@@ -34,6 +34,42 @@
 
 ## Design Patterns
 
+### Calculator
+   + Operations
+     + Factory Method Design Pattern
+   + Calculation
+     + Strategy Design Pattern
+   + History
+     + Singleton Design Pattern
+   + Calculator
+     + Facade Design Pattern
+
+### HistoryHandler
+   + History from Calculator
+   + HistoryHandler
+     + Factory Design Pattern
+
+### FileHandler
+   + CSVFileChecker
+     + Single Responsibility Principle (SRP) & Separation of Concerns
+   + HistoryHandler from HistoryHandler
+   + CSVFactory
+     + Factory Method Design Pattern
+   + FileHandler
+     + Facade Design Pattern
+
+### App
+   + Plugins
+     + Command Design Pattern
+   + CommandHandler
+     + Command Design Pattern
+     + Factory Method Design Pattern
+   + App
+     + Singleton Design Pattern
+     + Factory Method Design Pattern
+     + Observer Design Pattern
+     + Strategy Design Pattern
+
 ## Environment Variables
 
 1. $ touch .env
