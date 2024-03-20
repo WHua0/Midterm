@@ -1,4 +1,5 @@
 # pylint: disable = unused-argument
+# pylint: disable = unused-variable
 # pylint: disable = duplicate-code
 
 "Test FileHandler"
@@ -6,7 +7,7 @@ import unittest
 import os
 from unittest.mock import patch
 from app.filehandler import FileHandler
-from app.filehandler.csvfilechecker import CSVFileChecker
+
 
 
 class TestFileHandler(unittest.TestCase):
@@ -21,7 +22,7 @@ class TestFileHandler(unittest.TestCase):
     @patch("logging.warning")
     def test_invalid_filename(self, mock_logging_warning):
         '''Tests FileHandler.CVSCommands with invalid filename'''
-        CSVFileChecker.data_directory = self.testdir
+        data_directory = self.testdir
         filename = "$test.csv"
         FileHandler.CSVCommands("save", filename)
         mock_logging_warning.assert_called_once_with(f"Invalid File Name: {filename}.")
@@ -32,23 +33,24 @@ class TestFileHandler(unittest.TestCase):
     @patch("logging.error", autospec = True)
     def test_not_writable_filename(self, mock_logging_error, mock_stdout, mock_access, mock_exists):
         '''Tests FileHandler.CVSCommands with unwritable file'''
-        CSVFileChecker.data_directory = self.testdir
+        data_directory = self.testdir
         filename = "test.csv"
+        filepath = os.path.abspath("test_data/test.csv")
         FileHandler.CSVCommands("save", filename)
-        mock_logging_error.assert_called_with("File './test_data/test.csv' is not writable.")
+        mock_logging_error.assert_called_with(f"File '{filepath}' is not writable.")
 
     @patch("logging.info")
     def test_save_csv_file(self, mock_logging_info):
         '''Tests FileHandler.CVSCommands Save'''
-        CSVFileChecker.data_directory = self.testdir
+        data_directory = self.testdir
         filename = "test.csv"
         FileHandler.CSVCommands("save", filename)
-        mock_logging_info.assert_called_once_with(f"Saved History to File '{filename}'.")
+        mock_logging_info.assert_called_with(f"Saved History to File '{filename}'.")
 
     @patch("logging.info")
     def test_delete_csv_file(self, mock_logging_info):
         '''Tests FileHandler.CVSCommands Delete'''
-        CSVFileChecker.data_directory = self.testdir
+        data_directory = self.testdir
         filename = "test.csv"
         FileHandler.CSVCommands("save", filename)
         FileHandler.CSVCommands("delete", filename)
@@ -57,7 +59,7 @@ class TestFileHandler(unittest.TestCase):
     @patch("logging.info")
     def test_load_csv_file(self, mock_logging_info):
         '''Tests FileHandler.CVSCommands Load'''
-        CSVFileChecker.data_directory = self.testdir
+        data_directory = self.testdir
         filename = "test.csv"
         FileHandler.CSVCommands("save", filename)
         FileHandler.CSVCommands("load", filename)
@@ -66,7 +68,7 @@ class TestFileHandler(unittest.TestCase):
     @patch("logging.warning")
     def test_invalid_command(self, mock_logging_warning):
         '''Tests FileHandler.CVSCommands with invalid command'''
-        CSVFileChecker.data_directory = self.testdir
+        data_directory = self.testdir = self.testdir
         filename = "test.csv"
         FileHandler.CSVCommands("invalid", filename)
         mock_logging_warning.assert_called_with("Invalid File Operation: invalid.")

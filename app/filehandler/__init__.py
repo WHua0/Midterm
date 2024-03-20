@@ -1,5 +1,6 @@
 '''FileHandler'''
 import logging
+from app import App
 from app.filehandler.csvfactory import CSVHandler
 from app.filehandler.csvfilechecker import CSVFileChecker
 
@@ -10,12 +11,14 @@ class FileHandler:
     def CSVCommands(operation, filename):
         '''CSV Commands'''
 
+        data_directory = App.get_data_directory()
+
         CSVFileChecker.check_data_directory()
 
         if not CSVFileChecker.validate_filename(filename):
             return
 
-        filepath = CSVFileChecker.get_filepath(CSVFileChecker.data_directory, filename)
+        filepath = CSVFileChecker.get_filepath(data_directory, filename)
 
         if not filepath:
             return
