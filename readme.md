@@ -17,7 +17,7 @@
 
 ## Usage & Video Demostration
 1. $ python main.py
-2. $ menu ; shows lists of commands
+2. $ menu
     + add / subtract / multiply / divide
       + <Operand_A> <Operand_B>
     + showhistory / clearhistory
@@ -28,7 +28,7 @@
       + save <file_name>
       + delete <file_name>
       + load <file_name>
-3. $ exit ; exits program
+3. $ exit
 
 <Video_Demonstration_Link_to_be_Added>
 
