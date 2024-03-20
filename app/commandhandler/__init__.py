@@ -1,4 +1,4 @@
-'''Command Hanager'''
+'''Command Handler'''
 import logging
 from abc import ABC, abstractmethod
 
