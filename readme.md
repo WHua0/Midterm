@@ -70,13 +70,13 @@
      + Facade Design Pattern for class FileHandler with a staticmethod that acts as an interface for csvfactory.py
 
 ### App
-   + Plugins
+   + plugins
      + https://github.com/WHua0/Midterm/tree/master/app/plugins
      + Command Design Pattern for plugin classes that are subclasses (concrete command classes) of the abstract base class Command from CommandHandler, and serve as standalone objects with information to execute a specific action
-   + CommandHandler
+   + commandhandler
      + https://github.com/WHua0/Midterm/blob/master/app/commandhandler/__init__.py
      + Command Design Pattern for abstract base class Command, and class CommandHandler as an invoker that registers and executes commands with KeyError exception handling
-   + App
+   + app
      + https://github.com/WHua0/Midterm/blob/master/app/__init__.py
      + While not following any particular design patterns, class App serves as the entry point for starting the application
      + Class App configures logging and loads environment variables
@@ -121,4 +121,38 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
 
 ## Logging
 
-## LBYL & EAFP
+## Look Before You Leap (LBYL) & Easier To Ask For Forgiveness than Permission (EAFP)
+
+1. operation.py
+  + https://github.com/WHua0/Midterm/blob/master/app/calculator/operations.py
+  + 
+2. calculator
+  + https://github.com/WHua0/Midterm/blob/master/app/calculator/__init__.py
+  + 
+3. csvfilechecker.py
+  + https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfilechecker.py
+  +
+4. csvfactory.py
+  + https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfactory.py
+  +
+5. filehandler
+  + https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
+  +
+6. plugin: add, subtract, multiply, divide
+  + https://github.com/WHua0/Midterm/blob/master/app/plugins/divide/__init__.py
+  +
+7. plugin: showfiles
+  + https://github.com/WHua0/Midterm/blob/master/app/plugins/showfiles/__init__.py
+  +
+8. plugin: deletecalculation
+  + https://github.com/WHua0/Midterm/blob/master/app/plugins/deletecalculation/__init__.py
+  +
+9. plugin: filemanager
+  + https://github.com/WHua0/Midterm/blob/master/app/plugins/filemanager/__init__.py
+  +
+10. commandhandler
+  + https://github.com/WHua0/Midterm/blob/master/app/commandhandler/__init__.py
+  +
+11.  app
+  + https://github.com/WHua0/Midterm/blob/master/app/__init__.py
+  +
