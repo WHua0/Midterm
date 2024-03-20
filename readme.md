@@ -35,14 +35,17 @@
 ## Design Patterns
 
 ### Calculator
-   + Operations
-     + Factory Method Design Pattern
-   + Calculation
-     + Strategy Design Pattern
-   + History
-     + Singleton Design Pattern
+   + Operations.py
+     + Factory Method Design Pattern for class Operations with staticmethods add, subtract, multiply and divide that each return a result as a decimal value or ZeroDivisionError
+   + Calculation.py
+     + Strategy Design Pattern for class Calculation that encapsulates operandA, operandB and Operation into a calculation, and computes operandA and operandB according to the Operation
+   + History.py
+     + Singleton Design Pattern for class History that insures that only one instance of History is created and accessed at any given point in the program, and provides methods to manipulate the instance
    + Calculator
-     + Facade Design Pattern
+     + Facade Design Pattern for class Calculator with staticmethods that serve as an interface to calculator functionality
+     + Staticmethod execute acts as a facade for performing calculations
+     + Staticmethods add, sutract, multiply and divide provide an interface to execute for specific operations
+     + Staticmethod calculate_and_print provides a centralized way to perform calculations and handle exceptions
 
 ### HistoryHandler
    + History from Calculator
@@ -51,7 +54,7 @@
 
 ### FileHandler
    + CSVFileChecker
-     + Single Responsibility Principle (SRP) & Separation of Concerns
+     + Single Responsibility Principle (SRP) and Separation of Concerns
    + HistoryHandler from HistoryHandler
    + CSVFactory
      + Factory Method Design Pattern
