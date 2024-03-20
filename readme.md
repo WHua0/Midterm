@@ -42,7 +42,7 @@
    + History.py
      + Singleton Design Pattern for class History that insures that only one instance of History is created and accessed at any given point in the program, and provides methods to manipulate the instance
    + Calculator
-     + Facade Design Pattern for class Calculator with staticmethods that serve as an interface to calculator functionality
+     + Facade Design Pattern for class Calculator with staticmethods that serve as interfaces to calculator functionality
      + Staticmethod execute acts as a facade for performing calculations
      + Staticmethods add, sutract, multiply and divide provide an interface to execute for specific operations
      + Staticmethod calculate_and_print provides a centralized way to perform calculations and handle exceptions
