@@ -124,35 +124,62 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
 ## Look Before You Leap (LBYL) & Easier To Ask For Forgiveness than Permission (EAFP)
 
 1. operation.py
-  + https://github.com/WHua0/Midterm/blob/master/app/calculator/operations.py
-  + 
+    + https://github.com/WHua0/Midterm/blob/master/app/calculator/operations.py
+    + LYBL in method divide for ZeroDivisionError
+      +  TBD
 2. calculator
-  + https://github.com/WHua0/Midterm/blob/master/app/calculator/__init__.py
-  + 
+    + https://github.com/WHua0/Midterm/blob/master/app/calculator/__init__.py
+    + EAFP in calculate_and_print for InvalidOperation and Exception
+      + TBD
+    + LBYL in calculate_and_print for "unknown operation"
+      + TBD
 3. csvfilechecker.py
-  + https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfilechecker.py
-  +
+    + https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfilechecker.py
+    + LBYL in all methods
+      + TBD
 4. csvfactory.py
-  + https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfactory.py
-  +
+    + https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfactory.py
+    + LBYL in all methods
+      + TBD
+    + EAFP load_csv_file_to_history for Exception
+      + TBD
 5. filehandler
-  + https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
-  +
+    + https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
+    + LBYL in CSVCommands
+      + TBD
 6. plugin: add, subtract, multiply, divide
-  + https://github.com/WHua0/Midterm/blob/master/app/plugins/divide/__init__.py
-  +
+    + https://github.com/WHua0/Midterm/blob/master/app/plugins/divide/__init__.py
+    + LBYL in execute
+      + TBD
 7. plugin: showfiles
-  + https://github.com/WHua0/Midterm/blob/master/app/plugins/showfiles/__init__.py
-  +
+    + https://github.com/WHua0/Midterm/blob/master/app/plugins/showfiles/__init__.py
+    + LBYL in execute
+      + TBD
+    + EAFP in execute
+        + TBD
 8. plugin: deletecalculation
-  + https://github.com/WHua0/Midterm/blob/master/app/plugins/deletecalculation/__init__.py
-  +
+    + https://github.com/WHua0/Midterm/blob/master/app/plugins/deletecalculation/__init__.py
+    + EAFP in execute
+      + TBD
+    + LBYL in execute
+      + TBD
 9. plugin: filemanager
-  + https://github.com/WHua0/Midterm/blob/master/app/plugins/filemanager/__init__.py
-  +
-10. commandhandler
-  + https://github.com/WHua0/Midterm/blob/master/app/commandhandler/__init__.py
-  +
-11.  app
-  + https://github.com/WHua0/Midterm/blob/master/app/__init__.py
-  +
+    + https://github.com/WHua0/Midterm/blob/master/app/plugins/filemanager/__init__.py
+    + LBYL in execute
+      + TBD
+10.  commandhandler
+      + https://github.com/WHua0/Midterm/blob/master/app/commandhandler/__init__.py
+      + EAFP in CommandHandler
+        + TBD
+11. app
+    + https://github.com/WHua0/Midterm/blob/master/app/__init__.py
+    + LPYL in configure_logging
+      + TBD
+    + LPYL in load_plugins
+      + TBD
+    + EAFP in load_plugins for ImpportError
+      + TBD
+    + EAFP in register_plugins for TypeError
+      + TBD
+    + LPYL in register_plugins
+      + TBD
