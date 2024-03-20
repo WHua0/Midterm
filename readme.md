@@ -67,10 +67,10 @@
    + CommandHandler
      + Command Design Pattern for abstract base class Command, and class CommandHandler as an invoker that registers and executes commands with KeyError exception handling
    + App
-     + Singleton Design Pattern
-     + Factory Method Design Pattern
-     + Observer Design Pattern
-     + Strategy Design Pattern
+     + While not following any particular design patterns, class App serves as the entry point for starting the application
+     + Class App configures logging and loads environment variables
+     + Class App dynamically loads, registers, and executes plugin commands using the CommandHandler
+     + Class App implements a Read-Eval-Print Loop (REPL) to allow continous interaction with the command-line interface until the session is terminated.
 
 ## Environment Variables
 
