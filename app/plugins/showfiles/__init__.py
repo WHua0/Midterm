@@ -2,12 +2,12 @@
 import os
 import logging
 from app.commandhandler import Command
-from app.filehandler.csvfilechecker import CSVFileChecker
 
 class ShowFilesCommand(Command):
     '''ShowFiles Command'''
 
     def execute(self):
+        from app.filehandler.csvfilechecker import CSVFileChecker
 
         if not CSVFileChecker.check_data_directory():
             return
