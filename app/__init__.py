@@ -17,7 +17,6 @@ class App:
     def __init__(self):
         '''Constructor'''
         os.makedirs("logs", exist_ok = True)
-        self.configure_logging()
         load_dotenv()
         self.settings = self.load_environment_variables()
         self.settings.setdefault("ENVIRONMENT", "TESTING")
@@ -25,6 +24,7 @@ class App:
         self.data_directory = self.settings.get("DATA_DIRECTORY", "data")
         self.log_directory = self.settings.get("LOG_DIRECTORY", "logs")
         os.makedirs(self.log_directory, exist_ok = True)
+        self.configure_logging()
         self.log_level = self.settings.get("LOG_LEVEL", "INFO")
         self.command_handler = CommandHandler()
         self.command_handler.register_command("menu", MenuCommand(self.command_handler))
