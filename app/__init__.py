@@ -23,7 +23,7 @@ class App:
         self.settings.setdefault("ENVIRONMENT", "TESTING")
         self.settings.setdefault("DATABASE_USERNAME", "root")
         self.data_directory = self.settings.get("DATA_DIRECTORY", "data")
-        self.log_directory = self.settings.get("LOG_DIRECTORY", "log")
+        self.log_directory = self.settings.get("LOG_DIRECTORY", "logs")
         self.log_level = self.settings.get("LOG_LEVEL", "INFO")
         self.command_handler = CommandHandler()
         self.command_handler.register_command("menu", MenuCommand(self.command_handler))
