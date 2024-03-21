@@ -37,7 +37,7 @@ class App:
             logging.config.fileConfig(logging_conf_path, disable_existing_loggers = False)
         else:
             log_level = getattr(logging, self.log_level.upper())
-            logging.basicConfig(filename = self.log_directory, level = log_level, format = '%(asctime)s - %(levelname)s - %(message)s')
+            logging.basicConfig(filename = self.log_directory, level = log_level, format = "%(asctime)s - %(levelname)s - %(message)s")
         logging.info("Configured logging.")
 
     @classmethod
