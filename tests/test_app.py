@@ -29,20 +29,22 @@ class TestApp(unittest.TestCase):
     def test_configure_logging_without_logging_conf_and_with_dotenv(self, mock_load_env):
         '''Tests configure_logging without logging.conf and with dotenv configuration'''
         app_instance = App()
+        test_log_filepath = os.path.abspath(os.path.join("test_logs", "app.log"))
         with mock.patch("os.path.exists", return_value = False), \
             mock.patch("logging.basicConfig") as mock_basic_config:
             app_instance.configure_logging()
-            mock_basic_config.assert_called_once_with(filename = "test_logs", level = logging.WARNING, format = "%(asctime)s - %(levelname)s - %(message)s")
+            mock_basic_config.assert_called_once_with(filename = test_log_filepath, level = logging.WARNING, format = "%(asctime)s - %(levelname)s - %(message)s")
 
     @mock.patch.dict("os.environ", {})
     @mock.patch.object(App, "load_environment_variables", return_value = {})
     def test_configure_logging_without_logging_conf_and_without_dotenv(self, mock_load_env):
         '''Tests configure_logging without logging.conf and without dotenv configuration'''
         app_instance = App()
+        test_log_filepath = os.path.abspath(os.path.join("logs", "app.log"))
         with mock.patch("os.path.exists", return_value = False), \
             mock.patch("logging.basicConfig") as mock_basic_config:
             app_instance.configure_logging()
-            mock_basic_config.assert_called_once_with(filename = "logs", level = logging.INFO, format = "%(asctime)s - %(levelname)s - %(message)s")
+            mock_basic_config.assert_called_once_with(filename = test_log_filepath, level = logging.INFO, format = "%(asctime)s - %(levelname)s - %(message)s")
 
     @patch("app.load_dotenv")
     def test_get_data_directory(self, mock_load_dotenv):
