@@ -23,7 +23,6 @@ class App:
         self.settings.setdefault("DATABASE_USERNAME", "root")
         self.data_directory = self.settings.get("DATA_DIRECTORY", "data")
         self.log_directory = self.settings.get("LOG_DIRECTORY", "logs")
-        os.makedirs(self.log_directory, exist_ok = True)
         self.log_level = self.settings.get("LOG_LEVEL", "INFO")
         self.configure_logging()
         self.command_handler = CommandHandler()
@@ -37,7 +36,9 @@ class App:
         if os.path.exists(logging_conf_path):
             logging.config.fileConfig(logging_conf_path, disable_existing_loggers = False)
         else:
-            log_filepath = os.path.abspath(os.path.join(self.log_directory, "app.log"))
+            log_directory = self.log_directory
+            os.makedirs(log_directory, exist_ok = True)
+            log_filepath = os.path.abspath(os.path.join(log_directory, "app.log"))
             log_level = getattr(logging, self.log_level.upper())
             logging.basicConfig(filename = log_filepath, level = log_level, format = "%(asctime)s - %(levelname)s - %(message)s")
         logging.info("Configured logging.")
