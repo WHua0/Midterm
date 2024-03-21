@@ -16,7 +16,6 @@ class App:
 
     def __init__(self):
         '''Constructor'''
-        os.makedirs("logs", exist_ok = True)
         self.configure_logging()
         load_dotenv()
         self.settings = self.load_environment_variables()
@@ -24,6 +23,7 @@ class App:
         self.settings.setdefault("DATABASE_USERNAME", "root")
         self.data_directory = self.settings.get("DATA_DIRECTORY", "data")
         self.log_directory = self.settings.get("LOG_DIRECTORY", "logs")
+        os.makedirs(self.log_directory, exist_ok = True)
         self.log_level = self.settings.get("LOG_LEVEL", "INFO")
         self.command_handler = CommandHandler()
         self.command_handler.register_command("menu", MenuCommand(self.command_handler))
@@ -36,8 +36,6 @@ class App:
         if os.path.exists(logging_conf_path):
             logging.config.fileConfig(logging_conf_path, disable_existing_loggers = False)
         else:
-            if not os.path.exists(self.log_directory):
-                os.makedirs(self.log_directory)
             log_filepath = os.path.abspath(os.path.join(self.log_directory, "app.log"))
             log_level = getattr(logging, self.log_level.upper())
             logging.basicConfig(filename = log_filepath, level = log_level, format = "%(asctime)s - %(levelname)s - %(message)s")
