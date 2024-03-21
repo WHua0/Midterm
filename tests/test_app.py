@@ -39,7 +39,7 @@ class TestApp(unittest.TestCase):
         with mock.patch("os.path.exists", return_value = False), \
             mock.patch("logging.basicConfig") as mock_basic_config:
             app_instance.configure_logging()
-            mock_basic_config.assert_called_once_with(filename = test_log_filepath, level = logging.WARNING, format = "%(asctime)s - %(levelname)s - %(message)s")
+            mock_basic_config.assert_called_once_with(filename = test_log_filepath, level = logging.WARNING, format = "%(asctime)s - %(levelname)s - %(message)s", disable_existing_loggers = False)
 
     @mock.patch.dict("os.environ", {})
     @mock.patch.object(App, "load_environment_variables", return_value = {})
@@ -50,7 +50,7 @@ class TestApp(unittest.TestCase):
         with mock.patch("os.path.exists", return_value = False), \
             mock.patch("logging.basicConfig") as mock_basic_config:
             app_instance.configure_logging()
-            mock_basic_config.assert_called_once_with(filename = test_log_filepath, level = logging.INFO, format = "%(asctime)s - %(levelname)s - %(message)s")
+            mock_basic_config.assert_called_once_with(filename = test_log_filepath, level = logging.INFO, format = "%(asctime)s - %(levelname)s - %(message)s", disable_existing_loggers = False)
 
     @patch("app.load_dotenv")
     def test_get_data_directory(self, mock_load_dotenv):

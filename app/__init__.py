@@ -40,7 +40,7 @@ class App:
             os.makedirs(log_directory, exist_ok = True)
             log_filepath = os.path.abspath(os.path.join(log_directory, "app.log"))
             log_level = getattr(logging, self.log_level.upper())
-            logging.basicConfig(filename = log_filepath, level = log_level, format = "%(asctime)s - %(levelname)s - %(message)s")
+            logging.basicConfig(filename = log_filepath, level = log_level, format = "%(asctime)s - %(levelname)s - %(message)s", disable_existing_loggers = False)
         logging.info("Configured logging.")
 
     @classmethod
