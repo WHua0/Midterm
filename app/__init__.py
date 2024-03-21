@@ -52,7 +52,6 @@ class App:
     def load_environment_variables(self):
         '''Loads environment variables into settings dictionary'''
         settings = dict(os.environ.items())
-        logging.info("Loaded environment variables.")
         return settings
 
     def load_plugins(self):
