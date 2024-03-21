@@ -9,6 +9,7 @@ from io import StringIO
 import sys
 import logging
 import os
+import shutil
 from app import App
 
 class TestApp(unittest.TestCase):
@@ -16,6 +17,11 @@ class TestApp(unittest.TestCase):
 
     def setUp(self):
         self.app_instance = App()
+        self.temp_dir = "test_logs"
+
+    def tearDown(self):
+        if os.path.exists(self.temp_dir):
+            shutil.rmtree(self.temp_dir)
 
     def test_configure_logging_with_logging_conf(self):
         '''Tests configure_logging'''
