@@ -28,7 +28,7 @@ class TestApp(unittest.TestCase):
         with patch("os.path.exists", return_value = False), \
             patch("logging.basicConfig") as mock_basic_config:
             self.app_instance.configure_logging()
-            mock_basic_config.assert_called_once_with(level = logging.INFO, format = "%(asctime)s - %(levelname)s - %(message)s")
+            mock_basic_config.assert_called_once_with(filename = "log", level = logging.INFO, format = "%(asctime)s - %(levelname)s - %(message)s")
 
     @patch("app.load_dotenv")
     def test_get_data_directory(self, mock_load_dotenv):
