@@ -16,6 +16,7 @@ class App:
 
     def __init__(self):
         '''Constructor'''
+        os.makedirs("logs", exist_ok = True)
         self.configure_logging()
         load_dotenv()
         self.settings = self.load_environment_variables()
