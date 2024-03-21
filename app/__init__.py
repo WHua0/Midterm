@@ -16,7 +16,6 @@ class App:
 
     def __init__(self):
         '''Constructor'''
-        os.makedirs("logs", exist_ok = True)
         load_dotenv()
         self.settings = self.load_environment_variables()
         self.settings.setdefault("ENVIRONMENT", "TESTING")
@@ -34,6 +33,7 @@ class App:
 
         logging_conf_path = "logging.conf"
         if os.path.exists(logging_conf_path):
+            os.makedirs("logs", exist_ok = True)
             logging.config.fileConfig(logging_conf_path, disable_existing_loggers = False)
         else:
             log_directory = self.log_directory
