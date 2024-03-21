@@ -3,6 +3,7 @@
 
 '''Test App'''
 import unittest
+from unittest import TestCase, mock
 from unittest.mock import patch
 from io import StringIO
 import sys
@@ -23,12 +24,15 @@ class TestApp(unittest.TestCase):
             self.app_instance.configure_logging()
             mock_file_config.assert_called_once_with("logging.conf", disable_existing_loggers = False)
 
-    def test_configure_logging_without_logging_conf(self):
-        '''Tests configure_logging without logging.conf'''
-        with patch("os.path.exists", return_value = False), \
-            patch("logging.basicConfig") as mock_basic_config:
-            self.app_instance.configure_logging()
-            mock_basic_config.assert_called_once_with(filename = "log", level = logging.INFO, format = "%(asctime)s - %(levelname)s - %(message)s")
+    @mock.patch.dict("os.environ", {})
+    @mock.patch.object(App, "load_environment_variables", return_value = {"LOG_DIRECTORY": "test_logs", "LOG_LEVEL": "WARNING"})
+    def test_configure_logging_without_logging_conf_and_with_dotenv(self, mock_load_env):
+        '''Tests configure_logging without logging.conf and with dotenv configuration'''
+        app_instance = App()
+        with mock.patch("os.path.exists", return_value = False), \
+            mock.patch("logging.basicConfig") as mock_basic_config:
+            app_instance.configure_logging()
+            mock_basic_config.assert_called_once_with(filename = "test_logs", level = logging.WARNING, format = "%(asctime)s - %(levelname)s - %(message)s")
 
     @patch("app.load_dotenv")
     def test_get_data_directory(self, mock_load_dotenv):
@@ -40,7 +44,7 @@ class TestApp(unittest.TestCase):
 
     def test_load_environment_variables(self):
         '''Tests load_environment_variables'''
-        with patch("os.environ.items", return_value={"ENV_VAR1": "value1", "ENV_VAR2": "value2"}):
+        with patch("os.environ.items", return_value = {"ENV_VAR1": "value1", "ENV_VAR2": "value2"}):
             settings = self.app_instance.load_environment_variables()
             self.assertEqual(settings, {"ENV_VAR1": "value1", "ENV_VAR2": "value2"})
 
