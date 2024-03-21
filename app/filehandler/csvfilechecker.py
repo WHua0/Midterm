@@ -84,6 +84,6 @@ class CSVFileChecker:
             filepath += ".csv"
 
         if not CSVFileChecker.check_file_writable(filepath):
-            return False
+            return None
 
         return filepath
