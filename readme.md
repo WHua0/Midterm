@@ -163,7 +163,7 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
     + EAFP in execute for ValueError
       + Method tries to convert input into an integer, but handles ValueError if it cannot.
     + LBYL in execute
-      + If the try passes, method checks if the input is a valid index number in the dataframe, or else method method prints "Index out of range."
+      + If the try passes, method checks if the input is a valid index number in the dataframe, or else method method prints "Index out of range".
 9. plugin: filemanager
     + https://github.com/WHua0/Midterm/blob/master/app/plugins/filemanager/__init__.py
     + LBYL in execute
