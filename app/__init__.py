@@ -27,6 +27,7 @@ class App:
         self.command_handler = CommandHandler()
         self.command_handler.register_command("menu", MenuCommand(self.command_handler))
         self.history = HistoryHandler.create_history()
+        self.load_plugins()
 
     def configure_logging(self):
         '''Configures logging settings'''
@@ -90,7 +91,6 @@ class App:
         logging.info("Initiated App.")
 
         introduction()
-        self.load_plugins()
 
         while True:
             self.command_handler.execute_command(input(">>> ").strip())
