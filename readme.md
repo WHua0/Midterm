@@ -123,7 +123,7 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfilechecker.py
 
 https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
 
-8. data_directory = App.get_data_directory()
+11. data_directory = App.get_data_directory()
 
 ### Summary for .env LOG_DIRECTORY and LOG_INFO:
 
