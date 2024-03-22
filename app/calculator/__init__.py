@@ -54,8 +54,9 @@ class Calculator:
             operation_function = operation_mappings.get(operation_name)      
 
             if operation_function:
-                print(f"The result of {a} {operation_name} {b} is equal to {operation_function(a_decimal, b_decimal)}.")
-                logging.info(f"Computed {a} {operation_name} {b} is equal to {operation_function(a_decimal, b_decimal)}.")
+                result = operation_function(a_decimal, b_decimal)
+                print(f"The result of {a} {operation_name} {b} is equal to {result}.")
+                logging.info(f"Computed {a} {operation_name} {b} is equal to {result}.")
 
             else:
                 print(f"Unknown operation: {operation_name}.")
