@@ -48,7 +48,7 @@
      + https://github.com/WHua0/Midterm/blob/master/app/calculator/__init__.py
      + Facade Design Pattern for class Calculator with staticmethods that serve as interfaces to calculator functionality
      + Staticmethod execute acts as a facade for performing calculations
-     + Staticmethods add, sutract, multiply and divide provide an interface to execute for specific operations
+     + Staticmethods add, subtract, multiply and divide provide an interface to execute for specific operations
      + Staticmethod calculate_and_print provides a centralized way to perform calculations and handle exceptions
 
 ### HistoryHandler
