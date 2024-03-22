@@ -39,7 +39,7 @@ class TestFileHandler(unittest.TestCase):
         data_directory = self.testdir
         filename = "test.csv"
         FileHandler.CSVCommands("save", filename)
-        mock_logging_info.assert_called_with(f"Saved History to File '{filename}'.")
+        mock_logging_info.assert_called_with(f"Saved history to file {filename}.")
 
     @patch("logging.info")
     def test_delete_csv_file(self, mock_logging_info):
@@ -48,7 +48,7 @@ class TestFileHandler(unittest.TestCase):
         filename = "test.csv"
         FileHandler.CSVCommands("save", filename)
         FileHandler.CSVCommands("delete", filename)
-        mock_logging_info.assert_called_with(f"Deleted File '{filename}'.")
+        mock_logging_info.assert_called_with(f"Deleted file {filename}.")
 
     @patch("logging.info")
     def test_load_csv_file(self, mock_logging_info):
@@ -57,7 +57,7 @@ class TestFileHandler(unittest.TestCase):
         filename = "test.csv"
         FileHandler.CSVCommands("save", filename)
         FileHandler.CSVCommands("load", filename)
-        mock_logging_info.assert_called_with(f"Loaded history from File '{filename}'.")
+        mock_logging_info.assert_called_with(f"Loaded history from file {filename}.")
 
     @patch("logging.warning")
     def test_invalid_command(self, mock_logging_warning):

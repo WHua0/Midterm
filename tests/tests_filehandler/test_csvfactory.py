@@ -23,7 +23,7 @@ class TestCSVHandler(unittest.TestCase):
         filename = "test.csv"
         filepath = os.path.join(self.testdir, filename)
         CSVHandler.save_history_to_csv_file(filename, filepath)
-        mock_logging_info.assert_called_once_with(f"Saved History to File '{filename}'.")
+        mock_logging_info.assert_called_once_with(f"Saved history to file {filename}.")
 
     @patch("logging.warning")
     def test_save_history_to_csv_file_if_file_already_exists(self, mock_logging_warning):
@@ -43,7 +43,7 @@ class TestCSVHandler(unittest.TestCase):
         filepath = os.path.join(self.testdir, filename)
         CSVHandler.save_history_to_csv_file(filename, filepath)
         CSVHandler.delete_csv_file(filename, filepath)
-        mock_logging_info.assert_called_with(f"Deleted File '{filename}'.")
+        mock_logging_info.assert_called_with(f"Deleted file {filename}.")
 
     @patch("logging.warning")
     def test_delete_csv_file_if_file_not_exists(self, mock_logging_warning):
@@ -62,7 +62,7 @@ class TestCSVHandler(unittest.TestCase):
         filepath = os.path.join(self.testdir, filename)
         CSVHandler.save_history_to_csv_file(filename, filepath)
         CSVHandler.load_csv_file_to_history(filename, filepath)
-        mock_logging_info.assert_called_with(f"Loaded history from File '{filename}'.")
+        mock_logging_info.assert_called_with(f"Loaded history from file {filename}.")
 
     @patch("logging.warning")
     def test_load_csv_file_to_history_if_file_not_exists(self, mock_logging_warning):
@@ -83,7 +83,7 @@ class TestCSVHandler(unittest.TestCase):
         with patch("pandas.read_csv") as mock_read_csv:
             mock_read_csv.side_effect = pd.errors.ParserError("Error parsing CSV file")
             CSVHandler.load_csv_file_to_history(filename, filepath)
-            mock_logging_error.assert_called_once_with(f"Failed to load history from CSV file '{filepath}': Error parsing CSV file")
+            mock_logging_error.assert_called_once_with(f"Error parsing CSV file, Failed to load history from file {filepath}.")
 
     def tearDown(self):
         '''Deletes temporary test_data directory'''

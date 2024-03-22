@@ -18,8 +18,8 @@ class CSVHandler:
         history_instance = HistoryHandler.create_history()
         history_df = HistoryHandler.retrieve_history(history_instance)
         history_df.to_csv(filepath, index = False)
-        print(f"Saved History to File '{filename}'.")
-        logging.info(f"Saved History to File '{filename}'.")
+        print(f"History has been saved to File {filename}.")
+        logging.info(f"Saved history to file {filename}.")
 
     @staticmethod
     def delete_csv_file(filename, filepath):
@@ -29,8 +29,8 @@ class CSVHandler:
             return
 
         os.remove(filepath)
-        print(f"File '{filename}' has been deleted.")
-        logging.info(f"Deleted File '{filename}'.")
+        print(f"File {filename} has been deleted.")
+        logging.info(f"Deleted file {filename}.")
 
     @staticmethod
     def load_csv_file_to_history(filename, filepath):
@@ -41,11 +41,11 @@ class CSVHandler:
         try:
             history_df = pd.read_csv(filepath)
             history_instance = HistoryHandler.import_history(history_df)
-            print(f"Loaded history from File '{filename}'.")
-            logging.info(f"Loaded history from File '{filename}'.")
+            print(f"Loaded History from File {filename}.")
+            logging.info(f"Loaded history from file {filename}.")
             return history_instance
 
         except Exception as e:
             print(f"An error occurred: {e}.")
-            logging.error(f"Failed to load history from CSV file '{filepath}': {e}")
+            logging.error(f"{e}, Failed to load history from file {filepath}.")
             return None
