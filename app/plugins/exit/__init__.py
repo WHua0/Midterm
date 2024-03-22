@@ -7,5 +7,5 @@ class ExitCommand(Command):
     '''Exit Command'''
 
     def execute(self):
-        logging.info("Executed Command: 'exit'.")
+        logging.info("Exited App.")
         raise sys.exit("Exiting Calculator App ...")
