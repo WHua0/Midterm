@@ -28,7 +28,7 @@
      + save <file_name>
      + delete <file_name>
      + load <file_name>
-    +exit
+    + exit
 
 <Video_Demonstration_Link_to_be_Added>
 
