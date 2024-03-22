@@ -134,6 +134,52 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
 
 ## Logging
 
+### INFO
+  + Used to monitor normal executions of code.
+### WARNING
+  + Used to monitor expected exceptions that do not affect program functionality.
+### ERROR
+  + Used to monitor exceptions that may affect program functionality.
+### Examples
+  + calculator: Calculation.calculate_and_print(a, b, operation_name)
+    + https://github.com/WHua0/Midterm/blob/master/app/calculator/__init__.py
+    + Info - successful calculate and print
+    + Error - unknown operation
+    + Warning - invalid Operand a or Operand b
+    + Warning - ZeroDivisionError
+  + csvfilechecker.py
+    + https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfilechecker.py
+    + Info - successful creation of a data directory
+    + Error - data directory is not writable
+    + Error - file is not writable
+    + Warning - file was not found
+    + Warning - file already exists
+    + Warning - invalid filename
+  + csvfactory
+    + https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfactory.py
+    + Info - saved history to file
+    + Info - deleted file
+    + Info - loaded history from file
+    + Error - failed to load history from file
+  + filehandler
+    + https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
+    + Warning - invalid file operation
+  + plugins
+    + https://github.com/WHua0/Midterm/tree/master/app/plugins
+    + 
+  + commandhandler
+    + https://github.com/WHua0/Midterm/blob/master/app/commandhandler/__init__.py
+    + Info - initiated command
+    + Info - completed command
+    + Warning - invalid command
+  + app
+    + https://github.com/WHua0/Midterm/blob/master/app/__init__.py
+    + Info - configured logging from logging.conf
+    + Info - configured basic logging configuration
+    + Info - loaded command
+    + Info - registered loaded command
+    + Error - failed to load command
+
 ## Look Before You Leap (LBYL) & Easier To Ask For Forgiveness than Permission (EAFP)
 
 1. operation.py
