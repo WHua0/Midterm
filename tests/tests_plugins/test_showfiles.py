@@ -12,7 +12,7 @@ class TestShowFilesCommand(unittest.TestCase):
 
     def setUp(self):
         '''Creates temporary test_data directory'''
-        self.testdir = "./test_data"
+        self.testdir = os.path.join("test_data")
         os.makedirs(self.testdir, exist_ok = True)
         fake_files = ["file1.txt", "file2.txt", "file3.txt"]
         for filename in fake_files:
@@ -36,7 +36,7 @@ class TestShowFilesCommand(unittest.TestCase):
         '''Tests ShowFilesCommand if invalid data directory'''
         show_files_command = ShowFilesCommand()
         show_files_command.execute()
-        mock_logging_error.assert_called_once_with("Directory ./test_data is not writable.")
+        mock_logging_error.assert_called_once_with("Directory test_data is not writable.")
 
     @patch("os.path.exists", return_value = True)
     @patch("os.access", return_value = True)
@@ -46,7 +46,7 @@ class TestShowFilesCommand(unittest.TestCase):
         '''Tests ShowFilesCommand exception handling'''
         show_files_command = ShowFilesCommand()
         show_files_command.execute()
-        mock_logging_error.assert_called_once_with("Exception Mocked exception, Failed to print filenames in data directory ./test_data.")
+        mock_logging_error.assert_called_once_with("Exception Mocked exception, Failed to print filenames in data directory test_data.")
 
     def tearDown(self):
         '''Deletes temporary test_data directory'''
