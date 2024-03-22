@@ -8,13 +8,14 @@ from app.calculator.history import History
 class Calculator:
     '''Class Calculator'''
 
+    history = History()
+
     @staticmethod
     def execute(a: Decimal, b: Decimal, operation) -> Decimal:
         '''Encapsulation with Calculator.execute(a, b, operation) '''
         calculation = Calculation(a, b, operation)
-        history = History()
-        log = history.create_log(a, b, operation)
-        history.add_log(log)
+        log = Calculator.history.create_log(a, b, operation)
+        Calculator.history.add_log(log)
         return calculation.compute()
 
     @staticmethod
