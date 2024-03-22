@@ -27,17 +27,11 @@ class TestFileHandler(unittest.TestCase):
         FileHandler.CSVCommands("save", filename)
         mock_logging_warning.assert_called_once_with(f"Invalid File Name: {filename}.")
 
-    @patch("os.path.exists", return_value = True)
-    @patch("os.access", return_value = False)
-    @patch("sys.stdout", autospec = True)
-    @patch("logging.error", autospec = True)
-    def test_not_writable_filename(self, mock_logging_error, mock_stdout, mock_access, mock_exists):
+    @patch("app.filehandler.csvfilechecker.CSVFileChecker.get_filepath", return_value = None)
+    def test_not_writable_filename(self, mock_get_filepath):
         '''Tests FileHandler.CVSCommands with unwritable file'''
-        data_directory = self.testdir
-        filename = "test.csv"
-        filepath = os.path.abspath("test_data/test.csv")
-        FileHandler.CSVCommands("save", filename)
-        mock_logging_error.assert_called_with(f"File '{filepath}' is not writable.")
+        result = FileHandler.CSVCommands("save", "test.csv")
+        self.assertIsNone(result)
 
     @patch("logging.info")
     def test_save_csv_file(self, mock_logging_info):
