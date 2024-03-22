@@ -12,10 +12,10 @@ class FileManagerCommand(Command):
 
         if len(values) == 2:
             csvcommand, filename = values[0], values[1]
-            logging.info("Inputs: '%s', '%s'.", csvcommand, filename)
+            logging.info(f"User inputted {csvcommand} and {filename}.")
             FileHandler.CSVCommands(csvcommand, filename)
 
         else:
             print(f"An error occurred: incorrect number of inputs.")
             values_string = " ".join(map(str, values))
-            logging.warning("Incorrect number of inputs: '%s'.", values_string)
+            logging.warning(f"Incorrect number of inputs, User inputted {values_string}, Failed to execute.")

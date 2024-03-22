@@ -25,7 +25,7 @@ class TestFileCommand(unittest.TestCase):
         command = FileManagerCommand()
         with patch("builtins.print") as mock_print:
             command.execute()
-            mock_logging_warning.assert_called_once_with("Incorrect number of inputs: '%s'.", "3")
+            mock_logging_warning.assert_called_once_with("Incorrect number of inputs, User inputted 3, Failed to execute.")
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover

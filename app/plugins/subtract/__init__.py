@@ -17,4 +17,4 @@ class SubtractCommand(Command):
         else:
             print(f"An error occurred: incorrect number of inputs.")
             values_string = " ".join(map(str, values))
-            logging.warning(f"User inputted {values_string}, failed to execute.")
+            logging.warning(f"Incorrect number of inputs, User inputted {values_string}, failed to execute.")
