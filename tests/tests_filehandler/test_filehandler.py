@@ -15,7 +15,7 @@ class TestFileHandler(unittest.TestCase):
 
     def setUp(self):
         '''Creates temporary test_data directory'''
-        self.testdir = "./test_data"
+        self.testdir = os.path.join("test_data")
         os.makedirs(self.testdir, exist_ok = True)
 
 
