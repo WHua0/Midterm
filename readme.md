@@ -174,8 +174,8 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
       + Warning - user inputs incorrect number of values
     + deletecalculation
       + Info - sucessful execution with log of the calculation deleted
-      + Warning - index is out range
-      + Warning - invalid inputs and log of the inputs
+      + Warning - index is out range with log of the input
+      + Warning - invalid inputs with log of the inputs
     + showhistory, clearhistory, menu, and exit
       + Info - successful execution
     + showfiles
