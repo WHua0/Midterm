@@ -36,13 +36,14 @@ class App:
         if os.path.exists(logging_conf_path):
             os.makedirs("logs", exist_ok = True)
             logging.config.fileConfig(logging_conf_path, disable_existing_loggers = False)
+            logging.info("Configured logging from logging.conf.")
         else:
             log_directory = self.log_directory
             os.makedirs(log_directory, exist_ok = True)
             log_filepath = os.path.abspath(os.path.join(log_directory, "app.log"))
             log_level = getattr(logging, self.log_level.upper())
             logging.basicConfig(filename = log_filepath, level = log_level, format = "%(asctime)s - %(levelname)s - %(message)s")
-        logging.info("Configured logging.")
+            logging.info(f"Configured basic logging configuration: Directory {log_directory}, Level {self.log_level}.")
 
     @classmethod
     def get_data_directory(cls):
@@ -66,10 +67,10 @@ class App:
                 try:
                     plugin_module = importlib.import_module(f'{plugins_package}.{plugin_name}')
                     self.register_plugins(plugin_name, plugin_module)
-                    logging.info("Imported Command '%s' from Plugin '%s'.", plugin_name, plugins_package)
+                    logging.info(f"Loaded Command {plugin_name}.")
 
-                except ImportError as e:
-                    logging.error("Failed to import Command '%s' from Plugin '%s': '%s'.", plugin_name, plugins_package, str(e))
+                except ImportError:
+                    logging.error(f"Error: ImportError, Failed to Import Command {plugin_name}.")
 
     def register_plugins(self, plugin_name, plugin_module):
         '''Imports and registers command from plugins'''
@@ -81,6 +82,7 @@ class App:
                 if issubclass(item, Command):
                     command_instance = item()
                     self.command_handler.register_command(plugin_name, command_instance)
+                    logging.info(f"Registered Command {plugin_name}.")
 
             except TypeError:
                 continue
