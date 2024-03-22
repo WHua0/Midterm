@@ -23,13 +23,13 @@ class CommandHandler:
     def execute_command(self, command_name: str):
         '''Executes the Command'''
         try:
-            logging.info(f"Initiated Command: {command_name}.")
+            logging.info(f"Initiated command {command_name}.")
             self.commands[command_name].execute()
-            logging.info(f"Completed Command: {command_name}.")
+            logging.info(f"Completed command {command_name}.")
 
         except KeyError as e:
             print(f"Invalid Command: {command_name}")
-            logging.error(f"Error: KeyError, Invalid Command {command_name}.")
+            logging.warning(f"KeyError, Invalid command {command_name}.")
             print("Type 'menu' for list of commands.")
             print("Type 'exit' to exit.")
 
