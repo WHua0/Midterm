@@ -104,13 +104,19 @@ class App
     + Sets value of ENVIRONMENT as TESTING if none
 3. def __init__(self) ; self.settings.setdefault("DATABASE_USERNAME", "root")
     + Sets value of DATABASE_USERNAME as root if none
-4. def __init__(self) ; self.log_directory = self.settings.get ("LOG_DIRECTORY", "logs")
-    + Gets value of LOG_DIRECTORY or logs if none
-5. def __init__(self) ; self.log_level = self.settings.get("LOG_LEVEL", "INFO")
-    + Gets value of LOG_LEVEL or INFO if none
-6. def __init__(self) ; self.data_directory = self.settings.get("DATA_DIRECTORY", "data")
-    + Gets value of DATA_DIRECTORY or data if none 
-7. def get_data_directory(cls)
+4. def __init__(self) ; self.settings.setdefault("DATA_DIRECTORY", "data")
+    + Sets value of DATA_DIRECTORY as data if none
+5. def __init__(self) ; self.settings.setdefault("LOG_DIRECTORY", "logs")
+    + Sets value of LOG_DIRECTORY as logs if none
+6. def __init__(self) ; self.settings.setdefault("LOG_LEVEL", "INFO")
+    + Sets value of LOG_LEVEL as INFO if none
+7. def __init__(self) ; self.log_directory = self.settings.get ("LOG_DIRECTORY")
+    + Gets value of LOG_DIRECTORY
+8. def __init__(self) ; self.log_level = self.settings.get("LOG_LEVEL")
+    + Gets value of LOG_LEVEL
+9. def __init__(self) ; self.data_directory = self.settings.get("DATA_DIRECTORY")
+    + Gets value of DATA_DIRECTORY 
+10. def get_data_directory(cls)
     + Returns absolute path of self.data_directory 
 
 https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfilechecker.py
@@ -122,14 +128,14 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
 ### Summary for .env LOG_DIRECTORY and LOG_INFO:
 
 1. .env provides the values of LOG_DIRECTORY and LOG_INFO
-2. App loads the values from .env
+2. App loads and assigns the values from .env
 3. If logging.conf exists, App wil create a "logs" directory if it does not exist, and configure logging according to logging.conf
 4. Or else, App will use the values of LOG_DIRECTORY and LOG_INFO to create a logs directory if it does not exist, and configure basic logging.
 
 ### Summary for .env DATA_DIRECTORY:
 
 1. .env provides the name of the data_directory
-2. App loads the name of data_directory from .env
+2. App loads and assigns the name of data_directory from .env
 3. App converts name of data_directory into an absolute path
 4. Other files retrieve the data_directory's absolute path from App 
 
