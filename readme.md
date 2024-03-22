@@ -107,13 +107,14 @@ class App
 4. def __init__(self) ; self.log_directory = self.settings.get ("LOG_DIRECTORY", "logs")
     + Gets value of LOG_DIRECTORY or logs if none
 5. def __init__(self) ; self.log_level = self.settings.get("LOG_LEVEL", "INFO")
-    + Gets value of LOG_LEVEL or logs if none
+    + Gets value of LOG_LEVEL or INFO if none
 6. def __init__(self) ; self.data_directory = self.settings.get("DATA_DIRECTORY", "data")
     + Gets value of DATA_DIRECTORY or data if none 
 7. def get_data_directory(cls)
     + Returns absolute path of self.data_directory 
 
 https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfilechecker.py
+
 https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
 
 8. data_directory = App.get_data_directory()
@@ -236,7 +237,7 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
     + EAFP in execute for ValueError
       + Method tries to convert input into an integer, but handles ValueError if it cannot.
     + LBYL in execute
-      + If the try passes, method checks if the input is a valid index number in the dataframe, or else method method prints "Index out of range".
+      + If the try passes, method checks if the input is a valid index number in the dataframe, or else method method prints "index out of range".
 9. plugin: filemanager
     + https://github.com/WHua0/Midterm/blob/master/app/plugins/filemanager/__init__.py
     + LBYL in execute
