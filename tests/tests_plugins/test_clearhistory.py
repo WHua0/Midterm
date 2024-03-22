@@ -12,5 +12,5 @@ class TestClearHistoryCommand(unittest.TestCase):
         '''Tests Execute_ClearHistory'''
         command = ClearHistoryCommand()
         command.execute()
-        mock_logging.info.assert_called_once_with("Cleared History.")
+        mock_logging.info.assert_called_once_with("Cleared history.")
         mockhistoryhandler.return_value.clear_history.assert_called_once()

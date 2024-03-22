@@ -15,4 +15,4 @@ class ShowHistoryCommand(Command):
 
         print("History:")
         print(df.to_string(index = True))
-        logging.info(f"Printed History:\n{df}")
+        logging.info(f"Printed history\n{df}")

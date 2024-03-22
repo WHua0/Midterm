@@ -14,4 +14,4 @@ class TestShowHistoryCommand(unittest.TestCase):
         mockhistoryhandler.return_value.retrieve_history.return_value = history_data
         command = ShowHistoryCommand()
         command.execute()
-        mock_logging.info.assert_called_once_with("Printed History:\nEmpty DataFrame\nColumns: []\nIndex: []")
+        mock_logging.info.assert_called_once_with("Printed history\nEmpty DataFrame\nColumns: []\nIndex: []")
