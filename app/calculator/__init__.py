@@ -58,12 +58,12 @@ class Calculator:
 
             else:
                 print(f"Unknown operation: {operation_name}.")
-                logging.error(f"Error: Unknown Operation {operation_name}.")
+                logging.error(f"Unknown operation {operation_name}.")
 
         except InvalidOperation:
             print(f"Invalid number input: {a} or {b} is not a valid number.")
-            logging.error(f"Error: Invalid Input {a} or {b}.")
+            logging.warning(f"Invalid input {a} or {b}, Failed to calculate and print.")
 
         except Exception as e:
             print(f"An error occurred: {e}.")
-            logging.error(f"Error: Exception {e}.")
+            logging.error(f"{e}, Failed to calculate and print.")
