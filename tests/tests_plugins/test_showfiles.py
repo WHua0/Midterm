@@ -46,7 +46,7 @@ class TestShowFilesCommand(unittest.TestCase):
         '''Tests ShowFilesCommand exception handling'''
         show_files_command = ShowFilesCommand()
         show_files_command.execute()
-        mock_logging_error.assert_called_once_with("Exception Mocked exception, Failed to print filenames in directory ./test_data.")
+        mock_logging_error.assert_called_once_with("Exception Mocked exception, Failed to print filenames in data directory ./test_data.")
 
     def tearDown(self):
         '''Deletes temporary test_data directory'''
