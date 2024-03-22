@@ -4,11 +4,11 @@
 
 1. $ git clone <repository_url>
 2. $ cd <directory_location>
-3. $ python deactivate
+3. $ deactivate
 4. $ pip install virtualenv
 5. $ virtualenv venv
 6. $ virtualenv -p /usr/bin/python3 venv
-7. $ source ./venv/bin/activate
+7. $ source venv/bin/activate
 8. $ pip3 install -r requirements.txt
 
 ## Testing Instructions
