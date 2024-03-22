@@ -16,7 +16,7 @@ class TestFileCommand(unittest.TestCase):
         command = FileManagerCommand()
         with patch("builtins.print") as mock_print:
             command.execute()
-            mock_logging_warning.assert_called_once_with("Invalid File Operation: 3.")
+            mock_logging_warning.assert_called_once_with("Invalid file operation, User inputted 3, Failed to execute.")
 
     @patch("builtins.input", side_effect=["3"])
     @patch("logging.warning")

@@ -65,7 +65,7 @@ class TestFileHandler(unittest.TestCase):
         data_directory = self.testdir = self.testdir
         filename = "test.csv"
         FileHandler.CSVCommands("invalid", filename)
-        mock_logging_warning.assert_called_with("Invalid File Operation: invalid.")
+        mock_logging_warning.assert_called_with("Invalid file operation, User inputted invalid, Failed to execute.")
 
     def tearDown(self):
         '''Deletes temporary test_data directory'''

@@ -30,6 +30,6 @@ class FileHandler:
         elif operation == "load":
             return CSVHandler.load_csv_file_to_history(filename, filepath)
         else:
-            print(f"Invalid File Operation: {operation}.")
-            logging.warning(f"Invalid File Operation: {operation}.")
+            print(f"An error occured: Invalid File Operation {operation}.")
+            logging.warning(f"Invalid file operation, User inputted {operation}, Failed to execute.")
             return
