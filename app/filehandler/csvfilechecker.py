@@ -15,12 +15,12 @@ class CSVFileChecker:
 
         if not os.path.exists(CSVFileChecker.data_directory):
             os.makedirs(CSVFileChecker.data_directory)
-            logging.info(f"Created '{CSVFileChecker.data_directory}' directory.")
+            logging.info(f"Created {CSVFileChecker.data_directory} directory.")
             return True
 
         elif not os.access(CSVFileChecker.data_directory, os.W_OK):
-            print(f"An error occurred: Directory '{CSVFileChecker.data_directory}' is not writable.")
-            logging.error(f"Directory '{CSVFileChecker.data_directory}' is not writable.")
+            print(f"An error occurred: {CSVFileChecker.data_directory} is not writable.")
+            logging.error(f"Directory {CSVFileChecker.data_directory} is not writable.")
             return False
         
         else:
@@ -33,8 +33,8 @@ class CSVFileChecker:
         if os.path.exists(filepath):
 
             if not os.access(filepath, os.W_OK):
-                print(f"An error occurred: File '{filepath}' is not writable.")
-                logging.error(f"File '{filepath}' is not writable.")
+                print(f"An error occurred: File {filepath} is not writable.")
+                logging.error(f"File {filepath} is not writable.")
                 return False
 
         return True
@@ -47,8 +47,8 @@ class CSVFileChecker:
             return True
 
         else:
-            print(f"File '{filepath}' was not found.")
-            logging.warning(f"File '{filepath}' was not found.")
+            print(f"File {filepath} was not found.")
+            logging.warning(f"File {filepath} was not found.")
             return False
 
     @staticmethod
@@ -59,8 +59,8 @@ class CSVFileChecker:
             return True
 
         else:
-            print(f"File '{filepath}' already exists.")
-            logging.warning(f"File '{filepath}' already exists.")
+            print(f"File {filepath} already exists.")
+            logging.warning(f"File {filepath} already exists.")
             return False
 
     @ staticmethod
@@ -68,8 +68,8 @@ class CSVFileChecker:
         '''Validates Filename'''
 
         if not re.match(r"^[a-zA-Z0-9_\-.]+$", filename):
-            print(f"Invalid File Name: {filename}.")
-            logging.warning(f"Invalid File Name: {filename}.")
+            print(f"Invalid Filename {filename}.")
+            logging.warning(f"Invalid filename {filename}.")
             return False
 
         return True

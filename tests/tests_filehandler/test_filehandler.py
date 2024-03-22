@@ -25,7 +25,7 @@ class TestFileHandler(unittest.TestCase):
         data_directory = self.testdir
         filename = "$test.csv"
         FileHandler.CSVCommands("save", filename)
-        mock_logging_warning.assert_called_once_with(f"Invalid File Name: {filename}.")
+        mock_logging_warning.assert_called_once_with(f"Invalid filename {filename}.")
 
     @patch("app.filehandler.csvfilechecker.CSVFileChecker.get_filepath", return_value = None)
     def test_not_writable_filename(self, mock_get_filepath):

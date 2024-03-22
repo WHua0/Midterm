@@ -36,7 +36,7 @@ class TestShowFilesCommand(unittest.TestCase):
         '''Tests ShowFilesCommand if invalid data directory'''
         show_files_command = ShowFilesCommand()
         show_files_command.execute()
-        mock_logging_error.assert_called_once_with("Directory './test_data' is not writable.")
+        mock_logging_error.assert_called_once_with("Directory ./test_data is not writable.")
 
     @patch("os.path.exists", return_value = True)
     @patch("os.access", return_value = True)

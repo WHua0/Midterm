@@ -33,7 +33,7 @@ class TestCSVHandler(unittest.TestCase):
         filepath = os.path.join(self.testdir, filename)
         CSVHandler.save_history_to_csv_file(filename, filepath)
         CSVHandler.save_history_to_csv_file(filename, filepath)
-        mock_logging_warning.assert_called_once_with(f"File '{filepath}' already exists.")
+        mock_logging_warning.assert_called_once_with(f"File {filepath} already exists.")
 
     @patch("logging.info")
     def test_delete_csv_file(self, mock_logging_info):
@@ -52,7 +52,7 @@ class TestCSVHandler(unittest.TestCase):
         filename = "test.csv"
         filepath = os.path.join(self.testdir, filename)
         CSVHandler.delete_csv_file(filename, filepath)
-        mock_logging_warning.assert_called_with(f"File '{filepath}' was not found.")
+        mock_logging_warning.assert_called_with(f"File {filepath} was not found.")
 
     @patch("logging.info")
     def test_load_csv_file_to_history(self, mock_logging_info):
@@ -71,7 +71,7 @@ class TestCSVHandler(unittest.TestCase):
         filename = "test.csv"
         filepath = os.path.join(self.testdir, filename)
         CSVHandler.load_csv_file_to_history(filename, filepath)
-        mock_logging_warning.assert_called_with(f"File '{filepath}' was not found.")
+        mock_logging_warning.assert_called_with(f"File {filepath} was not found.")
 
     @patch("logging.error")
     def test_load_csv_file_to_history_if_parsing_error(self, mock_logging_error):

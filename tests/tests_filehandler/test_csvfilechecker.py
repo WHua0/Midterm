@@ -27,7 +27,7 @@ class TestCSVFileChecker(unittest.TestCase):
         '''Tests CSVFileChecker.check_data_directory if data directory does not exist'''
         CSVFileChecker.data_directory = "./test_data"
         CSVFileChecker.check_data_directory()
-        mock_logging_info.assert_called_once_with(f"Created '{CSVFileChecker.data_directory}' directory.")
+        mock_logging_info.assert_called_once_with(f"Created {CSVFileChecker.data_directory} directory.")
 
     @patch("os.path.exists", return_value = True)
     @patch("os.access", return_value = False)
@@ -37,7 +37,7 @@ class TestCSVFileChecker(unittest.TestCase):
         '''Tests CSVFileChecker.check_data_directory if data directory is not writable'''
         CSVFileChecker.data_directory = "./test_data"
         CSVFileChecker.check_data_directory()
-        mock_logging_error.assert_called_once_with(f"Directory '{CSVFileChecker.data_directory}' is not writable.")
+        mock_logging_error.assert_called_once_with(f"Directory {CSVFileChecker.data_directory} is not writable.")
 
     @patch("os.path.exists", return_value = True)
     @patch("os.access", return_value = True)
@@ -59,7 +59,7 @@ class TestCSVFileChecker(unittest.TestCase):
         filename = "test_file.csv"
         expected_filepath = os.path.join(directory, filename)
         CSVFileChecker.check_file_writable(expected_filepath)
-        mock_logging_error.assert_called_once_with(f"File '{expected_filepath}' is not writable.")
+        mock_logging_error.assert_called_once_with(f"File {expected_filepath} is not writable.")
 
     @patch("os.path.exists", return_value = True)
     def test_check_file_exists_if_exists(self, mock_exist):
@@ -122,7 +122,7 @@ class TestCSVFileChecker(unittest.TestCase):
         filename = "test_file.csv"
         expected_filepath = os.path.join(directory, filename)
         CSVFileChecker.get_filepath(directory, filename)
-        mock_logging_error.assert_called_once_with(f"File '{expected_filepath}' is not writable.")
+        mock_logging_error.assert_called_once_with(f"File {expected_filepath} is not writable.")
 
 if __name__ == '__main__':
     unittest.main() # pragma: no cover
