@@ -11,10 +11,10 @@ class SubtractCommand(Command):
 
         if len(values) == 2:
             a, b = values[0], values[1]
+            logging.info(f"User Inputted {a} and {b}.")
             Calculator.calculate_and_print(a, b, "subtract")
-            logging.info("Inputs: '%s', '%s'.", a, b)
 
         else:
             print(f"An error occurred: incorrect number of inputs.")
             values_string = " ".join(map(str, values))
-            logging.warning("Incorrect number of inputs: '%s'.", values_string)
+            logging.warning(f"User Inputted {values_string}.")
