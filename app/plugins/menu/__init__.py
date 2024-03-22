@@ -1,4 +1,5 @@
 '''Menu'''
+import logging
 from app.commandhandler import Command
 
 class MenuCommand(Command):
@@ -13,3 +14,4 @@ class MenuCommand(Command):
         print("List of Commands:")
         for plugin_name in self.command_handler.commands.keys():
             print(plugin_name)
+        logging.info("Printed menu.")
