@@ -143,7 +143,7 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
 ### Examples
   + calculator: Calculation.calculate_and_print(a, b, operation_name)
     + https://github.com/WHua0/Midterm/blob/master/app/calculator/__init__.py
-    + Info - successful calculate and print
+    + Info - successful calculate and print with log of the parameters
     + Error - unknown operation
     + Warning - invalid Operand a or Operand b
     + Warning - ZeroDivisionError
@@ -167,13 +167,13 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
   + plugins
     + https://github.com/WHua0/Midterm/tree/master/app/plugins
     + add, subtract, multiply, and divide
-      + Info - user inputs two values: Operand a and Operand b
+      + Info - user inputs two values with log of the inputs: Operand a and Operand B
       + Warning - user inputs incorrect number of values
     + filemanager
-      + Info - user inputs two values: csvcommand and filename in data directory
+      + Info - user inputs two values with log of the inputs: csvcommand and filename in data directory
       + Warning - user inputs incorrect number of values
     + deletecalculation
-      + Info - sucessful execution with log of the calculation deleted
+      + Info - sucessful execution with log of the calculation deleted: dataframe
       + Warning - index is out range with log of the input
       + Warning - invalid inputs with log of the inputs
     + showhistory, clearhistory, menu, and exit
