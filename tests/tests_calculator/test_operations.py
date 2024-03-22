@@ -25,5 +25,5 @@ class TestOperations():
 
     def test_divide_by_zero(self):
         '''Tests divide by 0 exception'''
-        with pytest.raises(ZeroDivisionError, match = "Cannot divide by zero"):
+        with pytest.raises(ZeroDivisionError):
             Operation.divide(2, 0), "ZeroDivisionError failed!"

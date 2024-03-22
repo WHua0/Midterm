@@ -31,7 +31,7 @@ class TestCalculator():
 
     def test_calculator_division_by_zero(self):
         '''Calculator.add by 0 exception'''
-        with pytest.raises(ZeroDivisionError, match = "Cannot divide by zero"):
+        with pytest.raises(ZeroDivisionError):
             Calculator.divide(2, 0), "Calculator Divide ZeroDivisionError failed!"
 
     @pytest.mark.parametrize("a_string, b_string, operation_string, expected_string", [
@@ -39,7 +39,7 @@ class TestCalculator():
         ("5", "3", "subtract", "The result of 5 subtract 3 is equal to 2."),
         ("5", "3", "multiply",  "The result of 5 multiply 3 is equal to 15."),
         ("6", "3", "divide", "The result of 6 divide 3 is equal to 2."),
-        ("5", "0", "divide", "An error occurred: Cannot divide by zero."),
+        ("5", "0", "divide", "An error occurred: ZeroDivisionError."),
         ("5", "3", "unknown", "Unknown operation: unknown."),
         ("a", "3", "add", "Invalid number input: a or 3 is not a valid number."),
         ("3", "a", "add", 'Invalid number input: 3 or a is not a valid number.')

@@ -36,5 +36,5 @@ class TestCalculation():
     def test_calculation_divide_by_zero(self):
         '''Tests with divide by 0 exception'''
         calc = Calculation(2, 0, Operation.divide)
-        with pytest.raises(ZeroDivisionError, match = "Cannot divide by zero"):
+        with pytest.raises(ZeroDivisionError):
             calc.compute(), "Calculation Compute ZeroDivisionError failed!"

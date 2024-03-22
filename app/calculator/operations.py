@@ -23,6 +23,6 @@ class Operation:
     def divide(a: Decimal, b: Decimal) -> Decimal:
         '''Divides a by b'''
         if b == 0:
-            raise ZeroDivisionError("Cannot divide by zero")
+            raise ZeroDivisionError
 
         return a / b

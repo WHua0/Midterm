@@ -64,6 +64,6 @@ class Calculator:
             print(f"Invalid number input: {a} or {b} is not a valid number.")
             logging.warning(f"Invalid input {a} or {b}, Failed to calculate and print.")
 
-        except Exception as e:
-            print(f"An error occurred: {e}.")
-            logging.error(f"{e}, Failed to calculate and print.")
+        except ZeroDivisionError:
+            print(f"An error occurred: ZeroDivisionError.")
+            logging.warning(f"ZeroDivisionError, Failed to calculate and print.")
