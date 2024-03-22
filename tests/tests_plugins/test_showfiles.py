@@ -26,7 +26,7 @@ class TestShowFilesCommand(unittest.TestCase):
         '''Tests ShowFilesCommand if data directory exists'''
         show_files_command = ShowFilesCommand()
         show_files_command.execute()
-        mock_logging_info.assert_called_once_with("Printed Data Directory.")
+        mock_logging_info.assert_called_once_with("Printed filenames in data directory.")
 
     @patch("os.path.exists", return_value = True)
     @patch("os.access", return_value = False)
@@ -46,7 +46,7 @@ class TestShowFilesCommand(unittest.TestCase):
         '''Tests ShowFilesCommand exception handling'''
         show_files_command = ShowFilesCommand()
         show_files_command.execute()
-        mock_logging_error.assert_called_once_with("Failed to list directory ./test_data: Mocked exception.")
+        mock_logging_error.assert_called_once_with("Exception Mocked exception, Failed to print filenames in directory ./test_data.")
 
     def tearDown(self):
         '''Deletes temporary test_data directory'''

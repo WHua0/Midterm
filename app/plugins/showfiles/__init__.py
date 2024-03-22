@@ -18,11 +18,11 @@ class ShowFilesCommand(Command):
              filenames = os.listdir(directory)
 
         except Exception as e:
-            print(f"Failed to list directory {directory}: {e}.")
-            logging.error(f"Failed to list directory {directory}: {e}.")
+            print(f"An error occurred: {e}.")
+            logging.error(f"Exception {e}, Failed to print filenames in directory {directory}.")
             return
 
-        print("Files in Data Directory:")
+        print("Filenames in Data Directory:")
         for filename in filenames:
             print(filename)
-        logging.info("Printed Data Directory.")
+        logging.info("Printed filenames in data directory.")
