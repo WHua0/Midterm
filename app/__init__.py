@@ -70,7 +70,7 @@ class App:
                     logging.info(f"Loaded command {plugin_name}.")
 
                 except ImportError:
-                    logging.error(f"ImportError, Failed to import command {plugin_name}.")
+                    logging.error(f"ImportError, Failed to load command {plugin_name}.")
 
     def register_plugins(self, plugin_name, plugin_module):
         '''Imports and registers command from plugins'''
