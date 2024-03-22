@@ -1,4 +1,5 @@
 '''Calculator Facade'''
+import logging
 from decimal import Decimal, InvalidOperation
 from app.calculator.calculation import Calculation
 from app.calculator.operations import Operation
@@ -53,12 +54,16 @@ class Calculator:
 
             if operation_function:
                 print(f"The result of {a} {operation_name} {b} is equal to {operation_function(a_decimal, b_decimal)}.")
+                logging.info(f"Computed {a} {operation_name} {b} is equal to {operation_function(a_decimal, b_decimal)}.")
 
             else:
                 print(f"Unknown operation: {operation_name}.")
+                logging.error(f"Error: Unknown Operation {operation_name}.")
 
         except InvalidOperation:
             print(f"Invalid number input: {a} or {b} is not a valid number.")
+            logging.error(f"Error: Invalid input {a} or {b}.")
 
         except Exception as e:
             print(f"An error occurred: {e}.")
+            logging.error(f"Error: Exception {e}.")
