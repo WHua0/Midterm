@@ -67,10 +67,10 @@ class App:
                 try:
                     plugin_module = importlib.import_module(f'{plugins_package}.{plugin_name}')
                     self.register_plugins(plugin_name, plugin_module)
-                    logging.info(f"Loaded Command {plugin_name}.")
+                    logging.info(f"Loaded command {plugin_name}.")
 
                 except ImportError:
-                    logging.error(f"Error: ImportError, Failed to Import Command {plugin_name}.")
+                    logging.error(f"ImportError, Failed to import command {plugin_name}.")
 
     def register_plugins(self, plugin_name, plugin_module):
         '''Imports and registers command from plugins'''
@@ -82,7 +82,7 @@ class App:
                 if issubclass(item, Command):
                     command_instance = item()
                     self.command_handler.register_command(plugin_name, command_instance)
-                    logging.info(f"Registered Command {plugin_name}.")
+                    logging.info(f"Registered command {plugin_name}.")
 
             except TypeError:
                 continue
