@@ -69,23 +69,23 @@ class TestCSVFileChecker(unittest.TestCase):
     @patch("os.path.exists", return_value = True)
     def test_check_file_exists_if_exists(self, mock_exist):
         '''Tests CSVFileChecker.check_file_exists if file exists'''
-        filepath = "existing/file.txt"
+        filepath = os.path.join("existing", "file.txt")
         self.assertTrue(CSVFileChecker.check_file_exists(filepath))
 
     def test_check_file_exists_if_not_exists(self):
         '''Tests CSVFileChecker.check_file_exists if file does not exist'''
-        filepath = "non_existing/file.txt"
+        filepath = os.path.join("non_existing", "file.txt")
         self.assertFalse(CSVFileChecker.check_file_exists(filepath))
 
     def test_check_file_not_exists_if_not_exists(self):
         '''Tests CSVFileChecker.check_file_not_exists if file does not exist'''
-        filepath = "non_existing/file.txt"
+        filepath = os.path.join("non_existing", "file.txt")
         self.assertTrue(CSVFileChecker.check_file_not_exists(filepath))
 
     @patch("os.path.exists", return_value = True)
     def test_check_file_not_exists_if_exists(self, mock_exist):
         '''Tests CSVFileChecker.check_file_not_exists if file exists'''
-        filepath = "existing/file.txt"
+        filepath = os.path.join("existing", "file.txt")
         self.assertFalse(CSVFileChecker.check_file_not_exists(filepath))
 
     def test_validate_filename(self):
@@ -100,7 +100,7 @@ class TestCSVFileChecker(unittest.TestCase):
 
     def test_validate_filename_if_filepath(self):
         '''Tests CSVFileChecker.validate_filename if filepath'''
-        invalid_filename = "file/path.csv"
+        invalid_filename = os.path.join("file", "path.csv")
         self.assertFalse(CSVFileChecker.validate_filename(invalid_filename))
 
     def test_get_filepath(self):
