@@ -79,8 +79,8 @@
    + app
      + https://github.com/WHua0/Midterm/blob/master/app/__init__.py
      + While not following any particular design patterns, class App serves as the entry point for starting the application
-     + Class App configures logging and loads environment variables
-     + Class App dynamically loads, registers, and executes plugin commands using the CommandHandler
+     + Class App loads environment variables and configures logging
+     + Class App dynamically loads, and registers and and executes plugin commands using the CommandHandler
      + Class App implements a Read-Eval-Print Loop (REPL) to allow continous interaction with the command-line interface until the session is terminated
 
 ## Environment Variables
