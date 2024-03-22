@@ -166,7 +166,21 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
     + Warning - invalid file operation
   + plugins
     + https://github.com/WHua0/Midterm/tree/master/app/plugins
-    + 
+    + add, subtract, multiply, and divide
+      + Info - user inputs two values: Operand a and Operand b
+      + Warning - user inputs incorrect number of values
+    + filemanager
+      + Info - user inputs two values: csvcommand and filename in data directory
+      + Warning - user inputs incorrect number of values
+    + deletecalculation
+      + Info - sucessful execution with log of the calculation deleted
+      + Warning - index is out range
+      + Warning - invalid inputs and log of the inputs
+    + showhistory, clearhistory, menu, and exit
+      + Info - successful execution
+    + showfiles
+      + Error - failed to execute
+      + Info - successful execution
   + commandhandler
     + https://github.com/WHua0/Midterm/blob/master/app/commandhandler/__init__.py
     + Info - initiated command
