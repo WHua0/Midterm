@@ -29,7 +29,7 @@ class CommandHandler:
 
         except KeyError as e:
             print(f"Invalid Command: {command_name}")
-            logging.warning(f"KeyError, Invalid command {command_name}.")
+            logging.warning(f"KeyError, Invalid command {command_name}, Failed to execute command.")
             print("Type 'menu' for list of commands.")
             print("Type 'exit' to exit.")
 
