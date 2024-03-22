@@ -62,7 +62,7 @@ class Calculator:
 
         except InvalidOperation:
             print(f"Invalid number input: {a} or {b} is not a valid number.")
-            logging.error(f"Error: Invalid input {a} or {b}.")
+            logging.error(f"Error: Invalid Input {a} or {b}.")
 
         except Exception as e:
             print(f"An error occurred: {e}.")
