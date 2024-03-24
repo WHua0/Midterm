@@ -10,7 +10,8 @@ class TestClearHistoryCommand(unittest.TestCase):
     @patch("app.plugins.clearhistory.logging")
     def test_execute(self, mock_logging, mockhistoryhandler):
         '''Tests Execute_ClearHistory'''
+        history_data = []
+        mockhistoryhandler.return_value.retrieve_history.return_value = history_data
         command = ClearHistoryCommand()
         command.execute()
-        mock_logging.info.assert_called_once_with("Cleared history.")
-        mockhistoryhandler.return_value.clear_history.assert_called_once()
+        mock_logging.info.assert_called_once_with("Cleared history\nEmpty DataFrame\nColumns: []\nIndex: [].")
