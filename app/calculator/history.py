@@ -10,7 +10,7 @@ class History:
         '''Singleton Instance'''
         if cls._instance is None:
             cls._instance = super().__new__(cls)
-            cls._instance.history = pd.DataFrame(columns=["Operation", "OperandA", "OperandB"])
+            cls._instance.history = pd.DataFrame(columns = ["Operation", "OperandA", "OperandB"])
         return cls._instance
 
     def create_log(self, a: Decimal, b: Decimal, operation):
@@ -20,7 +20,7 @@ class History:
 
     def add_log(self, log):
         '''Adds log to history'''
-        new_log = pd.DataFrame([log], columns=["Operation", "OperandA", "OperandB"])
+        new_log = pd.DataFrame([log], columns = ["Operation", "OperandA", "OperandB"])
         self.history = pd.concat([self.history, new_log], ignore_index = True)
 
     def get_history(self):
