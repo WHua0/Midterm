@@ -180,13 +180,15 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
       + Info - user inputs two values with log of the inputs: csvcommand and filename in data directory
       + Warning - user inputs incorrect number of values
     + deletecalculation
-      + Info - sucessful execution with log of the calculation deleted: dataframe
+      + Info - sucessful execution with log of the deleted calculation
       + Warning - index is out range with log of the input
       + Warning - invalid inputs with log of the inputs
-    + showhistory, clearhistory, menu, and exit
-      + Info - successful execution
+    + showhistory, and clearhistory
+      + Info - successful execution with log of the dataframe
     + showfiles
       + Error - failed to execute
+      + Info - successful execution
+    + menu, and exit
       + Info - successful execution
   + commandhandler
     + https://github.com/WHua0/Midterm/blob/master/app/commandhandler/__init__.py
