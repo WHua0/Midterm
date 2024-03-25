@@ -7,22 +7,22 @@ class HistoryHandler:
 
     @staticmethod
     def create_history():
-        '''Creates a history instance'''
+        '''Creates History instance'''
         return History()
 
     @staticmethod
     def retrieve_history(history_instance):
-        '''Retrieves history'''
+        '''Retrieves history from an instance'''
         return history_instance.get_history()
 
     @staticmethod
     def clear_history(history_instance):
-        '''Clears history'''
+        '''Clears history from an instance'''
         history_instance.clear_history()
 
     @staticmethod
     def import_history(history_df):
-        '''Imports a history instance from a DataFrame'''
+        '''Imports a DataFrame to History instance'''
         history_instance = History()
         history_instance.history = history_df.copy()
         return history_instance
