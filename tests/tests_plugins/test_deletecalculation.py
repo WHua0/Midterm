@@ -5,21 +5,23 @@
 import unittest
 import logging
 from unittest.mock import patch
+from io import StringIO
 import pandas as pd
 from app.plugins.deletecalculation import DeleteCalculationCommand
+from app.historyhandler import HistoryHandler
 
 class TestDeleteCalculationCommand(unittest.TestCase):
     '''Tests DeleteCalculationCommand'''
 
     @patch("builtins.input", return_value = "0")
-    @patch("logging.info")
-    def test_execute(self, mock_logging_info, mock_input):
+    def test_execute(self, mock_input):
         '''Tests Excute_DeleteCalculation'''
-        initial_data = {"0": ["add", 10, 5]}
-        df = pd.DataFrame(initial_data, index = ["Operation", "OperandA", "OperandB"])
+        test_df = pd.DataFrame({"Operation": "add", "OperandA": 1, "OperandB": 2}, index = [0])
+        HistoryHandler.import_history(test_df)
         delete_calculation = DeleteCalculationCommand()
         delete_calculation.execute()
-        self.assertListEqual(list(df.columns), ["0"])
+        test_history = HistoryHandler.retrieve_history()
+        self.assertTrue(test_history.empty)
 
     @patch("builtins.input", return_value = "100")
     @patch("logging.warning")

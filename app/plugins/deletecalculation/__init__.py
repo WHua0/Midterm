@@ -9,8 +9,8 @@ class DeleteCalculationCommand(Command):
 
     def execute(self):
         history_handler = HistoryHandler()
-        history_instance = history_handler.create_history()
-        history_data = history_handler.retrieve_history(history_instance)
+        history_handler.create_history()
+        history_data = history_handler.retrieve_history()
         df = pd.DataFrame(history_data)
 
         try:
@@ -19,7 +19,7 @@ class DeleteCalculationCommand(Command):
 
             if 0 <= index < len(df):
                 deleted_data = df.iloc[index]
-                history_handler.delete_calculation(history_instance, index)
+                history_handler.delete_calculation(index)
                 print("Calculation Deleted:")
                 print(deleted_data.to_frame().T)
                 logging.info("Deleted Calculation:\n%s.", deleted_data.to_frame().T)
