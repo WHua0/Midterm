@@ -22,7 +22,7 @@ class HistoryHandler:
 
     @staticmethod
     def import_history(history_df):
-        '''Imports a DataFrame to History instance'''
+        '''Imports data from a DataFrame to History instance'''
         history_instance = History()
         history_instance.history = history_df.copy()
         return history_instance
