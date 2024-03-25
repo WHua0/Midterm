@@ -15,8 +15,8 @@ class CSVHandler:
         if not CSVFileChecker.check_file_not_exists(filepath):
             return
 
-        history_instance = HistoryHandler.create_history()
-        history_df = HistoryHandler.retrieve_history(history_instance)
+        HistoryHandler.create_history()
+        history_df = HistoryHandler.retrieve_history()
         history_df.to_csv(filepath, index = False)
         print(f"History has been saved to File {filename}.")
         logging.info(f"Saved history to file {filename}.")
