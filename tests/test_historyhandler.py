@@ -21,14 +21,14 @@ class TestHistoryHandler(unittest.TestCase):
         log = {"Operation": "add", "OperandA": 1, "OperandB": 1}
         self.history_instance.add_log(log)
         expected_history = str(self.history_instance.get_history())
-        actual_history = str(HistoryHandler.retrieve_history(self.history_instance))
+        actual_history = str(HistoryHandler.retrieve_history())
         self.assertEqual(expected_history, actual_history)
 
     def test_clear_history(self):
         '''Tests HistoryHandler.clear_history'''
         log = {"Operation": "add", "OperandA": 1, "OperandB": 1}
         self.history_instance.add_log(log)
-        HistoryHandler.clear_history(self.history_instance)
+        HistoryHandler.clear_history()
         self.assertTrue(self.history_instance.get_history().empty)
 
     def test_import_history(self):
@@ -44,8 +44,8 @@ class TestHistoryHandler(unittest.TestCase):
         self.history_instance.add_log(log1)
         expected_history = str(self.history_instance.get_history())
         self.history_instance.add_log(log2)
-        HistoryHandler.delete_calculation(self.history_instance, 1)
-        actual_history = str(HistoryHandler.retrieve_history(self.history_instance))
+        HistoryHandler.delete_calculation(1)
+        actual_history = str(HistoryHandler.retrieve_history())
         self.assertEqual(expected_history, actual_history)
 
 if __name__ == '__main__':
