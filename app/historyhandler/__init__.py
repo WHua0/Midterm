@@ -11,14 +11,14 @@ class HistoryHandler:
         return History()
 
     @staticmethod
-    def retrieve_history(history_instance):
-        '''Retrieves history from an instance'''
-        return history_instance.get_history()
+    def retrieve_history():
+        '''Retrieves history from History instance'''
+        return History().get_history()
 
     @staticmethod
-    def clear_history(history_instance):
-        '''Clears history from an instance'''
-        history_instance.clear_history()
+    def clear_history():
+        '''Clears history from History instance'''
+        History().clear_history()
 
     @staticmethod
     def import_history(history_df):
@@ -28,6 +28,6 @@ class HistoryHandler:
         return history_instance
     
     @staticmethod
-    def delete_calculation(history_instance, index):
+    def delete_calculation(index):
         '''Deletes calculation log at given index'''
-        history_instance.delete_log(index)
+        History().delete_log(index)
