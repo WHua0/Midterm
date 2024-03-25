@@ -9,10 +9,10 @@ class ClearHistoryCommand(Command):
 
     def execute(self):
         history_handler = HistoryHandler()
-        history_instance = history_handler.create_history()
-        history_data = history_handler.retrieve_history(history_instance)
+        history_handler.create_history()
+        history_data = history_handler.retrieve_history()
         df = pd.DataFrame(history_data)
-        history_handler.clear_history(history_instance)
+        history_handler.clear_history()
 
         print("History cleared.")
         logging.info(f"Cleared history\n{df}.")
