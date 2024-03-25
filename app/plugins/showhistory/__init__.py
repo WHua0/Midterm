@@ -9,8 +9,8 @@ class ShowHistoryCommand(Command):
 
     def execute(self):
         history_handler = HistoryHandler()
-        history_instance = history_handler.create_history()
-        history_data = history_handler.retrieve_history(history_instance)
+        history_handler.create_history()
+        history_data = history_handler.retrieve_history()
         df = pd.DataFrame(history_data)
 
         print("History:")
