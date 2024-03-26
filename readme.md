@@ -37,26 +37,26 @@ https://www.youtube.com/watch?v=W700MTBfoQs
 ### Calculator
    + operations.py 
      + https://github.com/WHua0/Midterm/blob/master/app/calculator/operations.py
-     + Factory Method Design Pattern for class Operations with staticmethods add, subtract, multiply and divide that each return a result as a decimal value or ZeroDivisionError
+     + Factory Method Design Pattern for class Operations with staticmethods (add, subtract, multiply and divide) that each return a result (a decimal value or ZeroDivisionError)
    + calculation.py
      + https://github.com/WHua0/Midterm/blob/master/app/calculator/calculation.py
      + Strategy Design Pattern for class Calculation that encapsulates operandA, operandB and Operation into a calculation, and computes operandA and operandB according to the Operation
    + history.py 
      + https://github.com/WHua0/Midterm/blob/master/app/calculator/history.py
-     + Singleton Design Pattern for class History that insures that only one instance of History is created and accessed at any given point in the program, and provides methods to manipulate the instance
+     + Singleton Design Pattern for class History that insures that only one instance of History dataframe is created and accessed at any given point in the program, and provides methods (create_log, add_log, get_history, clear_history, delete_log) to manipulate History dataframe
    + calculator
      + https://github.com/WHua0/Midterm/blob/master/app/calculator/__init__.py
      + Facade Design Pattern for class Calculator with staticmethods that serve as interfaces to calculator functionality
-     + Staticmethod execute acts as a facade for performing calculations
-     + Staticmethods add, subtract, multiply and divide provide an interface to execute for specific operations
-     + Staticmethod calculate_and_print provides a centralized way to perform calculations and handle exceptions
+     + Staticmethod execute acts as a facade for performing calculations, and contains methods (create_log and add_log) from history.py, which adds the operation and operands into to History dataframe before computing. 
+     + Staticmethods add, subtract, multiply and divide provide an interface for specific operations using Staticmethod execute
+     + Staticmethod calculate_and_print provides a centralized way to perform calculations and handle exceptions 
 
 ### HistoryHandler
    + historyhandler
      + https://github.com/WHua0/Midterm/blob/master/app/historyhandler/__init__.py
-     + Mostly a Facade Design Pattern for class HistoryHandler with staticmethods that serve as an interface for history.py to manipulate an instance of history
+     + Mostly a Facade Design Pattern for class HistoryHandler with staticmethods (retrieve_history, clear_history, and delete_calculation) that serve as an interface for history.py to manipulate History dataframe
      + Staticmethod create_history follows a Factory Method Design Pattern to create an instance of history
-     + Staticmethod import_history follows an Adapter Design Pattern that allows for the intergration of external dataframes to class History
+     + Staticmethod import_history follows an Adapter Design Pattern that allows for the intergration of external dataframes to History dataframe
 
 ### FileHandler
    + csvfilechecker.py
@@ -64,10 +64,10 @@ https://www.youtube.com/watch?v=W700MTBfoQs
      + While not following any particular design patterns, class CSVFileChecker utilizes staticmethods to adhere to the Single Responsiblity Principle (SRP) of checking and validating directories and files
    + csvfactory.py
      + https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfactory.py
-     + Factory Method Design Pattern for class CSVHandler with staticmethods that manipulate CSV files and an instance of history with exception handling.
+     + Factory Method Design Pattern for class CSVHandler with staticmethods (save_history_to_csv_file, delete_csv_file, and load_csv_file_to_history) that manipulate CSV files and History dataframe with exception handling.
    + filehandler
      + https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
-     + Facade Design Pattern for class FileHandler with a staticmethod that acts as an interface for csvfactory.py
+     + Facade Design Pattern for class FileHandler with a staticmethod CSVCommands that acts as an interface for csvfactory.py methods (save, delete, and load)
 
 ### App
    + plugins
