@@ -142,7 +142,7 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
 ## Logging
 
 ### INFO
-  + Used to monitor normal executions of code.
+  + Used to monitor normal executions of code, and logs User Inputs if applicable.
 ### WARNING
   + Used to monitor expected exceptions that do not affect program functionality.
 ### ERROR
