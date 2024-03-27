@@ -211,9 +211,9 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
       +  Assuming that the parameters provided are always decimals, if b == 0, raise ZeroDivisionError, or else a / b.
 2. calculator
     + https://github.com/WHua0/Midterm/blob/master/app/calculator/__init__.py
-    + EAFP in calculate_and_print(a, b, operation_name) for InvalidOperation and Exception
+    + EAFP in method calculate_and_print(a, b, operation_name) for InvalidOperation and Exception
       + The method tries to convert parameters a and b into decimals, and handles the InvalidOperation and any other Exceptions if it cannot.
-    + LBYL in calculate_and_print(a, b, operation_name) for "unknown operation"
+    + LBYL in method calculate_and_print(a, b, operation_name) for "unknown operation"
       + If parameter operation_name is not found in operation_mapping, the method prints "unknown operation". 
 3. csvfilechecker.py
     + https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfilechecker.py
@@ -224,45 +224,45 @@ https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
     + https://github.com/WHua0/Midterm/blob/master/app/filehandler/csvfactory.py
     + LBYL in all methods
       + All Methods return if the file does not pass the csvfilechecker method, or else will run through its code.
-    + EAFP load_csv_file_to_history for Exception
+    + EAFP in method load_csv_file_to_history for Exception
       + Method tries to read a csv file and return it as a dataframe, but returns None if there is an Exception. 
 5. filehandler
     + https://github.com/WHua0/Midterm/blob/master/app/filehandler/__init__.py
-    + LBYL in CSVCommands(operation, filename)
+    + LBYL in method CSVCommands(operation, filename)
       + Method returns if the file does not pass the csvfilechecker methods. Then, method runs though the if-elif conditions for a matching operation, or else method prints "invalid file operation".
 6. plugin: add, subtract, multiply, divide
     + https://github.com/WHua0/Midterm/blob/master/app/plugins/divide/__init__.py
-    + LBYL in execute
+    + LBYL in method execute
       + If total number of parameters provided == 2, calculator.calculate_and_print(a, b, operation_name) will run, or else the method prints "incorrect number of inputs". 
 7. plugin: showfiles
     + https://github.com/WHua0/Midterm/blob/master/app/plugins/showfiles/__init__.py
-    + LBYL in execute
+    + LBYL in method execute
       + Method will return if the file does not pass the csvfilechecker method, or else will run through its code.
-    + EAFP in execute for Exception
+    + EAFP in method execute for Exception
       + Method tries to the obtain a list of filenames from a directory, but handles Exception and returns if cannot. Otherwise, method continues to run through its code. 
 8. plugin: deletecalculation
     + https://github.com/WHua0/Midterm/blob/master/app/plugins/deletecalculation/__init__.py
-    + EAFP in execute for ValueError
+    + EAFP in method execute for ValueError
       + Method tries to convert input into an integer, but handles ValueError if it cannot.
     + LBYL in execute
       + If the try passes, method checks if the input is a valid index number in the dataframe, or else method method prints "index out of range".
 9. plugin: filemanager
     + https://github.com/WHua0/Midterm/blob/master/app/plugins/filemanager/__init__.py
-    + LBYL in execute
+    + LBYL in method execute
       +  If total number of parameters provided == 2, filemanager.CSVCommands(csvcommand, filename) will run, or else the method prints "incorrect number of inputs".
 10.  commandhandler
       + https://github.com/WHua0/Midterm/blob/master/app/commandhandler/__init__.py
-      + EAFP in CommandHandler.excute_command(self, command_name) for KeyError
+      + EAFP in method CommandHandler.excute_command(self, command_name) for KeyError
         + Method tries to execute command_name, and handles KeyError if command_name does not exist.
 11. app
     + https://github.com/WHua0/Midterm/blob/master/app/__init__.py
-    + LPYL in configure_logging
+    + LPYL in method configure_logging
       + If logging.conf exists, method configures logging settings, or else method configures basic logging settings.
-    + LPYL in load_plugins
+    + LPYL in method load_plugins
       + Method checks if module is a package. If yes, method tries the below, or else passes.
-    + EAFP in load_plugins for ImportError
+    + EAFP in method load_plugins for ImportError
       + Method tries to import the package, and handles ImportError if it cannot.
-    + EAFP in register_plugins for TypeError
+    + EAFP in method register_plugins for TypeError
       + Method tries the below, and handles TypeError if it cannot.
-    + LPYL in register_plugins
+    + LPYL in method register_plugins
       + If current item is a subclass of Command, method tries commandhandler.register(plugin_name, plugin_module).
